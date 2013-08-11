@@ -8,5 +8,6 @@ namespace Thahavuru.Techniques
 {
     public class Class1
     {
+
     }
 }
