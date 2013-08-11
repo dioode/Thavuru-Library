@@ -9,5 +9,7 @@ namespace Thahavuru.Techniques
     public class Class1
     {
 
+
+        int x;
     }
 }
