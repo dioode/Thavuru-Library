@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ClassificationT
 {
-    class LDA
+    public class LDA
     {
+
     }
 }

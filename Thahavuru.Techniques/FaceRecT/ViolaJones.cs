@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thahavuru.Techniques.ClassificationT
+namespace Thahavuru.Techniques.FaceRecT
 {
-    public class PCA
+    class ViolaJones
     {
     }
 }
