@@ -86,6 +86,12 @@
     <Compile Include="FaceRecT\ViolaJones.cs" />
     <Compile Include="ImageProcessingT\ImageProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DataAccessUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="OpenCV\opencv_calib3d249.dll">
@@ -139,6 +145,17 @@
     <Content Include="OpenCV\opencv_videostab249.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Nariz_nuevo_20stages.xml" />
+    <None Include="Resources\parojosG.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="XMLTemplates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
