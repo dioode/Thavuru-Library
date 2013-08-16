@@ -2,6 +2,7 @@
 using Emgu.CV.Structure;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +25,18 @@ namespace Thahavuru.Techniques.ClassificationT
             int n = -1;
             try
             {
-                FaceRecognizer recognizer = new EigenFaceRecognizer(80, double.PositiveInfinity);
-                recognizer.Train(imageList.ToArray(), labelList.ToArray());
-                recognizer.Save("train_x70png.yml");
-                FaceRecognizer.PredictionResult result = recognizer.Predict(testImage);
+                FaceRecognizer faceRecognizer = new EigenFaceRecognizer(80, double.PositiveInfinity);
+                faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
+                if (File.Exists("train_image_pca.yml"))
+                {
+                    faceRecognizer.Load("train_image_pca.yml");
+                }
+                else
+                {
+                    faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
+                    faceRecognizer.Save("train_image_pca.yml");
+                }
+                FaceRecognizer.PredictionResult result = faceRecognizer.Predict(testImage);
 
 
                 Console.WriteLine(result.Label.ToString());
