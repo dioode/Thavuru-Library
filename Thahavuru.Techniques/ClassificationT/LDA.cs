@@ -2,6 +2,7 @@
 using Emgu.CV.Structure;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,15 @@ namespace Thahavuru.Techniques.ClassificationT
             {
                 FisherFaceRecognizer faceRecognizer = new FisherFaceRecognizer(80, double.PositiveInfinity);
                 faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
-                faceRecognizer.Save("train_x70png.yml");
+                if (File.Exists("train_image_fld.yml"))
+                {
+                    faceRecognizer.Load("train_image_fld.yml");
+                }
+                else
+                {
+                    faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
+                    faceRecognizer.Save("train_image_fld.yml");
+                } 
                 FaceRecognizer.PredictionResult result = faceRecognizer.Predict(testImage);
                 Console.WriteLine(result.Label.ToString());
                 Console.ReadLine();
