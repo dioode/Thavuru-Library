@@ -14,7 +14,6 @@ namespace Thahavuru.Techniques.ClassificationT
     {
         public void FLD()
         {
-            int imageSize = 64;
             List<string> trainName = new List<string>();
             List<Image<Gray, byte>> imageList = new List<Image<Gray, byte>>();
             List<int> labelList = new List<int>();
