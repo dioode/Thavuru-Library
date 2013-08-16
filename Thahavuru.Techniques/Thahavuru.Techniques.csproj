@@ -83,7 +83,9 @@
     <Compile Include="Class1.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
-    <Compile Include="FaceRecT\ViolaJones.cs" />
+    <Compile Include="FaceRecT\CascadeConfig.cs" />
+    <Compile Include="FaceRecT\HaarCascade.cs" />
+    <Compile Include="FaceRecT\ICascade.cs" />
     <Compile Include="ImageProcessingT\ImageProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
