@@ -17,11 +17,11 @@ namespace Thahavuru.Techniques.Tests
             
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
-                CascadeConfig config = new CascadeConfig(100, 25, 1.4, 0, @"haarcascade_frontalface_default.xml");
+                CascadeConfig config = new CascadeConfig(img.Width, 25, 1.4, 0, @"haarcascade_frontalface_default.xml");
 
                 HaarCascade_ context = new HaarCascade_();
 
-                Rectangle[] imageSet = context.FaceDetection(new Bitmap(img), config);
+                Rectangle[] imageSet = context.ObjectDetection(new Bitmap(img), config);
 
                 Debug.WriteLine("Number if Faces: " + imageSet.Length);
                 
