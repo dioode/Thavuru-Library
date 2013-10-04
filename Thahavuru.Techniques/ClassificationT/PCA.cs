@@ -12,7 +12,7 @@ namespace Thahavuru.Techniques.ClassificationT
 {
     public class PCA
     {
-        public void PCA()
+        public void PCAT()
         {
             //int imageSize = 64;
             List<string> trainName = new List<string>();
@@ -22,7 +22,7 @@ namespace Thahavuru.Techniques.ClassificationT
             DataAccessUtil.GetImageData(trainName, imageList, labelList);
 
             Image<Gray, byte> testImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            int n = -1;
+            //int n = -1;
             try
             {
                 FaceRecognizer faceRecognizer = new EigenFaceRecognizer(80, double.PositiveInfinity);

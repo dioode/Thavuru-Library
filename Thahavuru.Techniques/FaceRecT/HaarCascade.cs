@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.FaceRecT
 {
-    class HaarCascade : ICascade
+    public class HaarCascade_ : ICascade
     {
         public Rectangle[] FaceDetection(Bitmap probe, CascadeConfig config) 
         {

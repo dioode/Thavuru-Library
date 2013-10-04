@@ -12,9 +12,9 @@ namespace Thahavuru.Techniques.ClassificationT
 {
     public class LDA
     {
-        public void FLD()
+        public void FLDT()
         {
-            int imageSize = 69;
+            //int imageSize = 69;
 
 
             List<string> trainName = new List<string>();
