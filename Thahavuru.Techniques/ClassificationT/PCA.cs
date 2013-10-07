@@ -25,22 +25,30 @@ namespace Thahavuru.Techniques.ClassificationT
             //int n = -1;
             try
             {
-                FaceRecognizer faceRecognizer = new EigenFaceRecognizer(80, double.PositiveInfinity);
-                faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
-                if (File.Exists("train_image_pca.yml"))
+                MCvTermCriteria termCrit = new MCvTermCriteria(16, 0.001);
+                EigenObjectRecognizer recognizer = new EigenObjectRecognizer(imageList.ToArray(), trainName.ToArray(), 5000, ref termCrit);
+                if (recognizer.Recognize(testImage) != null)
                 {
-                    faceRecognizer.Load("train_image_pca.yml");
+                    float[] f = recognizer.GetEigenDistances(testImage);
+                    Console.WriteLine(f.Min());
+                    Console.WriteLine(f[0]);
                 }
-                else
-                {
-                    faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
-                    faceRecognizer.Save("train_image_pca.yml");
-                }
-                FaceRecognizer.PredictionResult result = faceRecognizer.Predict(testImage);
+                
+                //if (File.Exists("train_image_pca.yml"))
+                //{
+                //    faceRecognizer.Load("train_image_pca.yml");
+                //}
+                //else
+                //{
+                //    faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
+                //    faceRecognizer.Save("train_image_pca.yml");
+                //}
+                //FaceRecognizer.PredictionResult result = faceRecognizer.Predict(testImage);
 
 
-                Console.WriteLine(result.Label.ToString());
-                Console.ReadLine();
+                //Console.WriteLine(result.Label.ToString());
+                //Console.ReadLine();
+                
             }
             catch (Exception e)
             {
