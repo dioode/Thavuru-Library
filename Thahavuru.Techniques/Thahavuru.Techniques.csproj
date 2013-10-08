@@ -72,13 +72,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
+    <Compile Include="ClassificationT\SVM.cs" />
     <Compile Include="FaceRecT\CascadeConfig.cs" />
-    <Compile Include="FaceRecT\HaarCascade.cs" />
+    <Compile Include="FaceRecT\HaarCascade_.cs" />
     <Compile Include="FaceRecT\ICascade.cs" />
     <Compile Include="FaceRec\FaceFeatureIdentification.cs" />
+    <Compile Include="FaceRec\FaceRecognitionPolicy.cs" />
     <Compile Include="ImageProcessingT\ImageProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -88,6 +89,7 @@
     </Compile>
     <Compile Include="Utils\DataAccessUtil.cs" />
     <Compile Include="ViewModels\Face.cs" />
+    <Compile Include="ViewModels\FaceUnresolved.cs" />
     <Compile Include="ViewModels\Person.cs" />
   </ItemGroup>
   <ItemGroup>
