@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ClassificationT
 {
-    class SVM
+    public class SVM
     {
     }
 }
