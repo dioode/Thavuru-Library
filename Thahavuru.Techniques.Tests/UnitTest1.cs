@@ -17,7 +17,7 @@ namespace Thahavuru.Techniques.Tests
             
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
-                CascadeConfig config = new CascadeConfig(img.Width, 25, 1.4, 0, @"haarcascade_frontalface_default.xml");
+                CascadeConfig config = new CascadeConfig(img.Width, img.Width/2, 1.5, 4, @"haarcascade_frontalface_default.xml");
 
                 HaarCascade_ context = new HaarCascade_();
 
