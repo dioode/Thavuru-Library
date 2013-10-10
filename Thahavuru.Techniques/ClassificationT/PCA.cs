@@ -46,9 +46,6 @@ namespace Thahavuru.Techniques.ClassificationT
             {
                 Console.WriteLine(e.Message);
             }
-
-
-
         }
     }
 }
