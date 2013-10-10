@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Thahavuru.Techniques
+namespace Thahavuru.Techniques.ClassificationT
 {
-    public class Class1
+    class SVM
     {
-
-
-        int x;
     }
 }
