@@ -9,12 +9,12 @@ namespace Thahavuru.Techniques.ViewModels
 {
     public class FaceUnresolved
     {
-        public Rectangle[] REyeSet { get; set; }
-        public Rectangle[] LEyeSet { get; set; }
-        public Rectangle[] REarSet { get; set; }
-        public Rectangle[] LEarSet { get; set; }
-        public Rectangle[] MouthSet { get; set; }
-        public Rectangle[] NoseSet { get; set; }
+        public List<Rectangle> REyeSet { get; set; }
+        public List<Rectangle> LEyeSet { get; set; }
+        public List<Rectangle> REarSet { get; set; }
+        public List<Rectangle> LEarSet { get; set; }
+        public List<Rectangle> MouthSet { get; set; }
+        public List<Rectangle> NoseSet { get; set; }
 
         public int ImageWidth { get; set; }
         public int ImageHeight { get; set; }

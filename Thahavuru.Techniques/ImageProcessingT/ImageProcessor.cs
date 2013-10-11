@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ImageProcessingT
 {
-    class ImageProcessor
+    public static class ImageProcessor
     {
         /// <summary>
         /// This will take the new width and hight and butman as a input and return the resized image
@@ -16,7 +16,7 @@ namespace Thahavuru.Techniques.ImageProcessingT
         /// <param name="newHeight"></param>
         /// <param name="_currentBitmap"></param>
         /// <returns>Crpped image is returned</returns>
-        public Bitmap Resize(int newWidth, int newHeight, Bitmap _currentBitmap)
+        public static Bitmap Resize(this Bitmap _currentBitmap, int newWidth, int newHeight)
         {
             if (newWidth != 0 && newHeight != 0)
             {
@@ -88,7 +88,7 @@ namespace Thahavuru.Techniques.ImageProcessingT
             return _currentBitmap;
         }
 
-        public Bitmap Crop(int xPosition, int yPosition, int width, int height, Bitmap _currentBitmap)
+        public static Bitmap Crop(this Bitmap _currentBitmap, int xPosition, int yPosition, int width, int height)
         {
             Bitmap temp = _currentBitmap;
             Bitmap bmap = (Bitmap)temp.Clone();
