@@ -43,49 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="EFMapping\FaceRecDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FaceRecDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFMapping\FaceRecDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FaceRecDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EFMapping\FaceRecDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FaceRecDB.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="EFMapping\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="ERDiagram\FaceRec.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="EFMapping\FaceRecDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FaceRecDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
-    <None Include="EFMapping\FaceRecDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FaceRecDB.edmx</DependentUpon>
-      <LastGenOutput>FaceRecDB.Context.cs</LastGenOutput>
-    </None>
-    <None Include="EFMapping\FaceRecDB.edmx.diagram">
-      <DependentUpon>FaceRecDB.edmx</DependentUpon>
-    </None>
-    <None Include="EFMapping\FaceRecDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FaceRecDB.edmx</DependentUpon>
-      <LastGenOutput>FaceRecDB.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

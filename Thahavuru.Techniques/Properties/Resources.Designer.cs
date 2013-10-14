@@ -59,43 +59,5 @@ namespace Thahavuru.Techniques.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
-        ///&lt;!----------------------------------------------------------------------------
-        ///  45x11 Eye pair detector computed with 7000 positive samples
-        ///
-        /////////////////////////////////////////////////////////////////////////////
-        ///| Contributors License Agreement
-        ///| IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.
-        ///|   By downloading, copying, installing or using the software you agree 
-        ///|   to this license.
-        ///|   If you do not agree to this license, do not download, install,
-        ///| [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Eyes {
-            get {
-                return ResourceManager.GetString("Eyes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
-        ///&lt;!----------------------------------------------------------------------------
-        ///  18x15 Nose detector computed with 7000 positive samples
-        ///
-        /////////////////////////////////////////////////////////////////////////////
-        ///| Contributors License Agreement
-        ///| IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.
-        ///|   By downloading, copying, installing or using the software you agree 
-        ///|   to this license.
-        ///|   If you do not agree to this license, do not download, install,
-        ///|   c [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Nose {
-            get {
-                return ResourceManager.GetString("Nose", resourceCulture);
-            }
-        }
     }
 }
