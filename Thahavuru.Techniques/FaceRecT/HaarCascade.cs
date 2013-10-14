@@ -11,7 +11,7 @@ namespace Thahavuru.Techniques.FaceRecT
 {
     public class HaarCascade_ : ICascade
     {
-        public Rectangle[] ObjectDetection(Bitmap probe, CascadeConfig config) 
+        public Rectangle[] FaceDetection(Bitmap probe, CascadeConfig config) 
         {
             var ImageFrame = new Image<Bgr, byte>(new Bitmap(probe));
             var grayframe = ImageFrame.Convert<Gray, byte>();

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
+
 namespace Thahavuru.Techniques.Utils
 {
     public class DataAccessUtil
@@ -13,15 +13,7 @@ namespace Thahavuru.Techniques.Utils
         public static void GetImageData(List<string> trainName, List<Image<Gray, byte>> imageList, List<int> labelList)
         {
             int j = 0;
-            string[] files = null, files2 = null;
-            try
-            {
-                files = System.IO.Directory.GetFiles(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\Male", "*.jpg");
-            }
-            catch (DirectoryNotFoundException ex) {
-                Console.Write(ex.ToString());
-            }
-            
+            string[] files = System.IO.Directory.GetFiles(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\Male", "*.jpg");
 
             while (j < 80)
             {
@@ -31,14 +23,7 @@ namespace Thahavuru.Techniques.Utils
                 j++;
             }
 
-            try
-            {
-                files2 = System.IO.Directory.GetFiles(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\Female", "*.jpg");
-            }
-            catch (DirectoryNotFoundException ex)
-            {
-                Console.Write(ex.ToString());
-            }
+            string[] files2 = System.IO.Directory.GetFiles(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\Female", "*.jpg");
 
             while (j < 160)
             {

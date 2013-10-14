@@ -9,6 +9,6 @@ namespace Thahavuru.Techniques.FaceRecT
 {
     public interface ICascade
     {
-        Rectangle[] ObjectDetection(Bitmap probe, CascadeConfig config);
+        Rectangle[] FaceDetection(Bitmap probe, CascadeConfig config);
     }
 }
