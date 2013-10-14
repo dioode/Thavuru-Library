@@ -75,6 +75,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
+    <Compile Include="ClassificationT\SVM2.cs" />
     <Compile Include="FaceRecT\CascadeConfig.cs" />
     <Compile Include="FaceRecT\HaarCascade.cs" />
     <Compile Include="FaceRecT\ICascade.cs" />
