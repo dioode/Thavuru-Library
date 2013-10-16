@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ViewModels
 {
-    class Face : IFace
+    public interface IFace
     {
-        public Image faceImage{ get; set; }
+        public Image faceImage { get; set; }
     }
 }

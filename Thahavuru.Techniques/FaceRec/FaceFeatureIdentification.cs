@@ -22,7 +22,7 @@ namespace Thahavuru.Techniques.FaceRec
 
         }
 
-        public Face IdentifyFace(Image faceImage)
+        public GeometricFace IdentifyFace(Image faceImage)
         {
             var unresolvedFace = new FaceUnresolved();
             unresolvedFace.LEyeSet = IndentifyLeftEye();

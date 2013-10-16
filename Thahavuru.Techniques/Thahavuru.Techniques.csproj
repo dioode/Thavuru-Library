@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\IClassificationAttribute.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
     <Compile Include="ClassificationT\SVM2.cs" />
@@ -88,11 +89,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\DataAccessUtil.cs" />
+    <Compile Include="ViewModels\PrioratizedAttribute.cs" />
+    <Compile Include="ViewModels\DecissionTreeLevel.cs" />
+    <Compile Include="ViewModels\DecissionTreeLevelSet.cs" />
     <Compile Include="ViewModels\Face.cs" />
     <Compile Include="ViewModels\FaceUnresolved.cs" />
+    <Compile Include="ViewModels\GeometricFace.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\IFace.cs" />
+    <Compile Include="ViewModels\IndividualClass.cs" />
     <Compile Include="ViewModels\Person.cs" />
+    <Compile Include="ViewModels\TrainingSet.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Classification\" />
     <Folder Include="XMLTemplates\" />
   </ItemGroup>
   <ItemGroup>

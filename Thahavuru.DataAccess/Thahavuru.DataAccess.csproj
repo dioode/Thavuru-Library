@@ -31,7 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -43,16 +48,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFMapping\Class.cs">
+      <DependentUpon>FaceRecDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\ClassElementImage.cs">
+      <DependentUpon>FaceRecDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\Class_Attrubute.cs">
+      <DependentUpon>FaceRecDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\FaceRecDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FaceRecDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\FaceRecDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FaceRecDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\FaceRecDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FaceRecDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\Image.cs">
+      <DependentUpon>FaceRecDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\Person.cs">
+      <DependentUpon>FaceRecDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFMapping\sysdiagram.cs">
+      <DependentUpon>FaceRecDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EFMapping\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="ERDiagram\FaceRec.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="EFMapping\FaceRecDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FaceRecDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EFMapping\FaceRecDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FaceRecDB.edmx</DependentUpon>
+      <LastGenOutput>FaceRecDB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EFMapping\FaceRecDB.edmx.diagram">
+      <DependentUpon>FaceRecDB.edmx</DependentUpon>
+    </None>
+    <None Include="EFMapping\FaceRecDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FaceRecDB.edmx</DependentUpon>
+      <LastGenOutput>FaceRecDB.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

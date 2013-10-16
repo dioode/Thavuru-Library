@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ViewModels
 {
-    class Face : IFace
+    public class DecissionTreeLevel
     {
-        public Image faceImage{ get; set; }
+        public List<PrioratizedAttribute> PrioratizedAttributeList { get; set; }
     }
 }

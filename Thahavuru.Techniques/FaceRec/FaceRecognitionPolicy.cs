@@ -10,10 +10,10 @@ namespace Thahavuru.Techniques.FaceRec
 {
     public static class FaceRecognitionPolicy
     {
-        public static Face Policy(FaceUnresolved unresolvedFace) 
+        public static GeometricFace Policy(FaceUnresolved unresolvedFace) 
         {
 
-            Face face = new Face();
+            GeometricFace face = new GeometricFace();
             return face;
         } 
     }

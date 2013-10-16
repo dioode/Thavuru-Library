@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ViewModels
 {
-    public class Person
+    public class IndividualClass
     {
-        public IFace FaceofP { get; set; }
+        public int ClassNumber { get; set; }
         public string Name { get; set; }
-        public Guid Id { get; set; }
-        public string Address { get; set; }
-       
+
     }
 }

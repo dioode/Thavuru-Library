@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ViewModels
 {
-    public class Person
+    public class PrioratizedAttribute
     {
-        public IFace FaceofP { get; set; }
         public string Name { get; set; }
-        public Guid Id { get; set; }
-        public string Address { get; set; }
-       
+        public IndividualClass PrioratizedList { get; set; }
     }
 }
