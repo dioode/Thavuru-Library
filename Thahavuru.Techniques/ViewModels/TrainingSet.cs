@@ -10,7 +10,20 @@ namespace Thahavuru.Techniques.ViewModels
 {
     public class TrainingSet
     {
-        List<Image<Gray, byte>> trainingList { get; set; }
-        List<int> labelList { get; set; }
+        public List<Image<Gray, byte>> trainingList { get; set; }
+        public List<int> labelList { get; set; }
+        public List<string> labelListS
+        {
+            get
+            {
+                var list = new List<string>(); 
+                foreach (var item in labelList)
+                {
+                    list.Add(item.ToString());
+                }
+                return list;
+            }
+        }
+        //public int GetTrainingSetCount{ get{return } set; }
     }
 }

@@ -9,32 +9,25 @@ using System.Drawing;
 using Emgu.CV.ML;
 using Emgu.CV.ML.Structure;
 using Thahavuru.Techniques.Utils;
+using Thahavuru.Techniques.ViewModels;
 
 namespace Thahavuru.Techniques.ClassificationT
 {
-    class SVM2
+    public class SVMT
     {
-        private static void svmImage()
+        public float SVMTT(Face probeImage, TrainingSet tSet)
         {
-            List<string> trainName = new List<string>();
-            List<Image<Gray, byte>> imageList = new List<Image<Gray, byte>>();
-            List<int> labelList = new List<int>();
-
-            DataAccessUtil.GetImageData(trainName, imageList, labelList);
-            Image<Gray, byte> testImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-
-            //int trainSampleCount = 150;
-            int imageLength = 252 * 336;
+            int imageLength = probeImage.FaceImage.Width*probeImage.FaceImage.Height;
 
             Matrix<float> trainData = new Matrix<float>(0, imageLength);//matrix for holding image values
             Matrix<float> trainClasses = new Matrix<float>(1, 1);// one class for each image
 
             #region Store training images in Matrix
 
-            for (int i = 0; i < imageList.Count; i++)
+            for (int i = 0; i < tSet.trainingList.Count; i++)
             {
-                Matrix<float> mtrx = new Matrix<float>(imageList[i].Height, imageList[i].Width);
-                CvInvoke.cvConvert(imageList[i], mtrx);
+                Matrix<float> mtrx = new Matrix<float>(tSet.trainingList[i].Height, tSet.trainingList[i].Width);
+                CvInvoke.cvConvert(tSet.trainingList[i], mtrx);
 
                 Matrix<float> temp = new Matrix<float>(1, imageLength);
                 Matrix<float> tempClass = new Matrix<float>(1, 1);
@@ -46,7 +39,7 @@ namespace Thahavuru.Techniques.ClassificationT
                         temp[0, ((j * mtrx.Width) + k)] = mtrx[j, k];
                     }
                 }
-                tempClass[0, 0] = labelList[i];
+                tempClass[0, 0] = tSet.labelList[i];
                 if (i == 0)
                 {
                     trainData = temp;
@@ -63,8 +56,8 @@ namespace Thahavuru.Techniques.ClassificationT
 
             #region Sample image stored in Matrix
 
-            Matrix<float> sampleImg = new Matrix<float>(testImage.Height, testImage.Width);
-            CvInvoke.cvConvert(testImage, sampleImg);
+            Matrix<float> sampleImg = new Matrix<float>(probeImage.FaceImage.Height, probeImage.FaceImage.Width);
+            CvInvoke.cvConvert(probeImage.FaceImage, sampleImg);
             Matrix<float> sample = new Matrix<float>(1, imageLength);
 
             for (int j = 0; j < sampleImg.Height; j++)
@@ -88,6 +81,8 @@ namespace Thahavuru.Techniques.ClassificationT
                 bool trained = model.TrainAuto(trainData, trainClasses, null, null, p.MCvSVMParams, 5);
 
                 float response = model.Predict(sample);
+
+                return response;
             }
         }
     }

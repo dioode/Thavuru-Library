@@ -10,7 +10,7 @@ using Thahavuru.Techniques.ViewModels;
 
 namespace Thahavuru.Techniques.Classification
 {
-    public interface IClassificationAttribute
+    public interface IClassifier
     {
         public DecissionTreeLevel Classify(Face probeImage, TrainingSet list);
     }

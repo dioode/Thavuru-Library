@@ -8,6 +8,6 @@ namespace Thahavuru.Techniques.ViewModels
 {
     public class DecissionTreeLevel
     {
-        public List<PrioratizedAttribute> PrioratizedAttributeList { get; set; }
+        public List<FaceAttribute> PrioratizedAttributeList { get; set; }
     }
 }

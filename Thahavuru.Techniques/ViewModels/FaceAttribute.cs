@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.ViewModels
 {
-    public class PrioratizedAttribute
+    public class FaceAttribute
     {
         public string Name { get; set; }
         public IndividualClass PrioratizedList { get; set; }

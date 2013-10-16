@@ -7,44 +7,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Thahavuru.Techniques.Utils;
+using Thahavuru.Techniques.ViewModels;
 
 namespace Thahavuru.Techniques.ClassificationT
 {
     public class LDA
     {
-        public void FLDT()
+        public FaceRecognizer.PredictionResult FLDT(Face probeImage, TrainingSet tSet)
         {
-            //int imageSize = 69;
-
-
-            List<string> trainName = new List<string>();
-            List<Image<Gray, byte>> imageList = new List<Image<Gray, byte>>();
-            List<int> labelList = new List<int>();
-
-            DataAccessUtil.GetImageData(trainName, imageList, labelList);
-
-            Image<Gray, byte> testImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            //int n = -1;
+            FaceRecognizer.PredictionResult result = default(FaceRecognizer.PredictionResult);
             try
             {
                 FisherFaceRecognizer faceRecognizer = new FisherFaceRecognizer(80, double.PositiveInfinity);
-                faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
                 if (File.Exists("train_image_fld.yml"))
                 {
                     faceRecognizer.Load("train_image_fld.yml");
                 }
                 else
                 {
-                    faceRecognizer.Train(imageList.ToArray(), labelList.ToArray());
+                    faceRecognizer.Train(tSet.trainingList.ToArray(), tSet.labelList.ToArray());
                     faceRecognizer.Save("train_image_fld.yml");
-                } 
-                FaceRecognizer.PredictionResult result = faceRecognizer.Predict(testImage);
-                Console.WriteLine(result.Label.ToString());
-                Console.ReadLine();
+                }
+                result = faceRecognizer.Predict(probeImage.FaceImage);
+                return result;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return result;
+            }
+            finally 
+            {
+                
             }
         }
 

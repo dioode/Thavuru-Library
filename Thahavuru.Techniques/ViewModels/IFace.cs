@@ -9,6 +9,7 @@ namespace Thahavuru.Techniques.ViewModels
 {
     public interface IFace
     {
-        public Image faceImage { get; set; }
+        public Image FaceImage { get; set; }
+        public List<FaceAttribute> FaceAttributes { get; set; }
     }
 }

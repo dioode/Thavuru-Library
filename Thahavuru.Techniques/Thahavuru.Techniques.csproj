@@ -72,10 +72,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModels\IClassificationAttribute.cs" />
+    <Compile Include="Classification\IClassifier.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
-    <Compile Include="ClassificationT\SVM2.cs" />
+    <Compile Include="ClassificationT\SVMT.cs" />
+    <Compile Include="Classification\LDAClassifier.cs" />
+    <Compile Include="Classification\PCAClassifier.cs" />
+    <Compile Include="Classification\SVMClassifier.cs" />
     <Compile Include="FaceRecT\CascadeConfig.cs" />
     <Compile Include="FaceRecT\HaarCascade_.cs" />
     <Compile Include="FaceRecT\ICascade.cs" />
@@ -89,7 +92,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\DataAccessUtil.cs" />
-    <Compile Include="ViewModels\PrioratizedAttribute.cs" />
+    <Compile Include="ViewModels\FaceAttribute.cs" />
     <Compile Include="ViewModels\DecissionTreeLevel.cs" />
     <Compile Include="ViewModels\DecissionTreeLevelSet.cs" />
     <Compile Include="ViewModels\Face.cs" />
@@ -103,7 +106,7 @@
     <Compile Include="ViewModels\TrainingSet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classification\" />
+    <Folder Include="FaceMatchingT\" />
     <Folder Include="XMLTemplates\" />
   </ItemGroup>
   <ItemGroup>
