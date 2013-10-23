@@ -143,9 +143,7 @@
     <Compile Include="ViewModels\Person.cs" />
     <Compile Include="ViewModels\TrainingSet.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XMLTemplates\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -228,6 +226,10 @@
     <Content Include="Resources\Cascades\Noses1.xml" />
     <Content Include="Resources\Cascades\REars.xml" />
     <Content Include="Resources\Cascades\REyes.xml" />
+    <Content Include="XMLTemplates\LEye.xml" />
+    <Content Include="XMLTemplates\Mouth.xml" />
+    <Content Include="XMLTemplates\Nose.xml" />
+    <Content Include="XMLTemplates\REye.xml" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DataAccess\EFModel\FaceRecContext.edmx">
