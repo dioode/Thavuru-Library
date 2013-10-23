@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Resources.ViewModels
 {
-    class Face : IFace
+    public class Face : IFace
     {
         public Image<Gray, byte> FaceImage { get; set; }
         public List<FaceAttribute> FaceAttributes { get; set; }
