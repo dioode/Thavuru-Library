@@ -13,8 +13,9 @@ namespace Thahavuru.Techniques.ClassificationT
 {
     public class PCA
     {
-        public float[] PCAT(Face probeImage, TrainingSet tSet)
+        public List<int> PCAT(Face probeImage, TrainingSet tSet)
         {
+            List<int> idx = null;
             float[] f = null;
             try
             {
@@ -24,14 +25,16 @@ namespace Thahavuru.Techniques.ClassificationT
                 {
                     f = recognizer.GetEigenDistances(probeImage.FaceImage);
                 }
-                
-                return f;
+
+                var sorted = f.Select((x, i) => new KeyValuePair<float, int>(x, i)).OrderBy(x => x.Key).ToList();
+                idx = sorted.Select(x => x.Value).ToList();
+                return idx;
                 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return f;
+                return idx;
             }
         }
     }

@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thahavuru.Techniques.ClassificationT;
 using Thahavuru.Techniques.ViewModels;
 
 namespace Thahavuru.Techniques.Classification
 {
     public class LDAClassifier : IClassifier
     {
-        DecissionTreeLevel Classify(Face probeImage, TrainingSet list)
+        public Face Classify(Face probeImage, TrainingSet list, FaceAttribute faceAttribute)
         {
-            throw new NotImplementedException();
+            LDA lda = new LDA();
+            var result = lda.FLDT(probeImage, list);
+            faceAttribute.SortedClasses.Add(result.Label);
+            probeImage.FaceAttributes.Add(faceAttribute);
+            return probeImage;
         }
     }
 }

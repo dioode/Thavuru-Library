@@ -9,7 +9,7 @@ namespace Thahavuru.Techniques.Classification
 {
     public class SVMClassifier : IClassifier
     {
-        public DecissionTreeLevel Classify(Face probeImage, TrainingSet list)
+        public Face Classify(Face probeImage, TrainingSet list, FaceAttribute faceAttribute)
         {
             throw new NotImplementedException();
         }

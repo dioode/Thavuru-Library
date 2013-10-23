@@ -12,6 +12,6 @@ namespace Thahavuru.Techniques.Classification
 {
     public interface IClassifier
     {
-        public DecissionTreeLevel Classify(Face probeImage, TrainingSet list);
+        Face Classify(Face probeImage, TrainingSet list, FaceAttribute faceAttribute);
     }
 }

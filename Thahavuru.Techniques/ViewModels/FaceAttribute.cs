@@ -8,7 +8,9 @@ namespace Thahavuru.Techniques.ViewModels
 {
     public class FaceAttribute
     {
+        public int AttributeId { get; set; }
         public string Name { get; set; }
-        public IndividualClass PrioratizedList { get; set; }
+        public int NumberOfClasses { get; set; }
+        public List<int> SortedClasses { get; set; }
     }
 }
