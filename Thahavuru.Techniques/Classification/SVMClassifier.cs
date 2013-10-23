@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Resources.ViewModels;
 using Thahavuru.Techniques.ClassificationT;
 
 namespace Thahavuru.Techniques.Classification
 {
     public class SVMClassifier : IClassifier
     {
-        public Face Classify(Face probeImage, TrainingSet list, FaceAttribute faceAttribute)
+        public IFace Classify(IFace probeImage, TrainingSet list, FaceAttribute faceAttribute)
         {
             SVMT svm = new SVMT();
             var result = svm.SVMTT(probeImage, list);

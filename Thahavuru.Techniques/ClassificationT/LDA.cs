@@ -6,14 +6,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thahavuru.Techniques.Utils;
-using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Resources.ViewModels;
 
 namespace Thahavuru.Techniques.ClassificationT
 {
     public class LDA
     {
-        public FaceRecognizer.PredictionResult FLDT(Face probeImage, TrainingSet tSet)
+        public FaceRecognizer.PredictionResult FLDT(IFace probeImage, TrainingSet tSet)
         {
             FaceRecognizer.PredictionResult result = default(FaceRecognizer.PredictionResult);
             try

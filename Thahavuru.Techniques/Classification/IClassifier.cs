@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Resources.ViewModels;
+
 
 namespace Thahavuru.Techniques.Classification
 {
     public interface IClassifier
     {
-        Face Classify(Face probeImage, TrainingSet list, FaceAttribute faceAttribute);
+        IFace Classify(IFace probeImage, TrainingSet list, FaceAttribute faceAttribute);
     }
 }

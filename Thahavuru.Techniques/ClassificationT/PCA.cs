@@ -6,14 +6,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thahavuru.Techniques.Utils;
-using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Resources.ViewModels;
 
 namespace Thahavuru.Techniques.ClassificationT
 {
     public class PCA
     {
-        public List<int> PCAT(Face probeImage, TrainingSet tSet)
+        public List<int> PCAT(IFace probeImage, TrainingSet tSet)
         {
             List<int> idx = null;
             float[] f = null;

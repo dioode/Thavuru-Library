@@ -4,7 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Resources.ViewModels;
+
 
 namespace Thahavuru.Techniques.FaceRec
 {

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Thahavuru.Techniques.ClassificationT;
-using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Resources.ViewModels;
 
 namespace Thahavuru.Techniques.Classification
 {
     public class PCAClassifier : IClassifier
     {
 
-        public Face Classify(Face probeImage, TrainingSet list, FaceAttribute faceAttribute)
+        public IFace Classify(IFace probeImage, TrainingSet list, FaceAttribute faceAttribute)
         {
             PCA pca = new PCA();
             var result = pca.PCAT(probeImage, list);

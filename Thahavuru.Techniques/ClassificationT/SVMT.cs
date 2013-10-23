@@ -8,14 +8,13 @@ using System.Text;
 using System.Drawing;
 using Emgu.CV.ML;
 using Emgu.CV.ML.Structure;
-using Thahavuru.Techniques.Utils;
-using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Resources.ViewModels;
 
 namespace Thahavuru.Techniques.ClassificationT
 {
     public class SVMT
     {
-        public int SVMTT(Face probeImage, TrainingSet tSet)
+        public int SVMTT(IFace probeImage, TrainingSet tSet)
         {
             int imageLength = probeImage.FaceImage.Width*probeImage.FaceImage.Height;
 
