@@ -18,14 +18,9 @@ namespace Thahavuru.Techniques.Classification
             int i = 0;
             foreach (var item in result)
             {
-                
-            }
-            while (i < faceAttribute.NumberOfClasses - 1)
-            {
-                  
+                faceAttribute.SortedClasses.Add(item);
             }
             
-            faceAttribute.SortedClasses.Add(result);
             probeImage.FaceAttributes.Add(faceAttribute);
             return probeImage;
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Thahavuru.Techniques.ViewModels;
+using Thahavuru.Techniques.ClassificationT;
 
 namespace Thahavuru.Techniques.Classification
 {
@@ -11,7 +12,9 @@ namespace Thahavuru.Techniques.Classification
     {
         public Face Classify(Face probeImage, TrainingSet list, FaceAttribute faceAttribute)
         {
-            throw new NotImplementedException();
+            SVMT svm = new SVMT();
+            var result = svm.SVMTT(probeImage, list);
+            return probeImage;
         }
     }
 }

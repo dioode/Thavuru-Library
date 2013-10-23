@@ -15,7 +15,7 @@ namespace Thahavuru.Techniques.ClassificationT
 {
     public class SVMT
     {
-        public float SVMTT(Face probeImage, TrainingSet tSet)
+        public int SVMTT(Face probeImage, TrainingSet tSet)
         {
             int imageLength = probeImage.FaceImage.Width*probeImage.FaceImage.Height;
 
@@ -82,7 +82,7 @@ namespace Thahavuru.Techniques.ClassificationT
 
                 float response = model.Predict(sample);
 
-                return response;
+                
             }
         }
     }
