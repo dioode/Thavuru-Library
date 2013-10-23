@@ -10,6 +10,7 @@ namespace Thahavuru.Techniques.ViewModels
     {
         public int AttributeId { get; set; }
         public string Name { get; set; }
+        public bool IsBinary { get { return NumberOfClasses == 2 ? true: false;} }
         public int NumberOfClasses { get; set; }
         public List<int> SortedClasses { get; set; }
     }

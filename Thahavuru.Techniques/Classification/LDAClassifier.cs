@@ -15,6 +15,11 @@ namespace Thahavuru.Techniques.Classification
             LDA lda = new LDA();
             var result = lda.FLDT(probeImage, list);
             faceAttribute.SortedClasses.Add(result.Label);
+            if (faceAttribute.IsBinary)
+            {
+                faceAttribute.SortedClasses.Add(result.Label==1?2:1);
+            }
+
             probeImage.FaceAttributes.Add(faceAttribute);
             return probeImage;
         }
