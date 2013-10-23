@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Emgu.CV;
+using Emgu.CV.Structure;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,7 +11,7 @@ namespace Thahavuru.Resources.ViewModels
 {
     public interface IFace
     {
-        public Image FaceImage { get; set; }
+        public Image<Gray, byte> FaceImage { get; set; }
         public List<FaceAttribute> FaceAttributes { get; set; }
     }
 }
