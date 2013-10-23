@@ -14,6 +14,11 @@ namespace Thahavuru.Techniques.Classification
         {
             SVMT svm = new SVMT();
             var result = svm.SVMTT(probeImage, list);
+            if (faceAttribute.IsBinary)
+            {
+                faceAttribute.SortedClasses.Add(result == 1 ? 2 : 1);
+            }
+            probeImage.FaceAttributes.Add(faceAttribute);
             return probeImage;
         }
     }

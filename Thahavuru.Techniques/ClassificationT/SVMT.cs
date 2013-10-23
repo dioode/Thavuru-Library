@@ -81,7 +81,7 @@ namespace Thahavuru.Techniques.ClassificationT
                 bool trained = model.TrainAuto(trainData, trainClasses, null, null, p.MCvSVMParams, 5);
 
                 float response = model.Predict(sample);
-
+                return (int)response;
                 
             }
         }

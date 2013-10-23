@@ -144,7 +144,6 @@
     <Compile Include="ViewModels\TrainingSet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FaceMatchingT\" />
     <Folder Include="XMLTemplates\" />
   </ItemGroup>
   <ItemGroup>

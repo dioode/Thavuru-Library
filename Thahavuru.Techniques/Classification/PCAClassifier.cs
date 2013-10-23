@@ -15,7 +15,6 @@ namespace Thahavuru.Techniques.Classification
         {
             PCA pca = new PCA();
             var result = pca.PCAT(probeImage, list);
-            int i = 0;
             foreach (var item in result)
             {
                 faceAttribute.SortedClasses.Add(item);
