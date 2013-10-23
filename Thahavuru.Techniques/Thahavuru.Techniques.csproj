@@ -87,39 +87,6 @@
     <Compile Include="Classification\LDAClassifier.cs" />
     <Compile Include="Classification\PCAClassifier.cs" />
     <Compile Include="Classification\SVMClassifier.cs" />
-    <Compile Include="DataAccess\EFModel\Class.cs">
-      <DependentUpon>FaceRecContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\ClassElementImage.cs">
-      <DependentUpon>FaceRecContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\Class_Attrubute.cs">
-      <DependentUpon>FaceRecContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\FaceRecContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FaceRecContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\FaceRecContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FaceRecContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\FaceRecContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FaceRecContext.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\Image.cs">
-      <DependentUpon>FaceRecContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\Person.cs">
-      <DependentUpon>FaceRecContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataAccess\EFModel\sysdiagram.cs">
-      <DependentUpon>FaceRecContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="FaceRecT\CascadeConfig.cs" />
     <Compile Include="FaceRecT\HaarCascade_.cs" />
     <Compile Include="FaceRecT\ICascade.cs" />
@@ -132,18 +99,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\DataAccessUtil.cs" />
-    <Compile Include="ViewModels\Face.cs" />
-    <Compile Include="ViewModels\FaceAttribute.cs" />
-    <Compile Include="ViewModels\FaceAttributeHiearachy.cs" />
-    <Compile Include="ViewModels\FaceUnresolved.cs" />
-    <Compile Include="ViewModels\GeometricFace.cs" />
-    <Compile Include="ViewModels\IFace.cs" />
-    <Compile Include="ViewModels\IndividualClass.cs" />
-    <Compile Include="ViewModels\Person.cs" />
-    <Compile Include="ViewModels\TrainingSet.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="WebServiceMethods\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -226,32 +186,9 @@
     <Content Include="Resources\Cascades\Noses1.xml" />
     <Content Include="Resources\Cascades\REars.xml" />
     <Content Include="Resources\Cascades\REyes.xml" />
-    <Content Include="XMLTemplates\LEye.xml" />
-    <Content Include="XMLTemplates\Mouth.xml" />
-    <Content Include="XMLTemplates\Nose.xml" />
-    <Content Include="XMLTemplates\REye.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="DataAccess\EFModel\FaceRecContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FaceRecContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="DataAccess\EFModel\FaceRecContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FaceRecContext.edmx</DependentUpon>
-      <LastGenOutput>FaceRecContext.Context.cs</LastGenOutput>
-    </None>
-    <None Include="DataAccess\EFModel\FaceRecContext.edmx.diagram">
-      <DependentUpon>FaceRecContext.edmx</DependentUpon>
-    </None>
-    <None Include="DataAccess\EFModel\FaceRecContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FaceRecContext.edmx</DependentUpon>
-      <LastGenOutput>FaceRecContext.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

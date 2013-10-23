@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thahavuru.Techniques", "Tha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thahavuru.Techniques.Tests", "Thahavuru.Techniques.Tests\Thahavuru.Techniques.Tests.csproj", "{2F6B7653-CD81-4B5D-A280-3BE634E14AC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thahavuru.DataAccessLayer", "Thahavuru.DataAccessLayer\Thahavuru.DataAccessLayer.csproj", "{10602BFD-0FF1-4E50-A4FF-F559FF0D3FF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thahavuru.Resources", "Thahavuru.Resources\Thahavuru.Resources.csproj", "{B4DCC819-FA36-4C99-BF34-6510ACF8A624}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{2F6B7653-CD81-4B5D-A280-3BE634E14AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F6B7653-CD81-4B5D-A280-3BE634E14AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F6B7653-CD81-4B5D-A280-3BE634E14AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10602BFD-0FF1-4E50-A4FF-F559FF0D3FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10602BFD-0FF1-4E50-A4FF-F559FF0D3FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10602BFD-0FF1-4E50-A4FF-F559FF0D3FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10602BFD-0FF1-4E50-A4FF-F559FF0D3FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4DCC819-FA36-4C99-BF34-6510ACF8A624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4DCC819-FA36-4C99-BF34-6510ACF8A624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4DCC819-FA36-4C99-BF34-6510ACF8A624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4DCC819-FA36-4C99-BF34-6510ACF8A624}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
