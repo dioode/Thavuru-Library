@@ -4,20 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FaceRecModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FaceRecModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="FaceRecModelStoreContainer">
-          <EntitySet Name="Class" EntityType="FaceRecModel.Store.Class" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Class_Attrubute" EntityType="FaceRecModel.Store.Class_Attrubute" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ClassElementImages" EntityType="FaceRecModel.Store.ClassElementImages" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Image" EntityType="FaceRecModel.Store.Image" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IndClass" EntityType="FaceRecModel.Store.IndClass" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Person" EntityType="FaceRecModel.Store.Person" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="FaceRecModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Class_Attribute_Id" Association="FaceRecModel.Store.FK_Class_Attribute_Id">
             <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
-            <End Role="Class" EntitySet="Class" />
+            <End Role="IndClass" EntitySet="IndClass" />
           </AssociationSet>
           <AssociationSet Name="FK_Class_Id" Association="FaceRecModel.Store.FK_Class_Id">
-            <End Role="Class" EntitySet="Class" />
+            <End Role="IndClass" EntitySet="IndClass" />
             <End Role="ClassElementImages" EntitySet="ClassElementImages" />
           </AssociationSet>
           <AssociationSet Name="FK_Person_Id" Association="FaceRecModel.Store.FK_Person_Id">
@@ -25,18 +25,6 @@
             <End Role="Image" EntitySet="Image" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Class">
-          <Key>
-            <PropertyRef Name="ClassId" />
-          </Key>
-          <Property Name="ClassId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Class_Attrubute_Id" Type="int" Nullable="false" />
-          <Property Name="ClassNumber" Type="int" />
-          <Property Name="ValueRangeUpperBound" Type="float" />
-          <Property Name="ValueRangeLowerBound" Type="float" />
-          <Property Name="Name" Type="nchar" MaxLength="10" />
-          <Property Name="HasClassElements" Type="bit" />
-        </EntityType>
         <EntityType Name="Class_Attrubute">
           <Key>
             <PropertyRef Name="CAttributeId" />
@@ -61,6 +49,18 @@
           <Property Name="Person_Id" Type="int" />
           <Property Name="Image_uri" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="IndClass">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Name="ClassId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Class_Attrubute_Id" Type="int" Nullable="false" />
+          <Property Name="ClassNumber" Type="int" />
+          <Property Name="ValueRangeUpperBound" Type="float" />
+          <Property Name="ValueRangeLowerBound" Type="float" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+          <Property Name="HasClassElements" Type="bit" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="Id" />
@@ -82,21 +82,21 @@
         </EntityType>
         <Association Name="FK_Class_Attribute_Id">
           <End Role="Class_Attrubute" Type="FaceRecModel.Store.Class_Attrubute" Multiplicity="1" />
-          <End Role="Class" Type="FaceRecModel.Store.Class" Multiplicity="*" />
+          <End Role="IndClass" Type="FaceRecModel.Store.IndClass" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Class_Attrubute">
               <PropertyRef Name="CAttributeId" />
             </Principal>
-            <Dependent Role="Class">
+            <Dependent Role="IndClass">
               <PropertyRef Name="Class_Attrubute_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Class_Id">
-          <End Role="Class" Type="FaceRecModel.Store.Class" Multiplicity="1" />
+          <End Role="IndClass" Type="FaceRecModel.Store.IndClass" Multiplicity="1" />
           <End Role="ClassElementImages" Type="FaceRecModel.Store.ClassElementImages" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Class">
+            <Principal Role="IndClass">
               <PropertyRef Name="ClassId" />
             </Principal>
             <Dependent Role="ClassElementImages">
@@ -116,45 +116,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FaceRecModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="FaceRecEFEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Classes" EntityType="FaceRecModel.Class" />
           <EntitySet Name="Class_Attrubute" EntityType="FaceRecModel.Class_Attrubute" />
           <EntitySet Name="ClassElementImages" EntityType="FaceRecModel.ClassElementImage" />
           <EntitySet Name="Images" EntityType="FaceRecModel.Image" />
           <EntitySet Name="People" EntityType="FaceRecModel.Person" />
           <EntitySet Name="sysdiagrams" EntityType="FaceRecModel.sysdiagram" />
-          <AssociationSet Name="FK_Class_Attribute_Id" Association="FaceRecModel.FK_Class_Attribute_Id">
-            <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
-            <End Role="Class" EntitySet="Classes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Class_Id" Association="FaceRecModel.FK_Class_Id">
-            <End Role="Class" EntitySet="Classes" />
-            <End Role="ClassElementImages" EntitySet="ClassElementImages" />
-          </AssociationSet>
           <AssociationSet Name="FK_Person_Id" Association="FaceRecModel.FK_Person_Id">
             <End Role="Person" EntitySet="People" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
+          <EntitySet Name="IndClasses" EntityType="FaceRecModel.IndClass" />
+          <AssociationSet Name="FK_Class_Attribute_Id1" Association="FaceRecModel.FK_Class_Attribute_Id1">
+            <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
+            <End Role="IndClass" EntitySet="IndClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Id1" Association="FaceRecModel.FK_Class_Id1">
+            <End Role="IndClass" EntitySet="IndClasses" />
+            <End Role="ClassElementImage" EntitySet="ClassElementImages" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Class">
-          <Key>
-            <PropertyRef Name="ClassId" />
-          </Key>
-          <Property Name="ClassId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="Class_Attrubute_Id" Type="Int32" Nullable="false" />
-          <Property Name="ClassNumber" Type="Int32" />
-          <Property Name="ValueRangeUpperBound" Type="Double" />
-          <Property Name="ValueRangeLowerBound" Type="Double" />
-          <Property Name="Name" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
-          <Property Name="HasClassElements" Type="Boolean" />
-          <NavigationProperty Name="Class_Attrubute" Relationship="FaceRecModel.FK_Class_Attribute_Id" FromRole="Class" ToRole="Class_Attrubute" />
-          <NavigationProperty Name="ClassElementImages" Relationship="FaceRecModel.FK_Class_Id" FromRole="Class" ToRole="ClassElementImages" />
-        </EntityType>
         <EntityType Name="Class_Attrubute">
           <Key>
             <PropertyRef Name="CAttributeId" />
@@ -162,7 +147,7 @@
           <Property Name="CAttributeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
           <Property Name="NumberOfClasses" Type="Int32" />
-          <NavigationProperty Name="Classes" Relationship="FaceRecModel.FK_Class_Attribute_Id" FromRole="Class_Attrubute" ToRole="Class" />
+          <NavigationProperty Name="IndClasses" Relationship="FaceRecModel.FK_Class_Attribute_Id1" FromRole="Class_Attrubute" ToRole="IndClass" />
         </EntityType>
         <EntityType Name="ClassElementImage">
           <Key>
@@ -171,7 +156,7 @@
           <Property Name="ClassElementId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Class_ClassId" Type="Int32" Nullable="false" />
           <Property Name="Feature_img_uri" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
-          <NavigationProperty Name="Class" Relationship="FaceRecModel.FK_Class_Id" FromRole="ClassElementImages" ToRole="Class" />
+          <NavigationProperty Name="IndClass" Relationship="FaceRecModel.FK_Class_Id1" FromRole="ClassElementImage" ToRole="IndClass" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -202,30 +187,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Class_Attribute_Id">
-          <End Role="Class_Attrubute" Type="FaceRecModel.Class_Attrubute" Multiplicity="1" />
-          <End Role="Class" Type="FaceRecModel.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class_Attrubute">
-              <PropertyRef Name="CAttributeId" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="Class_Attrubute_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Class_Id">
-          <End Role="Class" Type="FaceRecModel.Class" Multiplicity="1" />
-          <End Role="ClassElementImages" Type="FaceRecModel.ClassElementImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Class">
-              <PropertyRef Name="ClassId" />
-            </Principal>
-            <Dependent Role="ClassElementImages">
-              <PropertyRef Name="Class_ClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Person_Id">
           <End Role="Person" Type="FaceRecModel.Person" Multiplicity="0..1" />
           <End Role="Image" Type="FaceRecModel.Image" Multiplicity="*" />
@@ -238,25 +199,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="IndClass">
+          <Key>
+            <PropertyRef Name="ClassId" />
+          </Key>
+          <Property Type="Int32" Name="ClassId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Class_Attrubute_Id" Nullable="false" />
+          <Property Type="Int32" Name="ClassNumber" />
+          <Property Type="Double" Name="ValueRangeUpperBound" />
+          <Property Type="Double" Name="ValueRangeLowerBound" />
+          <Property Type="String" Name="Name" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Boolean" Name="HasClassElements" />
+          <NavigationProperty Name="Class_Attrubute" Relationship="FaceRecModel.FK_Class_Attribute_Id1" FromRole="IndClass" ToRole="Class_Attrubute" />
+          <NavigationProperty Name="ClassElementImages" Relationship="FaceRecModel.FK_Class_Id1" FromRole="IndClass" ToRole="ClassElementImage" />
+        </EntityType>
+        <Association Name="FK_Class_Attribute_Id1">
+          <End Type="FaceRecModel.Class_Attrubute" Role="Class_Attrubute" Multiplicity="1" />
+          <End Type="FaceRecModel.IndClass" Role="IndClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class_Attrubute">
+              <PropertyRef Name="CAttributeId" />
+            </Principal>
+            <Dependent Role="IndClass">
+              <PropertyRef Name="Class_Attrubute_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Id1">
+          <End Type="FaceRecModel.IndClass" Role="IndClass" Multiplicity="1" />
+          <End Type="FaceRecModel.ClassElementImage" Role="ClassElementImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndClass">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="ClassElementImage">
+              <PropertyRef Name="Class_ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FaceRecModelStoreContainer" CdmEntityContainer="FaceRecEFEntities">
-          <EntitySetMapping Name="Classes">
-            <EntityTypeMapping TypeName="FaceRecModel.Class">
-              <MappingFragment StoreEntitySet="Class">
-                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
-                <ScalarProperty Name="Class_Attrubute_Id" ColumnName="Class_Attrubute_Id" />
-                <ScalarProperty Name="ClassNumber" ColumnName="ClassNumber" />
-                <ScalarProperty Name="ValueRangeUpperBound" ColumnName="ValueRangeUpperBound" />
-                <ScalarProperty Name="ValueRangeLowerBound" ColumnName="ValueRangeLowerBound" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="HasClassElements" ColumnName="HasClassElements" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Class_Attrubute">
             <EntityTypeMapping TypeName="FaceRecModel.Class_Attrubute">
               <MappingFragment StoreEntitySet="Class_Attrubute">
@@ -302,6 +288,19 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IndClasses">
+            <EntityTypeMapping TypeName="FaceRecModel.IndClass">
+              <MappingFragment StoreEntitySet="IndClass">
+                <ScalarProperty Name="HasClassElements" ColumnName="HasClassElements" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ValueRangeLowerBound" ColumnName="ValueRangeLowerBound" />
+                <ScalarProperty Name="ValueRangeUpperBound" ColumnName="ValueRangeUpperBound" />
+                <ScalarProperty Name="ClassNumber" ColumnName="ClassNumber" />
+                <ScalarProperty Name="Class_Attrubute_Id" ColumnName="Class_Attrubute_Id" />
+                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

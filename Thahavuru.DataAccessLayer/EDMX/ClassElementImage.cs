@@ -18,6 +18,6 @@ namespace Thahavuru.Techniques.EDMX
         public int Class_ClassId { get; set; }
         public string Feature_img_uri { get; set; }
     
-        public virtual Class Class { get; set; }
+        public virtual IndClass IndClass { get; set; }
     }
 }

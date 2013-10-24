@@ -47,9 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EDMX\Class.cs">
-      <DependentUpon>FaceRecEF.tt</DependentUpon>
-    </Compile>
     <Compile Include="EDMX\ClassElementImage.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
@@ -72,6 +69,9 @@
       <DependentUpon>FaceRecEF.edmx</DependentUpon>
     </Compile>
     <Compile Include="EDMX\Image.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\IndClass.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
     <Compile Include="EDMX\Person.cs">

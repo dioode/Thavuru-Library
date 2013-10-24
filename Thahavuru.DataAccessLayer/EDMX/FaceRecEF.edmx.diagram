@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2b91706abdde425e9813341c5d57b518" Name="Diagram1">
-        <EntityTypeShape EntityType="FaceRecModel.Class" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="FaceRecModel.Person" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FaceRecModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="FaceRecModel.FK_Class_Attribute_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="FaceRecModel.FK_Class_Id" ManuallyRouted="false" />
         <AssociationConnector Association="FaceRecModel.FK_Person_Id" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="3" PointY="1.375" />
+        <AssociationConnector Association="FaceRecModel.FK_Class_Attribute_Id1" />
+        <AssociationConnector Association="FaceRecModel.FK_Class_Id1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

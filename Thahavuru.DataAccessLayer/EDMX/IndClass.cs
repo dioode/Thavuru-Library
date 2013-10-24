@@ -12,9 +12,9 @@ namespace Thahavuru.Techniques.EDMX
     using System;
     using System.Collections.Generic;
     
-    public partial class Class
+    public partial class IndClass
     {
-        public Class()
+        public IndClass()
         {
             this.ClassElementImages = new HashSet<ClassElementImage>();
         }

@@ -25,11 +25,11 @@ namespace Thahavuru.Techniques.EDMX
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Class> Classes { get; set; }
         public DbSet<Class_Attrubute> Class_Attrubute { get; set; }
         public DbSet<ClassElementImage> ClassElementImages { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<IndClass> IndClasses { get; set; }
     }
 }

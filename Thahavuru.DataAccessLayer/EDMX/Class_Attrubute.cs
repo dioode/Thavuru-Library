@@ -16,13 +16,13 @@ namespace Thahavuru.Techniques.EDMX
     {
         public Class_Attrubute()
         {
-            this.Classes = new HashSet<Class>();
+            this.IndClasses = new HashSet<IndClass>();
         }
     
         public int CAttributeId { get; set; }
         public string Name { get; set; }
         public Nullable<int> NumberOfClasses { get; set; }
     
-        public virtual ICollection<Class> Classes { get; set; }
+        public virtual ICollection<IndClass> IndClasses { get; set; }
     }
 }
