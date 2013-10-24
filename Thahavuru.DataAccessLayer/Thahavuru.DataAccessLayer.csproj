@@ -30,8 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,6 +47,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EDMX\Class.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\ClassElementImage.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\Class_Attrubute.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\FaceRecEF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FaceRecEF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\FaceRecEF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\FaceRecEF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FaceRecEF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\Image.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\Person.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\sysdiagram.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +87,32 @@
       <Project>{b4dcc819-fa36-4c99-bf34-6510acf8a624}</Project>
       <Name>Thahavuru.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EDMX\FaceRecEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FaceRecEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="EDMX\FaceRecEF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FaceRecEF.edmx</DependentUpon>
+      <LastGenOutput>FaceRecEF.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EDMX\FaceRecEF.edmx.diagram">
+      <DependentUpon>FaceRecEF.edmx</DependentUpon>
+    </None>
+    <None Include="EDMX\FaceRecEF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FaceRecEF.edmx</DependentUpon>
+      <LastGenOutput>FaceRecEF.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
