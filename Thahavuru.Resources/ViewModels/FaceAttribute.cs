@@ -8,10 +8,18 @@ namespace Thahavuru.Resources.ViewModels
 {
     public class FaceAttribute
     {
+        
         public int AttributeId { get; set; }
         public string Name { get; set; }
         public bool IsBinary { get { return NumberOfClasses == 2 ? true: false;} }
         public int NumberOfClasses { get; set; }
         public List<int> SortedClasses { get; set; }
+
+        public TrainingSet GetTrainingSet()
+        {
+
+            //This has to be populated with training faces using method in dataaccess layer.
+            return new TrainingSet();
+        }
     }
 }

@@ -7,8 +7,8 @@
     <ProjectGuid>{B4DCC819-FA36-4C99-BF34-6510ACF8A624}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Thahavuru.Techniques</RootNamespace>
-    <AssemblyName>Thahavuru.Techniques</AssemblyName>
+    <RootNamespace>Thahavuru.Resources</RootNamespace>
+    <AssemblyName>Thahavuru.Resources</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

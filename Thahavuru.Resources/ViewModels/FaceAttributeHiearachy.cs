@@ -8,6 +8,7 @@ namespace Thahavuru.Resources.ViewModels
 {
     public class FaceAttributeHiearachy
     {
-        List<FaceAttribute> OrderedFaceAttributeSet { get; set; }
+        public List<FaceAttribute> OrderedFaceAttributeSet { get; set; }
+        
     }
 }

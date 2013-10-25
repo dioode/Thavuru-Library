@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Thahavuru.Techniques.EDMX
+namespace Thahavuru.DataAccessLayer.EDMX
 {
     using System;
     using System.Data.Entity;
