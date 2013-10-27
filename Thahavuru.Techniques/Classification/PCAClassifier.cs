@@ -11,17 +11,20 @@ namespace Thahavuru.Techniques.Classification
     public class PCAClassifier : IClassifier
     {
 
-        public IFace Classify(IFace probeImage, TrainingSet list, FaceAttribute faceAttribute)
+        public void Classify(ref Person person, TrainingSet list)
         {
+            var faceAttribute = new FaceAttribute();
+
             PCA pca = new PCA();
-            var result = pca.PCAT(probeImage, list);
+            var result = pca.PCAT(person.FaceofP, list);
             foreach (var item in result)
             {
+                
                 faceAttribute.SortedClasses.Add(item);
             }
-            
-            probeImage.FaceAttributes.Add(faceAttribute);
-            return probeImage;
+
+            person.FaceofP.FaceAttributes.Add(faceAttribute);
+            //return probeImage;
         }
     }
 }

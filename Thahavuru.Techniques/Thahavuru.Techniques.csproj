@@ -91,6 +91,7 @@
     <Compile Include="FaceRecT\HaarCascade_.cs" />
     <Compile Include="FaceRecT\ICascade.cs" />
     <Compile Include="FaceRec\FaceFeatureIdentification.cs" />
+    <Compile Include="FaceRec\FaceRecognition.cs" />
     <Compile Include="FaceRec\FaceRecognitionPolicy.cs" />
     <Compile Include="ImageProcessingT\ImageProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

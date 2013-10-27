@@ -8,7 +8,7 @@ namespace Thahavuru.Resources.ViewModels
 {
     public class Person
     {
-        public IFace FaceofP { get; set; }
+        public IFace FaceofP; //{ get; set; }
         public string Name { get; set; }
         public Guid Id { get; set; }
         public string Address { get; set; }

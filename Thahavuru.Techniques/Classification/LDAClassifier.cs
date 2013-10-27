@@ -11,18 +11,21 @@ namespace Thahavuru.Techniques.Classification
 {
     public class LDAClassifier : IClassifier
     {
-        public IFace Classify(IFace probeImage, TrainingSet list, FaceAttribute faceAttribute)
+        public void Classify(ref Person person, TrainingSet list)
         {
+           
+            var faceAttribute = new FaceAttribute();
+
             LDA lda = new LDA();
-            var result = lda.FLDT(probeImage, list);
+            var result = lda.FLDT(person.FaceofP, list);
             faceAttribute.SortedClasses.Add(result.Label);
             if (faceAttribute.IsBinary)
             {
                 faceAttribute.SortedClasses.Add(result.Label==1?2:1);
             }
 
-            probeImage.FaceAttributes.Add(faceAttribute);
-            return probeImage;
+            person.FaceofP.FaceAttributes.Add(faceAttribute);
+            //return probeImage;
         }
     }
 }
