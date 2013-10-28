@@ -56,7 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DataAcessSingletonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +64,13 @@
       <Project>{10602bfd-0ff1-4e50-a4ff-f559ff0d3ff2}</Project>
       <Name>Thahavuru.DataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Thahavuru.Resources\Thahavuru.Resources.csproj">
+      <Project>{b4dcc819-fa36-4c99-bf34-6510acf8a624}</Project>
+      <Name>Thahavuru.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
