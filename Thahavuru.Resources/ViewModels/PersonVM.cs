@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Resources.ViewModels
 {
-    public class Person
+    public class PersonVM
     {
         public IFace FaceofP; //{ get; set; }
         public string Name { get; set; }
-        public Guid Id { get; set; }
+        public int Id { get; set; }//Guid Id { get; set; }
         public string Address { get; set; }
 
         public List<List<int>> MatchedFaceIdSet { get; set; }
