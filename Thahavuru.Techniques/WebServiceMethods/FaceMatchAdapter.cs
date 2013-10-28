@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Thahavuru.Resources.ViewModels;
 using Thahavuru.DataAccessLayer;
 using Thahavuru.Techniques.Classification;
-using Thahavuru.Techniques.FaceRec;
+using Thahavuru.Techniques.FaceRec ;
 
 
 namespace Thahavuru.Techniques.WebServiceMethods
