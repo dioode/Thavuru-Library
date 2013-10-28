@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thahavuru.DataAccessLayer.EDMX;
 using Thahavuru.Resources.ViewModels;
 
 namespace Thahavuru.DataAccessLayer
@@ -15,22 +16,37 @@ namespace Thahavuru.DataAccessLayer
             return new TrainingSet();
         }
 
-        public Person GetPersonByID(int personId)
+        public PersonVM GetPersonByID(int personId)
         {
-            //return dataAccess
-            return new Person();
+            PersonVM PersonM = new PersonVM();
+
+            using (var ctx = new FaceRecEFEntities())
+            {
+                var person = (from s in ctx.People
+                              where s.Id == personId
+                              select s).FirstOrDefault<Person>();
+
+                if (person != null)
+                {
+                    PersonM.Id = (int)person.Id;
+                    PersonM.Name = (string)person.Name;
+                    PersonM.Address = (string)person.Address;
+                }
+            }
+
+            return PersonM;
         }
 
-        public Person GetPersonByNIC(string nicString)
+        public PersonVM GetPersonByNIC(string nicString)
         {
             //return dataAccess
-            return new Person();
+            return new PersonVM();
         }
 
-        public List<Person> GetPersonByName(string name)
+        public List<PersonVM> GetPersonByName(string name)
         {
             //return dataAccess
-            return new List<Person>();
+            return new List<PersonVM>();
         }
 
         public TrainingSet GetTraingSet(List<int> personIdSet)
