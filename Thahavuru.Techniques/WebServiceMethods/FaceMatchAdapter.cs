@@ -6,18 +6,47 @@ using System.Threading.Tasks;
 using Thahavuru.Resources.ViewModels;
 using Thahavuru.DataAccessLayer;
 using Thahavuru.Techniques.Classification;
+using Thahavuru.Techniques.FaceRec;
 
 
 namespace Thahavuru.Techniques.WebServiceMethods
 {
     public class FaceMatchAdapter //: IFaceMatchAdapter
     {
-        //public List<Person> FaceMatch(Person inputPerson) 
-        //{
+        private FaceRecognition faceRecContext;
+        public FaceMatchAdapter()
+        {
+            faceRecContext = new FaceRecognition();
+            var attributeSet = GetCurrentConfigAttrubuteSet();
+        }
 
-        //}
+        public void FaceMatch(ref UserInterfaceModel userInterfacemodel) 
+        {
+            var attributeSet = GetCurrentConfigAttrubuteSet();
+
+            if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes == null) 
+            {
+                FillAttributeValues(ref userInterfacemodel.SearchingPerson, attributeSet);
+                faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, "LDA", userInterfacemodel.PageNumber); //This is hard-coded, have to change this
+
+            }
+            else
+            {
+                if (userInterfacemodel.Next == true)
+                {
+                    if (userInterfacemodel.SearchingPerson.MatchedFaceIdSet.Count < userInterfacemodel.PageNumber + 1)
+                    faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, "LDA", userInterfacemodel.PageNumber + 1); //This is hard-coded, have to change this
+                }
+            }
+        }
+
+        private FaceAttributeHiearachy GetCurrentConfigAttrubuteSet() 
+        {
+            return new FaceAttributeHiearachy();
+            //Get from database.
+        }
         
-        public void FillAttributeValues(ref Person inputPerson, FaceAttributeHiearachy providedHiearachy) 
+        private void FillAttributeValues(ref Person inputPerson, FaceAttributeHiearachy providedHiearachy) 
         {
             foreach (var faceAttribute in providedHiearachy.OrderedFaceAttributeSet)
             {

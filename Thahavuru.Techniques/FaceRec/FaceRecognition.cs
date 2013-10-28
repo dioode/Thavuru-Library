@@ -11,31 +11,50 @@ namespace Thahavuru.Techniques.FaceRec
 {
     public class FaceRecognition
     {
-        public void MatchFacesUsingPCA(ref Person person) 
+        public void MatchFaces(ref Person person, string technique, int pageNumber) 
         {
-            var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes);
+            switch (technique)
+            {
+                case "PCA":
+                    MatchFacesUsingPCA(ref person, pageNumber);
+                    break;
+                case "LDA":
+                    MatchFacesLDA(ref person, pageNumber);
+                    break;
+                case "SVM":
+                    MatchFacesSVM(ref person, pageNumber);
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void MatchFacesUsingPCA(ref Person person, int pageNumber) 
+        {
+            var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes, pageNumber);
             PCA pca = new PCA();
             var matchingOrderedSet = pca.PCAT(person.FaceofP, faceImageListafterPruning);
 
             //Somehow 
         }
 
-        public void MatchFacesLDA(ref Person person)
+        private void MatchFacesLDA(ref Person person, int pageNumber)
         {
-            var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes);
+            var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes, pageNumber);
             LDA lda = new LDA();
             var matchingOrderedSet = lda.FLDT(person.FaceofP, faceImageListafterPruning);
         }
 
-        public void MatchFacesSVM(ref Person person)
+        private void MatchFacesSVM(ref Person person, int pageNumber)
         {
-            var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes);
+            var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes, pageNumber);
             SVMT svm = new SVMT();
             var matchingOrderedSet = svm.SVMTT(person.FaceofP, faceImageListafterPruning);
         }
 
-        private TrainingSet GetAllPeopleUnderNarrowdown(List<FaceAttribute> faceAttributeList) 
+        private TrainingSet GetAllPeopleUnderNarrowdown(List<FaceAttribute> faceAttributeList, int pageNumber) 
         {
+            //return training set according to attribute set and the page number
+            //ToDo: 
             return new TrainingSet();
         }
     }
