@@ -33,10 +33,10 @@ namespace Thahavuru.DataAccessLayer
             return new List<Person>();
         }
 
-        public List<Person> GetTraingSet(List<int> personIdSet)
+        public TrainingSet GetTraingSet(List<int> personIdSet)
         {
             //return dataAccess
-            return new List<Person>();
+            return new TrainingSet();
         }
     }
 }

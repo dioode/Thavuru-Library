@@ -11,7 +11,7 @@ namespace Thahavuru.Resources.ViewModels
 {
     public interface IFace
     {
-        public Image<Gray, byte> FaceImage { get; set; }
-        public List<FaceAttribute> FaceAttributes { get; set; }
+        Image<Gray, byte> FaceImage { get; set; }
+        List<FaceAttribute> FaceAttributes { get; set; }
     }
 }

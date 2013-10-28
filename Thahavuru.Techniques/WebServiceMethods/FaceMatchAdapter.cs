@@ -10,14 +10,14 @@ using Thahavuru.Techniques.Classification;
 
 namespace Thahavuru.Techniques.WebServiceMethods
 {
-    public class FaceMatchAdapter : IFaceMatchAdapter
+    public class FaceMatchAdapter //: IFaceMatchAdapter
     {
-        public List<Person> FaceMatch(Person inputPerson) 
-        {
+        //public List<Person> FaceMatch(Person inputPerson) 
+        //{
 
-        }
+        //}
         
-        public Person FillAttributeValues(Person inputPerson, FaceAttributeHiearachy providedHiearachy) 
+        public void FillAttributeValues(ref Person inputPerson, FaceAttributeHiearachy providedHiearachy) 
         {
             foreach (var faceAttribute in providedHiearachy.OrderedFaceAttributeSet)
             {
@@ -36,7 +36,6 @@ namespace Thahavuru.Techniques.WebServiceMethods
 	            }
                 
             }
-            return inputPerson;
         }
     }
 }

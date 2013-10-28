@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Techniques.WebServiceMethods
 {
-    public interface IFaceMatchAdapter
-    {
-        List<>
-    }
+    //public interface IFaceMatchAdapter
+    //{
+    //    List<>
+    //}
 }

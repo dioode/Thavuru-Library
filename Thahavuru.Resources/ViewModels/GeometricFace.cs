@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Resources.ViewModels
 {
-    public class GeometricFace : IFace
+    public class GeometricFace
     {
         public Image faceImage { get; set; }
         public Rectangle REye { get; set; }

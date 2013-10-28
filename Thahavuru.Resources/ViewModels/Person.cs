@@ -12,6 +12,8 @@ namespace Thahavuru.Resources.ViewModels
         public string Name { get; set; }
         public Guid Id { get; set; }
         public string Address { get; set; }
+
+        public List<List<int>> MatchedFaceIdSet { get; set; }
        
     }
 }
