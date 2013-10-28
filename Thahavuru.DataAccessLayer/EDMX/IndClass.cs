@@ -14,11 +14,6 @@ namespace Thahavuru.DataAccessLayer.EDMX
     
     public partial class IndClass
     {
-        public IndClass()
-        {
-            this.ClassElementImages = new HashSet<ClassElementImage>();
-        }
-    
         public int ClassId { get; set; }
         public int Class_Attrubute_Id { get; set; }
         public Nullable<int> ClassNumber { get; set; }
@@ -28,6 +23,5 @@ namespace Thahavuru.DataAccessLayer.EDMX
         public Nullable<bool> HasClassElements { get; set; }
     
         public virtual Class_Attrubute Class_Attrubute { get; set; }
-        public virtual ICollection<ClassElementImage> ClassElementImages { get; set; }
     }
 }

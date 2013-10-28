@@ -17,7 +17,5 @@ namespace Thahavuru.DataAccessLayer.EDMX
         public int ClassElementId { get; set; }
         public int Class_ClassId { get; set; }
         public string Feature_img_uri { get; set; }
-    
-        public virtual IndClass IndClass { get; set; }
     }
 }

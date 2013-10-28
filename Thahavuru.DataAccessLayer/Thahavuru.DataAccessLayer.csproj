@@ -32,8 +32,9 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\..\..\My Work\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -78,9 +79,6 @@
     <Compile Include="EDMX\Person.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDMX\sysdiagram.cs">
-      <DependentUpon>FaceRecEF.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +94,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="EDMX\FaceRecEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FaceRecEF.edmx</DependentUpon>
@@ -110,6 +110,7 @@
       <DependentUpon>FaceRecEF.edmx</DependentUpon>
       <LastGenOutput>FaceRecEF.cs</LastGenOutput>
     </None>
+    <Fakes Include="Fakes\EntityFramework.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
