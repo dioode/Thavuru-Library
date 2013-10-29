@@ -13,6 +13,6 @@ namespace Thahavuru.Techniques.Classification
 {
     public interface IClassifier
     {
-        void Classify(ref Person probeImage, TrainingSet list);
+        void Classify(ref PersonVM probeImage, TrainingSet list);
     }
 }

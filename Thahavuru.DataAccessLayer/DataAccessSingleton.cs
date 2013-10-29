@@ -30,6 +30,7 @@ namespace Thahavuru.DataAccessLayer
                 {
                     PersonM.Id = (int)person.Id;
                     PersonM.Name = (string)person.Name;
+                    PersonM.N
                     PersonM.Address = (string)person.Address;
                 }
             }
@@ -39,8 +40,23 @@ namespace Thahavuru.DataAccessLayer
 
         public PersonVM GetPersonByNIC(string nicString)
         {
-            //return dataAccess
-            return new PersonVM();
+            PersonVM PersonM = new PersonVM();
+
+            using (var ctx = new FaceRecEFEntities())
+            {
+                var person = (from s in ctx.People
+                              where s.Id == personId
+                              select s).FirstOrDefault<Person>();
+
+                if (person != null)
+                {
+                    PersonM.Id = (int)person.Id;
+                    PersonM.Name = (string)person.Name;
+                    PersonM.Address = (string)person.Address;
+                }
+            }
+
+            return PersonM;
         }
 
         public List<PersonVM> GetPersonByName(string name)

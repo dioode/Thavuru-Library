@@ -46,7 +46,7 @@ namespace Thahavuru.Techniques.WebServiceMethods
             //Get from database.
         }
         
-        private void FillAttributeValues(ref Person inputPerson, FaceAttributeHiearachy providedHiearachy) 
+        private void FillAttributeValues(ref PersonVM inputPerson, FaceAttributeHiearachy providedHiearachy) 
         {
             foreach (var faceAttribute in providedHiearachy.OrderedFaceAttributeSet)
             {

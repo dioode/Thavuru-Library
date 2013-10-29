@@ -10,7 +10,7 @@ namespace Thahavuru.Techniques.Classification
 {
     public class SVMClassifier : IClassifier
     {
-        public void Classify(ref Person person, TrainingSet list)
+        public void Classify(ref PersonVM person, TrainingSet list)
         {
             var faceAttribute = new FaceAttribute();
 
