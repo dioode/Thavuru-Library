@@ -85,8 +85,13 @@
   <ItemGroup>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTest2.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Thahavuru.Resources\Thahavuru.Resources.csproj">
+      <Project>{b4dcc819-fa36-4c99-bf34-6510acf8a624}</Project>
+      <Name>Thahavuru.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Thahavuru.Techniques\Thahavuru.Techniques.csproj">
       <Project>{e5501b88-8bef-4027-a6c7-f84d474c514a}</Project>
       <Name>Thahavuru.Techniques</Name>
