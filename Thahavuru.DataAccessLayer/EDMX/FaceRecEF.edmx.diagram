@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="2b91706abdde425e9813341c5d57b518" Name="Diagram1">
         <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="4" PointY="0.5" />
-        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="6.375" PointY="0.5" />
+        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="2.5" PointX="6.375" PointY="0.5" />
         <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="1.125" PointY="3.875" />
         <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="1.125" PointY="0.5" />
         <EntityTypeShape EntityType="FaceRecModel.Person" Width="1.5" PointX="4.125" PointY="3.875" />

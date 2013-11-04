@@ -62,6 +62,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="FaceSDK.NET">
+      <HintPath>.\FaceSDK.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -80,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classification\BiometricClassifier.cs" />
     <Compile Include="Classification\IClassifier.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
@@ -88,6 +92,7 @@
     <Compile Include="Classification\PCAClassifier.cs" />
     <Compile Include="Classification\SVMClassifier.cs" />
     <Compile Include="FaceRecT\CascadeConfig.cs" />
+    <Compile Include="FaceRecT\FeatureTracker.cs" />
     <Compile Include="FaceRecT\HaarCascade_.cs" />
     <Compile Include="FaceRecT\ICascade.cs" />
     <Compile Include="FaceRec\FaceFeatureIdentification.cs" />
@@ -204,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

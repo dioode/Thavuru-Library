@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Luxand;
+using System.Runtime.InteropServices;
+using System.Drawing;
+using Thahavuru.Resources.ViewModels;
+
+namespace Thahavuru.Techniques.FaceRecT
+{
+    public class FeatureTracker
+    {
+        // WinAPI procedure to release HBITMAP handles returned by FSDKCam.GrabFrame
+        [DllImport("gdi32.dll")]
+        static extern bool DeleteObject(IntPtr hObject);
+
+        public FeatureTracker(Image faceImage)
+	    {
+            FSDK.ActivateLibrary("aTNQlrb9dEiYDYz/SpNbtASWMYKUtKGfBvyP6BVgKLhfOYCCj1GYS5CnrKUoFkhLAQrbT+JW8veY+NOYXXRV+vV8bNLKiBySt/f2tp0+ATVuQcrm/emDS8KXZN75oO3iQv1rWVpF4mP6eFEIROuqU8ZvW9QyfL8/D9Mf/E6urkc=");
+            FSDK.InitializeLibrary();
+            FSDK.SetFaceDetectionParameters(true, true, faceImage.Width);
+
+	    }
+
+        public void GetFeatures(ref PersonVM person) 
+        {
+            var features = GetFeaturePoints(person.FaceofP.GetImage);
+            features.facialFeatureSet;
+        }
+
+        private DecoratedImageWithFeatures GetFeaturePoints(Image faceImage) 
+        {
+            FSDK.TPoint[] facialFeatures;
+            try
+            {
+                FSDK.CImage image = new FSDK.CImage(faceImage);
+
+                Image frameImage = image.ToCLRImage();
+                Graphics gr = Graphics.FromImage(frameImage);
+
+                FSDK.TFacePosition facePosition = image.DetectFace();
+                if (0 == facePosition.w)
+                    return null;
+                else
+                {
+                    int left = facePosition.xc - (int)(facePosition.w * 0.6f);
+                    int top = facePosition.yc - (int)(facePosition.w * 0.5f);
+                    gr.DrawRectangle(Pens.LightGreen, left, top, (int)(facePosition.w * 1.2), (int)(facePosition.w * 1.2));
+
+                    facialFeatures = image.DetectFacialFeaturesInRegion(ref facePosition);
+                    int i = 0;
+                    foreach (FSDK.TPoint point in facialFeatures)
+                        gr.DrawEllipse((++i > 2) ? Pens.LightGreen : Pens.Blue, point.x, point.y, 3, 3);
+
+                    gr.Flush();
+                }
+
+                return new DecoratedImageWithFeatures() { DecoratedImage = frameImage, facialFeatureSet = facialFeatures };                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("This is not working");
+            }
+        }     
+    }
+
+    class DecoratedImageWithFeatures 
+    {
+        public FSDK.TPoint[] facialFeatureSet;
+        public Image DecoratedImage;
+    }
+}

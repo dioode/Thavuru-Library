@@ -13,5 +13,6 @@ namespace Thahavuru.Resources.ViewModels
     {
         Image<Gray, byte> FaceImage { get; set; }
         List<FaceAttribute> FaceAttributes { get; set; }
+        Image GetImage{get;}
     }
 }
