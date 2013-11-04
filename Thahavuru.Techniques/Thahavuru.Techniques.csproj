@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classification\BiometricClassifier.cs" />
+    <Compile Include="Classification\IBiometricClassifier.cs" />
     <Compile Include="Classification\IClassifier.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
