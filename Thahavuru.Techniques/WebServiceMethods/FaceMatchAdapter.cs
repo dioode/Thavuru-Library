@@ -50,19 +50,38 @@ namespace Thahavuru.Techniques.WebServiceMethods
         {
             foreach (var faceAttribute in providedHiearachy.OrderedFaceAttributeSet)
             {
-                var trainigSet = faceAttribute.GetTrainingSet();
-                switch (faceAttribute.ClassificationTechnique)
-	            {
-                    case "PCA":
-                        new PCAClassifier().Classify(ref inputPerson, trainigSet);
-                        break;
-                    case "LDA":
-                        new LDAClassifier().Classify(ref inputPerson, trainigSet);
-                        break;
-                    case "SVM":
-                        new SVMClassifier().Classify(ref inputPerson, trainigSet);
-                        break;
-	            }
+                if (!faceAttribute.IsBiometric)
+                {
+                    var trainigSet = faceAttribute.GetTrainingSet();
+                    switch (faceAttribute.ClassificationTechnique)
+                    {
+                        case "PCA":
+                            new PCAClassifier().Classify(ref inputPerson, trainigSet);
+                            break;
+                        case "LDA":
+                            new LDAClassifier().Classify(ref inputPerson, trainigSet);
+                            break;
+                        case "SVM":
+                            new SVMClassifier().Classify(ref inputPerson, trainigSet);
+                            break;
+                    }    
+                }
+                else
+                {
+                    switch (faceAttribute.Name)
+                    {
+
+                        case "Eyes/Mouth":
+                            new EyesMouthRatioClassifier().Classify(ref inputPerson);
+                            break;
+                        case "Mouth/Nose":
+                            new NoseMouthRatioClassifier().Classify(ref inputPerson);
+                            break;
+
+                    }
+
+                }
+                
                 
             }
         }
