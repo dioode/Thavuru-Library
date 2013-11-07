@@ -11,10 +11,10 @@ namespace Thahavuru.Techniques.Classification
     public class BiometricClassifier : IBiometricClassifier
     {
            
-        void Classify(ref PersonVM probeImage)
+        public void Classify(ref PersonVM probeImage)
         {
-            FeatureTracker ft = new FeatureTracker(probeImage.FaceofP.GetImage);
-            var pointList = ft.GetFeaturePoints();
+            FeatureTracker ft = new FeatureTracker();
+            var pointList = ft.GetFeaturePoints(probeImage.FaceofP.GetImage);
 
         }
     }

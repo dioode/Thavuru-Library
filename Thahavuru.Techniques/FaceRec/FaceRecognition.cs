@@ -11,7 +11,7 @@ namespace Thahavuru.Techniques.FaceRec
 {
     public class FaceRecognition
     {
-        public void MatchFaces(ref Person person, string technique, int pageNumber) 
+        public void MatchFaces(ref PersonVM person, string technique, int pageNumber) 
         {
             switch (technique)
             {
@@ -28,7 +28,7 @@ namespace Thahavuru.Techniques.FaceRec
                     break;
             }
         }
-        private void MatchFacesUsingPCA(ref Person person, int pageNumber) 
+        private void MatchFacesUsingPCA(ref PersonVM person, int pageNumber) 
         {
             var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes, pageNumber);
             PCA pca = new PCA();
@@ -37,14 +37,14 @@ namespace Thahavuru.Techniques.FaceRec
             //Somehow 
         }
 
-        private void MatchFacesLDA(ref Person person, int pageNumber)
+        private void MatchFacesLDA(ref PersonVM person, int pageNumber)
         {
             var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes, pageNumber);
             LDA lda = new LDA();
             var matchingOrderedSet = lda.FLDT(person.FaceofP, faceImageListafterPruning);
         }
 
-        private void MatchFacesSVM(ref Person person, int pageNumber)
+        private void MatchFacesSVM(ref PersonVM person, int pageNumber)
         {
             var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person.FaceofP.FaceAttributes, pageNumber);
             SVMT svm = new SVMT();

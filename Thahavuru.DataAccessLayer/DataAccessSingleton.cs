@@ -30,7 +30,7 @@ namespace Thahavuru.DataAccessLayer
                 {
                     PersonM.Id = (int)person.Id;
                     PersonM.Name = (string)person.Name;
-                    PersonM.N
+                    //PersonM.N
                     PersonM.Address = (string)person.Address;
                 }
             }
@@ -45,7 +45,7 @@ namespace Thahavuru.DataAccessLayer
             using (var ctx = new FaceRecEFEntities())
             {
                 var person = (from s in ctx.People
-                              where s.Id == personId
+                              where s.UserID == nicString
                               select s).FirstOrDefault<Person>();
 
                 if (person != null)
