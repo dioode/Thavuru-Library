@@ -114,16 +114,6 @@
     <Compile Include="WebServiceMethods\IFaceMatchAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Thahavuru.DataAccessLayer\Thahavuru.DataAccessLayer.csproj">
-      <Project>{10602bfd-0ff1-4e50-a4ff-f559ff0d3ff2}</Project>
-      <Name>Thahavuru.DataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Thahavuru.Resources\Thahavuru.Resources.csproj">
-      <Project>{b4dcc819-fa36-4c99-bf34-6510acf8a624}</Project>
-      <Name>Thahavuru.Resources</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -217,6 +207,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Thahavuru.DataAccessLayer\Thahavuru.DataAccessLayer.csproj">
+      <Project>{10602bfd-0ff1-4e50-a4ff-f559ff0d3ff2}</Project>
+      <Name>Thahavuru.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Thahavuru.Resources\Thahavuru.Resources.csproj">
+      <Project>{b4dcc819-fa36-4c99-bf34-6510acf8a624}</Project>
+      <Name>Thahavuru.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

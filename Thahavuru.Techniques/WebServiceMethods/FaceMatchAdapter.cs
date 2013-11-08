@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Thahavuru.Resources.ViewModels;
-using Thahavuru.DataAccessLayer;
 using Thahavuru.Techniques.Classification;
 using Thahavuru.Techniques.FaceRec ;
 
