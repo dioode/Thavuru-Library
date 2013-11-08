@@ -16,6 +16,7 @@ namespace Thahavuru.Techniques.Classification
             var pointList = ft.GetFeaturePoints(probeImage.FaceofP.GetImage);
             double nosemouthratio = Math.Sqrt(Math.Pow(pointList.facialFeatureSet[22].X - pointList.facialFeatureSet[49].X, 2) + Math.Pow(pointList.facialFeatureSet[22].Y - pointList.facialFeatureSet[49].Y, 2)) / (Math.Sqrt(Math.Pow(pointList.facialFeatureSet[3].X - pointList.facialFeatureSet[4].X, 2) + Math.Pow(pointList.facialFeatureSet[3].Y - pointList.facialFeatureSet[4].Y, 2)));
         
+
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Thahavuru.Techniques.Classification
             double eyemouthratio = Math.Sqrt(Math.Pow(pointList.facialFeatureSet[0].X - pointList.facialFeatureSet[1].X, 2) + Math.Pow(pointList.facialFeatureSet[0].Y - pointList.facialFeatureSet[1].Y, 2)) 
                 / (Math.Sqrt(Math.Pow(pointList.facialFeatureSet[3].X - pointList.facialFeatureSet[4].X, 2) + Math.Pow(pointList.facialFeatureSet[3].Y - pointList.facialFeatureSet[4].Y, 2)));
 
+
         }
     }
 }
