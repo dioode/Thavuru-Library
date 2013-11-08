@@ -20,6 +20,7 @@ namespace Thahavuru.DataAccessLayer
         {
             PersonVM PersonM = new PersonVM();
 
+
             using (var ctx = new FaceRecEFEntities())
             {
                 var person = (from s in ctx.People
