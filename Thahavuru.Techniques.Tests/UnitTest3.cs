@@ -23,7 +23,7 @@ namespace Thahavuru.Techniques.Tests
 
             while (j < 80)
             {
-                labelList.Add(0);
+                labelList.Add(j);
                 trainName.Add("face_" + j.ToString());
                 imageList.Add(new Image<Gray, byte>(@files[j]));//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC));
                 j++;
@@ -33,7 +33,7 @@ namespace Thahavuru.Techniques.Tests
 
             while (j < 160)
             {
-                labelList.Add(1);
+                labelList.Add(j);
                 trainName.Add("face2_" + j.ToString());
                 imageList.Add(new Image<Gray, byte>(@files2[j - 80]));//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC));
                 j++;
@@ -87,11 +87,31 @@ namespace Thahavuru.Techniques.Tests
             TrainingSet tset = Data();
 
             IFace iface = new Face();
+            iface.FaceAttributes = new List<FaceAttribute>();
             iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            PersonVM person = new PersonVM();
+            person.FaceofP = iface;
+            person.MatchedFaceIdSet = new List<List<int>>();
 
             LDAClassifier_GC lda = new LDAClassifier_GC();
+
+            lda.RecognizeGC_LDA(ref person, tset, 10, 1);
+        }
+
+        [TestMethod]
+        public void LDAForMultipleClassify()
+        {
+            TrainingSet tset = Data();
+
+            IFace iface = new Face();
+            iface.FaceAttributes = new List<FaceAttribute>();
+            iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             PersonVM person = new PersonVM();
-            lda.ClassifyGC(person, tset, 10);
+            person.FaceofP = iface;
+
+            LDAClassifier_GC lda = new LDAClassifier_GC();
+
+            lda.ClassifyGC_LDA(ref person, tset, 10);
         }
     }
 }
