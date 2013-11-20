@@ -54,7 +54,16 @@ namespace Thahavuru.DataAccessLayer.Tests
             Assert.AreEqual(Address, persons[0].Address, true);
         }
 
+        [TestMethod]
+        public void GetTraingSetTest() 
+        {
+            int lable = 2;
 
+            DataAccessSingleton DAS = new DataAccessSingleton();
+            TrainingSet tset = DAS.GetTraingSet(2);
+
+            Assert.AreEqual(lable.ToString(), tset.labelList[1].ToString(), true);
+        }
 
 
     }
