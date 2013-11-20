@@ -13,7 +13,7 @@ namespace Thahavuru.Resources.ViewModels
         public int Id { get; set; }//Guid Id { get; set; }
         public string Address { get; set; }
 
-        public List<List<int>> MatchedFaceIdSet { get; set; }
+        public Dictionary<int,List<int>> MatchedFaceIdSet { get; set; }
        
     }
 }
