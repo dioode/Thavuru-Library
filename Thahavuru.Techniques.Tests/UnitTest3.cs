@@ -23,7 +23,7 @@ namespace Thahavuru.Techniques.Tests
 
             while (j < 80)
             {
-                labelList.Add(j);
+                labelList.Add(0);
                 trainName.Add("face_" + j.ToString());
                 imageList.Add(new Image<Gray, byte>(@files[j]));//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC));
                 j++;
@@ -33,7 +33,7 @@ namespace Thahavuru.Techniques.Tests
 
             while (j < 160)
             {
-                labelList.Add(j);
+                labelList.Add(1);
                 trainName.Add("face2_" + j.ToString());
                 imageList.Add(new Image<Gray, byte>(@files2[j - 80]));//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC));
                 j++;
@@ -91,7 +91,7 @@ namespace Thahavuru.Techniques.Tests
             iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             PersonVM person = new PersonVM();
             person.FaceofP = iface;
-            person.MatchedFaceIdSet = new List<List<int>>();
+            person.MatchedFaceIdSet = new Dictionary<int,List<int>>();
 
             LDAClassifier_GC lda = new LDAClassifier_GC();
 
@@ -110,8 +110,16 @@ namespace Thahavuru.Techniques.Tests
             person.FaceofP = iface;
 
             LDAClassifier_GC lda = new LDAClassifier_GC();
+            //ClassifyGC_LDA
+            FaceAttribute attribute = new FaceAttribute();
+            attribute.NumberOfClasses = 2;
+            attribute.SortedClasses = new List<int>();
+            
+            //attribute.SortedClasses.Add(1);
 
-            lda.ClassifyGC_LDA(ref person, tset, 10);
+            lda.ClassifyGC_LDA(ref person, tset, attribute);
         }
+
+
     }
 }
