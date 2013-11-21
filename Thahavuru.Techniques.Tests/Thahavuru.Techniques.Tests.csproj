@@ -68,10 +68,6 @@
     <Reference Include="Emgu.Util">
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.Util.dll</HintPath>
     </Reference>
-    <Reference Include="FaceSDK.NET, Version=5.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thahavuru.Techniques\FaceSDK.NET.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.XML" />
@@ -95,6 +91,7 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTest2.cs" />
+    <Compile Include="UnitTest3.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Thahavuru.Resources\Thahavuru.Resources.csproj">

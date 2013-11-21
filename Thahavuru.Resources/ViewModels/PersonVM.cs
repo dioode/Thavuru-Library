@@ -24,7 +24,7 @@ namespace Thahavuru.Resources.ViewModels
 
         [DataMember]
         public List<List<int>> MatchedFaceIdSet { get; set; }
-
+       
         [DataMember]
         public List<List<List<int>>> SearchTrakKeeper { get; set; }
        

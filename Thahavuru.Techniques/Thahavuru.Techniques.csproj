@@ -64,10 +64,10 @@
     </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\Thahavuru.DataAccessLayer\bin\Debug\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="FaceSDK.NET">
-      <HintPath>.\FaceSDK.NET.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Luxand\FaceSDK\bin\win32\FaceSDK.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -93,6 +93,7 @@
     <Compile Include="ClassificationT\PCA.cs" />
     <Compile Include="ClassificationT\SVMT.cs" />
     <Compile Include="Classification\LDAClassifier.cs" />
+    <Compile Include="Classification\LDAClassifier_GC.cs" />
     <Compile Include="Classification\NoseMouthRatioClassifier.cs" />
     <Compile Include="Classification\PCAClassifier.cs" />
     <Compile Include="Classification\SVMClassifier.cs" />
