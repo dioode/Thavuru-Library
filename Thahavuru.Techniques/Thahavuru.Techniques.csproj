@@ -62,17 +62,18 @@
     <Reference Include="Emgu.Util">
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.Util.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thahavuru.DataAccessLayer\bin\Debug\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="FaceSDK.NET">
-      <HintPath>C:\Program Files (x86)\Luxand\FaceSDK\bin\win32\FaceSDK.NET.dll</HintPath>
+      <HintPath>C:\Program Files\Luxand\FaceSDK\bin\win32\FaceSDK.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -96,6 +97,7 @@
     <Compile Include="Classification\LDAClassifier_GC.cs" />
     <Compile Include="Classification\NoseMouthRatioClassifier.cs" />
     <Compile Include="Classification\PCAClassifier.cs" />
+    <Compile Include="Classification\PCAClassifier_GC.cs" />
     <Compile Include="Classification\SVMClassifier.cs" />
     <Compile Include="FaceRecT\CascadeConfig.cs" />
     <Compile Include="FaceRecT\FeatureTracker.cs" />
