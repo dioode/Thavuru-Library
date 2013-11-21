@@ -32,20 +32,20 @@ namespace Thahavuru.Techniques.WebServiceMethods
             //else
             //{
 
-                if (userInterfacemodel.MaxLeaves <= userInterfacemodel.PageNumber)
+            if (userInterfacemodel.MaxLeaves <= userInterfacemodel.PageNumber)
+            {
+                if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes == null)
                 {
-                    if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes == null)
-                    {
-                        FillAttributeValues(ref userInterfacemodel.SearchingPerson, attributeSet);
-                        faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber); //This is hard-coded, have to change this
+                    FillAttributeValues(ref userInterfacemodel.SearchingPerson, attributeSet);
+                    faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber); //This is hard-coded, have to change this
 
-                    }
-                    else
-                    {
-                        userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes
-                        faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber + 1); //This is hard-coded, have to change this 
-                    }
-               }
+                }
+                else
+                {
+                    userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes
+                    faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber + 1); //This is hard-coded, have to change this 
+                }
+            }
             //}
         }
 
@@ -79,19 +79,14 @@ namespace Thahavuru.Techniques.WebServiceMethods
                 {
                     switch (faceAttribute.Name)
                     {
-
                         case "Eyes/Mouth":
                             new EyesMouthRatioClassifier().Classify(ref inputPerson);
                             break;
                         case "Mouth/Nose":
                             new NoseMouthRatioClassifier().Classify(ref inputPerson);
                             break;
-
                     }
-
-                }
-                
-                
+                }             
             }
         }
 
