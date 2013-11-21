@@ -7,10 +7,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
 
 
 namespace Thahavuru.Resources.ViewModels
 {
+    [ServiceContract]
     public interface IFace
     {
         [DataMember]
