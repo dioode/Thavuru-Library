@@ -18,15 +18,17 @@ namespace Thahavuru.Techniques.ClassificationT
             try
             {
                 FisherFaceRecognizer faceRecognizer = new FisherFaceRecognizer(80, double.PositiveInfinity);
-                if (File.Exists("train_image_fld.yml"))
-                {
-                    faceRecognizer.Load("train_image_fld.yml");
-                }
-                else
-                {
-                    faceRecognizer.Train(tSet.trainingList.ToArray(), tSet.labelList.ToArray());
-                    faceRecognizer.Save("train_image_fld.yml");
-                }
+                
+                faceRecognizer.Train(tSet.trainingList.ToArray(), tSet.labelList.ToArray());
+                //if (File.Exists("train_image_fld.yml"))
+                //{
+                //    faceRecognizer.Load("train_image_fld.yml");
+                //}
+                //else
+                //{
+                //    faceRecognizer.Train(tSet.trainingList.ToArray(), tSet.labelList.ToArray());
+                //    faceRecognizer.Save("train_image_fld.yml");
+                //}
                 result = faceRecognizer.Predict(probeImage.FaceImage);
                 return result;
             }
@@ -40,11 +42,5 @@ namespace Thahavuru.Techniques.ClassificationT
                 
             }
         }
-
-
-        
-
-        
-
     }
 }

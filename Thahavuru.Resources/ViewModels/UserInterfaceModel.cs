@@ -7,14 +7,22 @@ using System.Threading.Tasks;
 
 namespace Thahavuru.Resources.ViewModels
 {
+    [DataContract]
     public class UserInterfaceModel
     {
+        [DataMember]
         public PersonVM SearchingPerson;
 
+        [DataMember]
         public int PageNumber{ get; set; }
 
+        [DataMember]
+        public int MaxLeaves { get; set; }
+
+        [DataMember]
         public bool Next{ get; set; }
 
+        [DataMember]
         public bool Back{ get; set; }
     }
 }

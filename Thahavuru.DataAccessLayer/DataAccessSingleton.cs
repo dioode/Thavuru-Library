@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Emgu.CV;
+using Emgu.Util;
+using Emgu.CV.Structure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +15,34 @@ namespace Thahavuru.DataAccessLayer
     {
         public TrainingSet GetTraingSet(int classAttributeId) 
         {
-            //return dataAccess
-            return new TrainingSet();
+            TrainingSet TSet = new TrainingSet();
+            TSet.trainingList = new List<Image<Gray,byte>>();
+            TSet.labelList = new List<int>();
+            
+            using (var ctx = new FaceRecEFEntities())
+            {
+                var TrainSet =
+                    (from c in ctx.IndClasses join i in ctx.ClassElementImages
+                    on c.ClassId equals i.Class_ClassId
+                    where c.Class_Attrubute_Id == classAttributeId
+                    select new
+                    {
+                        ClassNumber = c.ClassNumber,
+                        image = i.Feature_img_uri
+                    }).ToList();
+
+                if (TrainSet.Count != 0) 
+                {
+                    foreach (var t in TrainSet) 
+                    {
+                        TSet.labelList.Add((int)t.ClassNumber);
+                        string imgUri = @"C:\ImageDB\" + (string)t.image;
+                        TSet.trainingList.Add(new Image<Gray, byte>(imgUri));
+                    }
+                }
+
+            }
+            return TSet;
         }
 
         public PersonVM GetPersonByID(int personId)
@@ -62,8 +91,26 @@ namespace Thahavuru.DataAccessLayer
 
         public List<PersonVM> GetPersonByName(string name)
         {
-            //return dataAccess
-            return new List<PersonVM>();
+            List<PersonVM> PersonM = new List<PersonVM>();
+
+            using (var ctx = new FaceRecEFEntities())
+            {
+                var persons = (from s in ctx.People
+                               where s.Name == name
+                               select s).ToList();
+
+                if (persons != null)
+                {
+                    foreach(var p in persons){
+                        PersonVM pM = new PersonVM();
+                        pM.Id = (int)p.Id;
+                        pM.Name = (string)p.Name;
+                        pM.Address = (string)p.Address;
+                        PersonM.Add(pM);
+                    }
+                }
+            }
+            return PersonM;
         }
 
         public TrainingSet GetTraingSet(List<int> personIdSet)
