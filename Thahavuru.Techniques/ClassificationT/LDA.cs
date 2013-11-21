@@ -35,6 +35,7 @@ namespace Thahavuru.Techniques.ClassificationT
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                result.Label = tSet.labelList.First();
                 return result;
             }
             finally 
