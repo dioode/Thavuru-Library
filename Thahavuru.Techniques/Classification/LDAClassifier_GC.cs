@@ -51,13 +51,9 @@ namespace Thahavuru.Techniques.Classification
             #endregion
 
             // calculate next attribute
-            try
-            {
-                var result = lda.FLDT(person.FaceofP, list);
-                Attribute.SortedClasses.Add(result.Label);
-            }
-            catch { }
-
+           
+            var result = lda.FLDT(person.FaceofP, list);
+            Attribute.SortedClasses.Add(result.Label);
             person.FaceofP.FaceAttributes.Add(Attribute); ;
         }
     }
