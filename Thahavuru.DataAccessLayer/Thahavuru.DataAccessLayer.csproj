@@ -94,6 +94,9 @@
     <Compile Include="EDMX\Class_Attrubute.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="EDMX\FaceAttributeHierarchy.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="EDMX\FaceRecEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,13 +121,16 @@
     <Compile Include="EDMX\Person.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDMX\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>FaceRecEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EDMX\sp_helpdiagrams_Result.cs">
+    <Compile Include="EDMX\PersonalFeatureSet.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
     <Compile Include="EDMX\sysdiagram.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\sysdiagram1.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\SystemConfigVariable.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

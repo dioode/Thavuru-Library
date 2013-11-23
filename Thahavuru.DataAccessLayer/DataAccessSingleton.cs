@@ -113,10 +113,34 @@ namespace Thahavuru.DataAccessLayer
             return PersonM;
         }
 
-        public TrainingSet GetTraingSet(List<int> personIdSet)
+        public TrainingSet GetAllNarrowdownFaceImageSet(PersonVM searchingPerson, int pageNumber) 
         {
-            //return dataAccess
-            return new TrainingSet();
+            var wantedSearchingTrack = searchingPerson.SearchTrakKeeper[pageNumber-1];
+
+            using (var ctx = new FaceRecEFEntities())
+            {
+                var faceImageSet = ctx.Images.AsQueryable();
+                foreach (var attrubuteLocation in wantedSearchingTrack)
+                {
+                    var personIdSetForCurrentAttrubute = ctx.People.Join(
+                                ctx.PersonalFeatureSets,x =>x.Id,
+                                y => y.Person_Id,
+                                (x,y) => new { personId =x.Id, attributeId = y.FeatureId, classNumber = y.IndClass.ClassNumber}).Where(s => s.attributeId == searchingPerson.FaceofP.FaceAttributes[attrubuteLocation[0]-1].AttributeId && s.classNumber == attrubuteLocation[1]));
+
+                    faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t =>t.personId).Contains((int)x.Person_Id));
+                }
+
+                var trainingSet = new TrainingSet();
+                
+                foreach (var item in faceImageSet)
+	            {
+		            trainingSet.trainingImageURIList.Add(item.Image_uri);
+                    trainingSet.labelList.Add(item.Image_Id);
+	            }
+
+                return trainingSet;
+            }
+
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Thahavuru.Techniques.WebServiceMethods
                             new PCAClassifier().Classify(ref inputPerson, trainigSet);
                             break;
                         case "LDA":
-                            new LDAClassifier().Classify(ref inputPerson, trainigSet);
+                            new LDAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
                             break;
                         case "SVM":
                             new SVMClassifier().Classify(ref inputPerson, trainigSet);
