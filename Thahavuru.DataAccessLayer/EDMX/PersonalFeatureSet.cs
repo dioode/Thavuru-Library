@@ -12,12 +12,13 @@ namespace Thahavuru.DataAccessLayer.EDMX
     using System;
     using System.Collections.Generic;
     
-    public partial class ClassElementImage
+    public partial class PersonalFeatureSet
     {
-        public int ClassElementId { get; set; }
-        public int Class_ClassId { get; set; }
-        public string Feature_img_uri { get; set; }
+        public int FeatureId { get; set; }
+        public int Person_Id { get; set; }
+        public int IndClass_ClassId { get; set; }
     
         public virtual IndClass IndClass { get; set; }
+        public virtual Person Person { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Thahavuru.DataAccessLayer.EDMX
     public partial class Image
     {
         public int Image_Id { get; set; }
-        public int Person_Id { get; set; }
+        public Nullable<int> Person_Id { get; set; }
         public string Image_uri { get; set; }
     
         public virtual Person Person { get; set; }

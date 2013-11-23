@@ -17,6 +17,7 @@ namespace Thahavuru.DataAccessLayer.EDMX
         public Person()
         {
             this.Images = new HashSet<Image>();
+            this.PersonalFeatureSets = new HashSet<PersonalFeatureSet>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,6 @@ namespace Thahavuru.DataAccessLayer.EDMX
         public string Address { get; set; }
     
         public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection<PersonalFeatureSet> PersonalFeatureSets { get; set; }
     }
 }

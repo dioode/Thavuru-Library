@@ -12,12 +12,10 @@ namespace Thahavuru.DataAccessLayer.EDMX
     using System;
     using System.Collections.Generic;
     
-    public partial class ClassElementImage
+    public partial class SystemConfigVariable
     {
-        public int ClassElementId { get; set; }
-        public int Class_ClassId { get; set; }
-        public string Feature_img_uri { get; set; }
-    
-        public virtual IndClass IndClass { get; set; }
+        public int Id { get; set; }
+        public string VariableName { get; set; }
+        public string VariableValue { get; set; }
     }
 }

@@ -8,16 +8,35 @@
         <EntityContainer Name="FaceRecModelStoreContainer">
           <EntitySet Name="Class_Attrubute" EntityType="FaceRecModel.Store.Class_Attrubute" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ClassElementImages" EntityType="FaceRecModel.Store.ClassElementImages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FaceAttributeHierarchy" EntityType="FaceRecModel.Store.FaceAttributeHierarchy" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Image" EntityType="FaceRecModel.Store.Image" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="IndClass" EntityType="FaceRecModel.Store.IndClass" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Person" EntityType="FaceRecModel.Store.Person" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PersonalFeatureSet" EntityType="FaceRecModel.Store.PersonalFeatureSet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemConfigVariables" EntityType="FaceRecModel.Store.SystemConfigVariables" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Class_Attribute_Id" Association="FaceRecModel.Store.FK_Class_Attribute_Id">
             <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
             <End Role="IndClass" EntitySet="IndClass" />
           </AssociationSet>
+          <AssociationSet Name="FK_Class_Id" Association="FaceRecModel.Store.FK_Class_Id">
+            <End Role="IndClass" EntitySet="IndClass" />
+            <End Role="ClassElementImages" EntitySet="ClassElementImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassAttribute_FaceAttributeHierarchy" Association="FaceRecModel.Store.FK_ClassAttribute_FaceAttributeHierarchy">
+            <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
+            <End Role="FaceAttributeHierarchy" EntitySet="FaceAttributeHierarchy" />
+          </AssociationSet>
           <AssociationSet Name="FK_Person_Id" Association="FaceRecModel.Store.FK_Person_Id">
             <End Role="Person" EntitySet="Person" />
             <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalFeatureSet_IndClass" Association="FaceRecModel.Store.FK_PersonalFeatureSet_IndClass">
+            <End Role="IndClass" EntitySet="IndClass" />
+            <End Role="PersonalFeatureSet" EntitySet="PersonalFeatureSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalFeatureSet_Person" Association="FaceRecModel.Store.FK_PersonalFeatureSet_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonalFeatureSet" EntitySet="PersonalFeatureSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Class_Attrubute">
@@ -27,6 +46,8 @@
           <Property Name="CAttributeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nchar" Nullable="false" MaxLength="10" />
           <Property Name="NumberOfClasses" Type="int" />
+          <Property Name="IsBiometric" Type="bit" />
+          <Property Name="ClassificationTechnique" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="ClassElementImages">
           <Key>
@@ -34,14 +55,22 @@
           </Key>
           <Property Name="ClassElementId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Class_ClassId" Type="int" Nullable="false" />
-          <Property Name="Feature_img_uri" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Feature_img_uri" Type="nchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FaceAttributeHierarchy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClassAttribute_AttId" Type="int" Nullable="false" />
+          <Property Name="LevelNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
             <PropertyRef Name="Image_Id" />
           </Key>
           <Property Name="Image_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Person_Id" Type="int" Nullable="false" />
+          <Property Name="Person_Id" Type="int" />
           <Property Name="Image_uri" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="IndClass">
@@ -65,6 +94,22 @@
           <Property Name="UserID" Type="nvarchar" MaxLength="20" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="PersonalFeatureSet">
+          <Key>
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Name="FeatureId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Person_Id" Type="int" Nullable="false" />
+          <Property Name="IndClass_ClassId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemConfigVariables">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VariableName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VariableValue" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Class_Attribute_Id">
           <End Role="Class_Attrubute" Type="FaceRecModel.Store.Class_Attrubute" Multiplicity="1" />
           <End Role="IndClass" Type="FaceRecModel.Store.IndClass" Multiplicity="*" />
@@ -77,8 +122,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Class_Id">
+          <End Role="IndClass" Type="FaceRecModel.Store.IndClass" Multiplicity="1" />
+          <End Role="ClassElementImages" Type="FaceRecModel.Store.ClassElementImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndClass">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="ClassElementImages">
+              <PropertyRef Name="Class_ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassAttribute_FaceAttributeHierarchy">
+          <End Role="Class_Attrubute" Type="FaceRecModel.Store.Class_Attrubute" Multiplicity="1" />
+          <End Role="FaceAttributeHierarchy" Type="FaceRecModel.Store.FaceAttributeHierarchy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class_Attrubute">
+              <PropertyRef Name="CAttributeId" />
+            </Principal>
+            <Dependent Role="FaceAttributeHierarchy">
+              <PropertyRef Name="ClassAttribute_AttId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Person_Id">
-          <End Role="Person" Type="FaceRecModel.Store.Person" Multiplicity="1" />
+          <End Role="Person" Type="FaceRecModel.Store.Person" Multiplicity="0..1" />
           <End Role="Image" Type="FaceRecModel.Store.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
@@ -89,25 +158,85 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PersonalFeatureSet_IndClass">
+          <End Role="IndClass" Type="FaceRecModel.Store.IndClass" Multiplicity="1" />
+          <End Role="PersonalFeatureSet" Type="FaceRecModel.Store.PersonalFeatureSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndClass">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="PersonalFeatureSet">
+              <PropertyRef Name="IndClass_ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalFeatureSet_Person">
+          <End Role="Person" Type="FaceRecModel.Store.Person" Multiplicity="1" />
+          <End Role="PersonalFeatureSet" Type="FaceRecModel.Store.PersonalFeatureSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalFeatureSet">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FaceRecModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="FaceRecEFEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="FaceAttributeHierarchies" EntityType="FaceRecModel.FaceAttributeHierarchy" />
+          <EntitySet Name="SystemConfigVariables" EntityType="FaceRecModel.SystemConfigVariable" />
           <EntitySet Name="Class_Attrubute" EntityType="FaceRecModel.Class_Attrubute" />
           <EntitySet Name="ClassElementImages" EntityType="FaceRecModel.ClassElementImage" />
           <EntitySet Name="Images" EntityType="FaceRecModel.Image" />
           <EntitySet Name="IndClasses" EntityType="FaceRecModel.IndClass" />
           <EntitySet Name="People" EntityType="FaceRecModel.Person" />
+          <EntitySet Name="PersonalFeatureSets" EntityType="FaceRecModel.PersonalFeatureSet" />
           <AssociationSet Name="FK_Class_Attribute_Id" Association="FaceRecModel.FK_Class_Attribute_Id">
             <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
             <End Role="IndClass" EntitySet="IndClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassAttribute_FaceAttributeHierarchy" Association="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy">
+            <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
+            <End Role="FaceAttributeHierarchy" EntitySet="FaceAttributeHierarchies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Id" Association="FaceRecModel.FK_Class_Id">
+            <End Role="IndClass" EntitySet="IndClasses" />
+            <End Role="ClassElementImage" EntitySet="ClassElementImages" />
           </AssociationSet>
           <AssociationSet Name="FK_Person_Id" Association="FaceRecModel.FK_Person_Id">
             <End Role="Person" EntitySet="People" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
+          <AssociationSet Name="FK_PersonalFeatureSet_IndClass" Association="FaceRecModel.FK_PersonalFeatureSet_IndClass">
+            <End Role="IndClass" EntitySet="IndClasses" />
+            <End Role="PersonalFeatureSet" EntitySet="PersonalFeatureSets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalFeatureSet_Person" Association="FaceRecModel.FK_PersonalFeatureSet_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonalFeatureSet" EntitySet="PersonalFeatureSets" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FaceAttributeHierarchy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ClassAttribute_AttId" Nullable="false" />
+          <Property Type="Int32" Name="LevelNo" Nullable="false" />
+          <NavigationProperty Name="Class_Attrubute" Relationship="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy" FromRole="FaceAttributeHierarchy" ToRole="Class_Attrubute" />
+        </EntityType>
+        <EntityType Name="SystemConfigVariable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="VariableName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VariableValue" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Class_Attrubute">
           <Key>
             <PropertyRef Name="CAttributeId" />
@@ -115,7 +244,10 @@
           <Property Type="Int32" Name="CAttributeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Type="Int32" Name="NumberOfClasses" />
+          <Property Type="Boolean" Name="IsBiometric" />
+          <Property Type="String" Name="ClassificationTechnique" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="IndClasses" Relationship="FaceRecModel.FK_Class_Attribute_Id" FromRole="Class_Attrubute" ToRole="IndClass" />
+          <NavigationProperty Name="FaceAttributeHierarchies" Relationship="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy" FromRole="Class_Attrubute" ToRole="FaceAttributeHierarchy" />
         </EntityType>
         <EntityType Name="ClassElementImage">
           <Key>
@@ -123,14 +255,15 @@
           </Key>
           <Property Type="Int32" Name="ClassElementId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="Class_ClassId" Nullable="false" />
-          <Property Type="String" Name="Feature_img_uri" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Feature_img_uri" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="IndClass" Relationship="FaceRecModel.FK_Class_Id" FromRole="ClassElementImage" ToRole="IndClass" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
             <PropertyRef Name="Image_Id" />
           </Key>
           <Property Type="Int32" Name="Image_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="Person_Id" Nullable="false" />
+          <Property Type="Int32" Name="Person_Id" />
           <Property Type="String" Name="Image_uri" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Person" Relationship="FaceRecModel.FK_Person_Id" FromRole="Image" ToRole="Person" />
         </EntityType>
@@ -146,6 +279,8 @@
           <Property Type="String" Name="Name" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Type="Boolean" Name="HasClassElements" />
           <NavigationProperty Name="Class_Attrubute" Relationship="FaceRecModel.FK_Class_Attribute_Id" FromRole="IndClass" ToRole="Class_Attrubute" />
+          <NavigationProperty Name="ClassElementImages" Relationship="FaceRecModel.FK_Class_Id" FromRole="IndClass" ToRole="ClassElementImage" />
+          <NavigationProperty Name="PersonalFeatureSets" Relationship="FaceRecModel.FK_PersonalFeatureSet_IndClass" FromRole="IndClass" ToRole="PersonalFeatureSet" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -156,6 +291,17 @@
           <Property Type="String" Name="UserID" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Images" Relationship="FaceRecModel.FK_Person_Id" FromRole="Person" ToRole="Image" />
+          <NavigationProperty Name="PersonalFeatureSets" Relationship="FaceRecModel.FK_PersonalFeatureSet_Person" FromRole="Person" ToRole="PersonalFeatureSet" />
+        </EntityType>
+        <EntityType Name="PersonalFeatureSet">
+          <Key>
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Type="Int32" Name="FeatureId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Person_Id" Nullable="false" />
+          <Property Type="Int32" Name="IndClass_ClassId" Nullable="false" />
+          <NavigationProperty Name="IndClass" Relationship="FaceRecModel.FK_PersonalFeatureSet_IndClass" FromRole="PersonalFeatureSet" ToRole="IndClass" />
+          <NavigationProperty Name="Person" Relationship="FaceRecModel.FK_PersonalFeatureSet_Person" FromRole="PersonalFeatureSet" ToRole="Person" />
         </EntityType>
         <Association Name="FK_Class_Attribute_Id">
           <End Type="FaceRecModel.Class_Attrubute" Role="Class_Attrubute" Multiplicity="1" />
@@ -169,8 +315,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ClassAttribute_FaceAttributeHierarchy">
+          <End Type="FaceRecModel.Class_Attrubute" Role="Class_Attrubute" Multiplicity="1" />
+          <End Type="FaceRecModel.FaceAttributeHierarchy" Role="FaceAttributeHierarchy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class_Attrubute">
+              <PropertyRef Name="CAttributeId" />
+            </Principal>
+            <Dependent Role="FaceAttributeHierarchy">
+              <PropertyRef Name="ClassAttribute_AttId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Id">
+          <End Type="FaceRecModel.IndClass" Role="IndClass" Multiplicity="1" />
+          <End Type="FaceRecModel.ClassElementImage" Role="ClassElementImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndClass">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="ClassElementImage">
+              <PropertyRef Name="Class_ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Person_Id">
-          <End Type="FaceRecModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="FaceRecModel.Person" Role="Person" Multiplicity="0..1" />
           <End Type="FaceRecModel.Image" Role="Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
@@ -181,15 +351,59 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PersonalFeatureSet_IndClass">
+          <End Type="FaceRecModel.IndClass" Role="IndClass" Multiplicity="1" />
+          <End Type="FaceRecModel.PersonalFeatureSet" Role="PersonalFeatureSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IndClass">
+              <PropertyRef Name="ClassId" />
+            </Principal>
+            <Dependent Role="PersonalFeatureSet">
+              <PropertyRef Name="IndClass_ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalFeatureSet_Person">
+          <End Type="FaceRecModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="FaceRecModel.PersonalFeatureSet" Role="PersonalFeatureSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalFeatureSet">
+              <PropertyRef Name="Person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FaceRecModelStoreContainer" CdmEntityContainer="FaceRecEFEntities">
+          <EntitySetMapping Name="FaceAttributeHierarchies">
+            <EntityTypeMapping TypeName="FaceRecModel.FaceAttributeHierarchy">
+              <MappingFragment StoreEntitySet="FaceAttributeHierarchy">
+                <ScalarProperty Name="LevelNo" ColumnName="LevelNo" />
+                <ScalarProperty Name="ClassAttribute_AttId" ColumnName="ClassAttribute_AttId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemConfigVariables">
+            <EntityTypeMapping TypeName="FaceRecModel.SystemConfigVariable">
+              <MappingFragment StoreEntitySet="SystemConfigVariables">
+                <ScalarProperty Name="VariableValue" ColumnName="VariableValue" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Class_Attrubute">
             <EntityTypeMapping TypeName="FaceRecModel.Class_Attrubute">
               <MappingFragment StoreEntitySet="Class_Attrubute">
+                <ScalarProperty Name="ClassificationTechnique" ColumnName="ClassificationTechnique" />
+                <ScalarProperty Name="IsBiometric" ColumnName="IsBiometric" />
                 <ScalarProperty Name="NumberOfClasses" ColumnName="NumberOfClasses" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CAttributeId" ColumnName="CAttributeId" />
@@ -234,6 +448,15 @@
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalFeatureSets">
+            <EntityTypeMapping TypeName="FaceRecModel.PersonalFeatureSet">
+              <MappingFragment StoreEntitySet="PersonalFeatureSet">
+                <ScalarProperty Name="IndClass_ClassId" ColumnName="IndClass_ClassId" />
+                <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
+                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

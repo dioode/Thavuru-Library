@@ -17,12 +17,16 @@ namespace Thahavuru.DataAccessLayer.EDMX
         public Class_Attrubute()
         {
             this.IndClasses = new HashSet<IndClass>();
+            this.FaceAttributeHierarchies = new HashSet<FaceAttributeHierarchy>();
         }
     
         public int CAttributeId { get; set; }
         public string Name { get; set; }
         public Nullable<int> NumberOfClasses { get; set; }
+        public Nullable<bool> IsBiometric { get; set; }
+        public string ClassificationTechnique { get; set; }
     
         public virtual ICollection<IndClass> IndClasses { get; set; }
+        public virtual ICollection<FaceAttributeHierarchy> FaceAttributeHierarchies { get; set; }
     }
 }

@@ -5,13 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2b91706abdde425e9813341c5d57b518" Name="Diagram1">
-        <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="4" PointY="0.5" />
-        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="2.5" PointX="6.375" PointY="0.5" />
-        <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="1.125" PointY="3.875" />
-        <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="1.125" PointY="0.5" />
-        <EntityTypeShape EntityType="FaceRecModel.Person" Width="1.5" PointX="4.125" PointY="3.875" />
+        <EntityTypeShape EntityType="FaceRecModel.FaceAttributeHierarchy" Width="1.5" PointX="7.6825433874887157" PointY="26.364344847558225" />
+        <EntityTypeShape EntityType="FaceRecModel.SystemConfigVariable" Width="1.5" PointX="0.625" PointY="15.25" />
+        <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="7.2877389841190254" PointY="5.6754362013542261" />
+        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="9.6927895032301485" PointY="15.112557567242792" />
+        <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="5.1616072902277148" PointY="14.103293723474859" />
+        <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="7.4466926583306368" PointY="20.9274785765109" />
+        <EntityTypeShape EntityType="FaceRecModel.Person" Width="1.5" PointX="4.1885458138718015" PointY="28.530801443630271" />
+        <EntityTypeShape EntityType="FaceRecModel.PersonalFeatureSet" Width="1.5" PointX="2.8258368553714064" PointY="25.27967747732982" />
         <AssociationConnector Association="FaceRecModel.FK_Class_Attribute_Id" />
+        <AssociationConnector Association="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy" />
+        <AssociationConnector Association="FaceRecModel.FK_Class_Id" />
         <AssociationConnector Association="FaceRecModel.FK_Person_Id" />
+        <AssociationConnector Association="FaceRecModel.FK_PersonalFeatureSet_IndClass" />
+        <AssociationConnector Association="FaceRecModel.FK_PersonalFeatureSet_Person" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
