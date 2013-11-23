@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emgu.CV;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,9 +52,13 @@ namespace Thahavuru.Techniques.Classification
             #endregion
 
             // calculate next attribute
-           
-            var result = lda.FLDT(person.FaceofP, list);
-            Attribute.SortedClasses.Add(result.Label);
+            try
+            {
+                FaceRecognizer.PredictionResult result = lda.FLDT(person.FaceofP, list);
+                Attribute.SortedClasses.Add(result.Label);
+            }
+            catch { }
+
             person.FaceofP.FaceAttributes.Add(Attribute); ;
         }
     }

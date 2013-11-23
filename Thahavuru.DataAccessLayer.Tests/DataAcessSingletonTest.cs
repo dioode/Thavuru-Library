@@ -57,7 +57,7 @@ namespace Thahavuru.DataAccessLayer.Tests
         [TestMethod]
         public void GetTraingSetTest() 
         {
-            int lable = 2;
+            int lable = 1;
 
             DataAccessSingleton DAS = new DataAccessSingleton();
             TrainingSet tset = DAS.GetTraingSet(2);
@@ -65,6 +65,12 @@ namespace Thahavuru.DataAccessLayer.Tests
             Assert.AreEqual(lable.ToString(), tset.labelList[1].ToString(), true);
         }
 
+        [TestMethod]
+        public void GetFaceAttributeHierarchyTest() 
+        {
+            DataAccessSingleton DAS = new DataAccessSingleton();
+            FaceAttributeHiearachy tset = DAS.GetFaceAttributeHierarchy();
+        }
 
     }
 }
