@@ -42,8 +42,8 @@ namespace Thahavuru.Techniques.WebServiceMethods
                 }
                 else
                 {
-                    userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes
-                    faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber + 1); //This is hard-coded, have to change this 
+                    //userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes
+                    //faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber + 1); //This is hard-coded, have to change this 
                 }
             }
             //}
