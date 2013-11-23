@@ -19,7 +19,7 @@ namespace Thahavuru.Techniques.Tests
             List<int> labelList = new List<int>();
 
             int j = 0;
-            string[] files = System.IO.Directory.GetFiles(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\Male", "*.jpg");
+            string[] files = System.IO.Directory.GetFiles(@"H:\FYP\images\images\Male", "*.jpg");
 
             while (j < 80)
             {
@@ -29,7 +29,7 @@ namespace Thahavuru.Techniques.Tests
                 j++;
             }
 
-            string[] files2 = System.IO.Directory.GetFiles(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\Female", "*.jpg");
+            string[] files2 = System.IO.Directory.GetFiles(@"H:\FYP\images\images\Female", "*.jpg");
 
             while (j < 160)
             {
@@ -51,7 +51,7 @@ namespace Thahavuru.Techniques.Tests
             TrainingSet tset = Data();
 
             IFace iface = new Face();
-            iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            iface.FaceImage = new Image<Gray, byte>(@"H:\FYP\images\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
             LDA lda = new LDA();
             FaceRecognizer.PredictionResult result = lda.FLDT(iface, tset);
@@ -63,7 +63,7 @@ namespace Thahavuru.Techniques.Tests
             TrainingSet tset = Data();
 
             IFace iface = new Face();
-            iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            iface.FaceImage = new Image<Gray, byte>(@"H:\FYP\images\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
             PCA pca = new PCA();
             List<int> result = pca.PCAT(iface, tset);
@@ -75,7 +75,7 @@ namespace Thahavuru.Techniques.Tests
             TrainingSet tset = Data();
 
             IFace iface = new Face();
-            iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            iface.FaceImage = new Image<Gray, byte>(@"H:\FYP\images\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
             SVMT svm = new SVMT();
             int result = svm.SVMTT(iface, tset);
@@ -88,7 +88,7 @@ namespace Thahavuru.Techniques.Tests
 
             IFace iface = new Face();
             iface.FaceAttributes = new List<FaceAttribute>();
-            iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            iface.FaceImage = new Image<Gray, byte>(@"H:\FYP\images\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             PersonVM person = new PersonVM();
             person.FaceofP = iface;
             person.MatchedFaceIdSet = new Dictionary<int,List<int>>();
@@ -105,7 +105,7 @@ namespace Thahavuru.Techniques.Tests
 
             IFace iface = new Face();
             iface.FaceAttributes = new List<FaceAttribute>();
-            iface.FaceImage = new Image<Gray, byte>(@"D:\My Work\Testing Projects\Thahavuru\LDA\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            iface.FaceImage = new Image<Gray, byte>(@"H:\FYP\images\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             PersonVM person = new PersonVM();
             person.FaceofP = iface;
 
@@ -120,6 +120,44 @@ namespace Thahavuru.Techniques.Tests
             lda.ClassifyGC_LDA(ref person, tset, attribute);
         }
 
+        [TestMethod]
+        public void PCAForMultipleResults()
+        {
+            TrainingSet tset = Data();
+
+            IFace iface = new Face();
+            iface.FaceAttributes = new List<FaceAttribute>();
+            iface.FaceImage = new Image<Gray, byte>(@"H:\FYP\images\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            PersonVM person = new PersonVM();
+            person.FaceofP = iface;
+            person.MatchedFaceIdSet = new Dictionary<int, List<int>>();
+
+            PCAClassifier_GC pca = new PCAClassifier_GC();
+
+            pca.RecognizeGC_PCA(ref person, tset, 10, 1);
+        }
+
+        [TestMethod]
+        public void PCAForMultipleClassify()
+        {
+            TrainingSet tset = Data();
+
+            IFace iface = new Face();
+            iface.FaceAttributes = new List<FaceAttribute>();
+            iface.FaceImage = new Image<Gray, byte>(@"H:\FYP\images\images\cropped-man-cap-1369042172067.jpg");//.Resize(imageSize, imageSize, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            PersonVM person = new PersonVM();
+            person.FaceofP = iface;
+
+            PCAClassifier_GC pca = new PCAClassifier_GC();
+            //ClassifyGC_LDA
+            FaceAttribute attribute = new FaceAttribute();
+            attribute.NumberOfClasses = 2;
+            attribute.SortedClasses = new List<int>();
+
+            attribute.SortedClasses.Add(1);
+
+            pca.ClassifyGC_PCA(ref person, tset, attribute);
+        }
 
     }
 }

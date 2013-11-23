@@ -16,6 +16,8 @@ namespace Thahavuru.Techniques.ClassificationT
         {
             List<int> idx = null;
             float[] f = null;
+            string[] a = null;
+            List<KeyValuePair<float, int>> resultsList = new List<KeyValuePair<float, int>>();
             try
             {
                 MCvTermCriteria termCrit = new MCvTermCriteria(16, 0.001);
@@ -23,10 +25,19 @@ namespace Thahavuru.Techniques.ClassificationT
                 if (recognizer.Recognize(probeImage.FaceImage) != null)
                 {
                     f = recognizer.GetEigenDistances(probeImage.FaceImage);
+                    a = recognizer.Labels;
+                    for (int i = 0; i < f.Count(); i++)
+                    {
+                        resultsList.Add(new KeyValuePair<float, int>(f[i], Convert.ToInt32(a[i])));
+                    }
+                    var sorted = resultsList.OrderBy(x => x.Key).ToList();
+                    idx = sorted.Select(x => x.Value).ToList();
+                }
+                else
+                {
+                    idx = tSet.labelList;
                 }
 
-                var sorted = f.Select((x, i) => new KeyValuePair<float, int>(x, i)).OrderBy(x => x.Key).ToList();
-                idx = sorted.Select(x => x.Value).ToList();
                 return idx;
                 
             }
