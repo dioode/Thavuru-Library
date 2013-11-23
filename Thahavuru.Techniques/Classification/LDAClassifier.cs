@@ -11,10 +11,11 @@ namespace Thahavuru.Techniques.Classification
 {
     public class LDAClassifier : IClassifier
     {
-        public void Classify(ref PersonVM person, TrainingSet list)
+        public void Classify(ref PersonVM person, TrainingSet list, FaceAttribute currentAttrubute)
         {
            
             var faceAttribute = new FaceAttribute();
+            faceAttribute.AttributeId = currentAttrubute.AttributeId;
 
             LDA lda = new LDA();
             var result = lda.FLDT(person.FaceofP, list);
