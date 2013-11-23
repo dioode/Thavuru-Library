@@ -115,7 +115,7 @@ namespace Thahavuru.Techniques.Tests
             attribute.NumberOfClasses = 2;
             attribute.SortedClasses = new List<int>();
             
-            attribute.SortedClasses.Add(1);
+            //attribute.SortedClasses.Add(1);
 
             lda.ClassifyGC_LDA(ref person, tset, attribute);
         }
