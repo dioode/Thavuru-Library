@@ -113,6 +113,43 @@ namespace Thahavuru.DataAccessLayer
             return PersonM;
         }
 
+        public FaceAttributeHiearachy GetFaceAttributeHierarchy()
+        {
+            FaceAttributeHiearachy faceAttributeHiearachy = new FaceAttributeHiearachy();
+            faceAttributeHiearachy.OrderedFaceAttributeSet = new List<FaceAttribute>();
+            using (var ctx = new FaceRecEFEntities()) 
+            {
+                var hierarchy = (from ah in ctx.FaceAttributeHierarchies
+                                 join a in ctx.Class_Attrubute
+                                     on ah.ClassAttribute_AttId equals a.CAttributeId
+                                 select new
+                                 {
+                                     AttributeId = a.CAttributeId,
+                                     Name = a.Name,
+                                     IsBiometric = a.IsBiometric,//IsBiometic,
+                                     NoOfClasses = a.NumberOfClasses,
+                                     ClassificationTechnique = a.ClassificationTechnique,
+                                     LevelNo = ah.LevelNo
+                                 }).ToList().OrderBy(x => x.LevelNo);
+
+                var technique = (from tech in ctx.SystemConfigVariables where tech.VariableName == "MATCHING_TECHNIQUE" select tech.VariableValue);
+                
+                foreach (var fah in hierarchy) 
+                {
+                    FaceAttribute fa = new FaceAttribute();
+                    fa.AttributeId = fah.AttributeId;
+                    fa.ClassificationTechnique = fah.ClassificationTechnique;
+                    fa.IsBiometric = (bool)(fah.IsBiometric == null ? false:fah.IsBiometric)  ;
+                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null? 0:fah.LevelNo);
+                    fa.Name = fah.Name;
+                    faceAttributeHiearachy.OrderedFaceAttributeSet.Add(fa);
+                }
+                faceAttributeHiearachy.FaceMatchingTechnique = technique.ToString();
+            }
+            
+            return faceAttributeHiearachy;
+        }
+
         public TrainingSet GetAllNarrowdownFaceImageSet(PersonVM searchingPerson, int pageNumber) 
         {
             var wantedSearchingTrack = searchingPerson.SearchTrakKeeper[pageNumber-1];
@@ -125,7 +162,7 @@ namespace Thahavuru.DataAccessLayer
                     var personIdSetForCurrentAttrubute = ctx.People.Join(
                                 ctx.PersonalFeatureSets,x =>x.Id,
                                 y => y.Person_Id,
-                                (x,y) => new { personId =x.Id, attributeId = y.FeatureId, classNumber = y.IndClass.ClassNumber}).Where(s => s.attributeId == searchingPerson.FaceofP.FaceAttributes[attrubuteLocation[0]-1].AttributeId && s.classNumber == attrubuteLocation[1]));
+                                (x,y) => new { personId =x.Id, attributeId = y.FeatureId, classNumber = y.IndClass.ClassNumber}).Where(s => s.attributeId == searchingPerson.FaceofP.FaceAttributes[attrubuteLocation[0]-1].AttributeId && s.classNumber == attrubuteLocation[1]);
 
                     faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t =>t.personId).Contains((int)x.Person_Id));
                 }
