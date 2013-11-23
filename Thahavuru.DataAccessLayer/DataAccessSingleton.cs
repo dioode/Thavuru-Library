@@ -172,49 +172,13 @@ namespace Thahavuru.DataAccessLayer
                 foreach (var item in faceImageSet)
 	            {
 		            trainingSet.trainingImageURIList.Add(item.Image_uri);
+                    trainingSet.trainingList.Add(new Image<Gray, byte>(@"C:\ImageDB\" +item.Image_uri));
                     trainingSet.labelList.Add(item.Image_Id);
 	            }
 
                 return trainingSet;
             }
 
-        }
-
-        public FaceAttributeHiearachy GetFaceAttributeHierarchy()
-        {
-            FaceAttributeHiearachy faceAttributeHiearachy = new FaceAttributeHiearachy();
-            faceAttributeHiearachy.OrderedFaceAttributeSet = new List<FaceAttribute>();
-            using (var ctx = new FaceRecEFEntities())
-            {
-                var hierarchy = (from ah in ctx.FaceAttributeHierarchies
-                                 join a in ctx.Class_Attrubute
-                                     on ah.ClassAttribute_AttId equals a.CAttributeId
-                                 select new
-                                 {
-                                     AttributeId = a.CAttributeId,
-                                     Name = a.Name,
-                                     IsBiometric = a.IsBiometic,
-                                     NoOfClasses = a.NumberOfClasses,
-                                     ClassificationTechnique = a.ClassificationTechnique,
-                                     LevelNo = ah.LevelNo
-                                 }).ToList().OrderBy(x => x.LevelNo);
-
-                var technique = (from tech in ctx.SystemConfigVariables where tech.VariableName == "matchingTechnique" select tech.VariableValue);
-
-                foreach (var fah in hierarchy)
-                {
-                    FaceAttribute fa = new FaceAttribute();
-                    fa.AttributeId = fah.AttributeId;
-                    fa.ClassificationTechnique = fah.ClassificationTechnique;
-                    fa.IsBiometric = (bool)(fah.IsBiometric == null ? false : fah.IsBiometric);
-                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null ? 0 : fah.LevelNo);
-                    fa.Name = fah.Name;
-                    faceAttributeHiearachy.OrderedFaceAttributeSet.Add(fa);
-                }
-                faceAttributeHiearachy.FaceMatchingTechnique = technique.ToString();
-            }
-
-            return faceAttributeHiearachy;
         }
 
     }
