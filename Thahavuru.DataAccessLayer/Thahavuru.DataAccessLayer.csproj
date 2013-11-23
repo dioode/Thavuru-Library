@@ -66,7 +66,7 @@
     </Reference>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Software\EntityFramework\EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\..\..\My Work\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -94,19 +94,20 @@
     <Compile Include="EDMX\Class_Attrubute.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDMX\FaceRecEF.Context1.cs">
+    <Compile Include="EDMX\FaceAttributeHierarchy.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\FaceRecEF.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FaceRecEF.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDMX\FaceRecEF.cs" />
-    <Compile Include="EDMX\FaceRecEF.Designer.cs" />
-    <Compile Include="EDMX\FaceRecEF1.cs">
+    <Compile Include="EDMX\FaceRecEF.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDMX\FaceRecEF1.Designer.cs">
+    <Compile Include="EDMX\FaceRecEF.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FaceRecEF.edmx</DependentUpon>
@@ -120,6 +121,12 @@
     <Compile Include="EDMX\Person.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="EDMX\PersonalFeatureSet.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDMX\SystemConfigVariable.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,23 +136,29 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="EDMX\FaceRecEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FaceRecEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
-    <Fakes Include="Fakes\EntityFramework.fakes" />
     <None Include="EDMX\FaceRecEF.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FaceRecEF.Context1.cs</LastGenOutput>
+      <DependentUpon>FaceRecEF.edmx</DependentUpon>
+      <LastGenOutput>FaceRecEF.Context.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="EDMX\FaceRecEF.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FaceRecEF1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EDMX\FaceRecEF.edmx.diagram" />
+    <None Include="EDMX\FaceRecEF.edmx.diagram">
+      <DependentUpon>FaceRecEF.edmx</DependentUpon>
+    </None>
     <None Include="EDMX\FaceRecEF.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FaceRecEF1.cs</LastGenOutput>
+      <DependentUpon>FaceRecEF.edmx</DependentUpon>
+      <LastGenOutput>FaceRecEF.cs</LastGenOutput>
     </None>
+    <Fakes Include="Fakes\EntityFramework.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

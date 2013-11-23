@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Emgu.CV;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,7 +54,7 @@ namespace Thahavuru.Techniques.Classification
             // calculate next attribute
             try
             {
-                var result = lda.FLDT(person.FaceofP, list);
+                FaceRecognizer.PredictionResult result = lda.FLDT(person.FaceofP, list);
                 Attribute.SortedClasses.Add(result.Label);
             }
             catch { }

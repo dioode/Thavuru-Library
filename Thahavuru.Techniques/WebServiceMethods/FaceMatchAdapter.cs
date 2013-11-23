@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Thahavuru.DataAccessLayer;
 using Thahavuru.Resources.ViewModels;
 using Thahavuru.Techniques.Classification;
-using Thahavuru.Techniques.FaceRec ;
+using Thahavuru.Techniques.FaceRec;
 
 
 namespace Thahavuru.Techniques.WebServiceMethods
@@ -13,45 +14,38 @@ namespace Thahavuru.Techniques.WebServiceMethods
     public class FaceMatchAdapter //: IFaceMatchAdapter
     {
         private FaceRecognition faceRecContext;
+        private DataAccessSingleton dataAccessSingleton;
         public FaceMatchAdapter()
         {
             faceRecContext = new FaceRecognition();
+            dataAccessSingleton = new DataAccessSingleton();
             //var attributeSet = GetCurrentConfigAttrubuteSet();
         }
 
         public void FaceMatch(ref UserInterfaceModel userInterfacemodel) 
         {
-            var attributeSet = GetCurrentConfigAttrubuteSet();
-
-            //if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes == null) 
-            //{
-            //    FillAttributeValues(ref userInterfacemodel.SearchingPerson, attributeSet);
-            //    faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber); //This is hard-coded, have to change this
-
-            //}
-            //else
-            //{
-
-            if (userInterfacemodel.MaxLeaves <= userInterfacemodel.PageNumber)
+            if (userInterfacemodel != null)
             {
-                if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes == null)
-                {
-                    FillAttributeValues(ref userInterfacemodel.SearchingPerson, attributeSet);
-                    faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber); //This is hard-coded, have to change this
+                var attributeSet = GetCurrentConfigAttrubuteSet();
 
-                }
-                else
+                if (userInterfacemodel.MaxLeaves <= userInterfacemodel.PageNumber)
                 {
-                    //userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes
-                    //faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber + 1); //This is hard-coded, have to change this 
-                }
+                    if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes == null || userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes.Count == 0)
+                    {
+                        FillAttributeValues(ref userInterfacemodel.SearchingPerson, attributeSet);
+                    }
+
+                    FillSearchTrackForNumber(ref userInterfacemodel.SearchingPerson, userInterfacemodel.PageNumber, userInterfacemodel.MaxLeaves);
+
+                    faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber); //This is hard-coded, have to change this
+                } 
             }
-            //}
         }
 
         private FaceAttributeHiearachy GetCurrentConfigAttrubuteSet() 
         {
-            return new FaceAttributeHiearachy();
+            return dataAccessSingleton.GetFaceAttributeHierarchy();
+            //return new FaceAttributeHiearachy();
             //Get from database.
         }
         
@@ -61,17 +55,17 @@ namespace Thahavuru.Techniques.WebServiceMethods
             {
                 if (!faceAttribute.IsBiometric)
                 {
-                    var trainigSet = faceAttribute.GetTrainingSet();
+                    var trainigSet = dataAccessSingleton.GetTraingSet(faceAttribute.AttributeId);
                     switch (faceAttribute.ClassificationTechnique)
                     {
                         case "PCA":
-                            new PCAClassifier().Classify(ref inputPerson, trainigSet);
+                            new PCAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
                             break;
                         case "LDA":
-                            new LDAClassifier().Classify(ref inputPerson, trainigSet);
+                            new LDAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
                             break;
                         case "SVM":
-                            new SVMClassifier().Classify(ref inputPerson, trainigSet);
+                            new SVMClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
                             break;
                     }    
                 }
@@ -147,9 +141,12 @@ namespace Thahavuru.Techniques.WebServiceMethods
                                 else
                                 {
                                     //Find the missing attribute classes in the attrbuteList and then assing the
-                                    string nextIntStr = Console.ReadLine();
-                                    int nextInt = Int16.Parse(nextIntStr);
-                                    inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses.Add(nextInt);
+
+                                    var currentAttrubute = inputPerson.FaceofP.FaceAttributes[currentLevel - 1];
+                                    var CurrentTrainingSet = dataAccessSingleton.GetTraingSet(currentAttrubute.AttributeId);
+                                    new LDAClassifier_GC().ClassifyGC_LDA(ref inputPerson, CurrentTrainingSet, currentAttrubute);
+
+                                    //inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses.Add(nextInt);
                                     temp[d][1] = inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses[indexOfCurrentClassLable + 1];//This is a dummy assigning
                                     temp[d][2] += 1;
                                 }
