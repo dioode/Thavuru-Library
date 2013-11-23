@@ -44,7 +44,8 @@ namespace Thahavuru.Techniques.WebServiceMethods
 
         private FaceAttributeHiearachy GetCurrentConfigAttrubuteSet() 
         {
-            return new FaceAttributeHiearachy();
+            return dataAccessSingleton.GetFaceAttributeHierarchy();
+            //return new FaceAttributeHiearachy();
             //Get from database.
         }
         
@@ -58,13 +59,13 @@ namespace Thahavuru.Techniques.WebServiceMethods
                     switch (faceAttribute.ClassificationTechnique)
                     {
                         case "PCA":
-                            new PCAClassifier().Classify(ref inputPerson, trainigSet);
+                            new PCAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
                             break;
                         case "LDA":
                             new LDAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
                             break;
                         case "SVM":
-                            new SVMClassifier().Classify(ref inputPerson, trainigSet);
+                            new SVMClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
                             break;
                     }    
                 }
