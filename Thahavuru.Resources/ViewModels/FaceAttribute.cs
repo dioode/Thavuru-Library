@@ -11,6 +11,11 @@ namespace Thahavuru.Resources.ViewModels
     [DataContract]
     public class FaceAttribute
     {
+        public FaceAttribute()
+        {
+            SortedClasses = new List<int>();
+            ClassesInOrder = new List<IndividualClass>();
+        }
         [DataMember]
         public string ClassificationTechnique; //{ get; set; }
         

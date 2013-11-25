@@ -10,6 +10,12 @@ namespace Thahavuru.Resources.ViewModels
 {
     public class TrainingSet
     {
+        public TrainingSet()
+        {
+            trainingList = new List<Image<Gray, byte>>();
+            trainingImageURIList = new List<string>();
+            labelList = new List<int>();
+        }
         public List<Image<Gray, byte>> trainingList { get; set; }
         public List<string> trainingImageURIList { get; set; }
         public List<int> labelList { get; set; }

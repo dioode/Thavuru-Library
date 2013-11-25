@@ -30,7 +30,7 @@ namespace Thahavuru.Techniques.WebServiceMethods
 
                 if (userInterfacemodel.MaxLeaves <= userInterfacemodel.PageNumber)
                 {
-                    if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes == null || userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes.Count == 0)
+                    if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes.Count == 0)
                     {
                         FillAttributeValues(ref userInterfacemodel.SearchingPerson, attributeSet);
                     }
@@ -56,7 +56,7 @@ namespace Thahavuru.Techniques.WebServiceMethods
                 if (!faceAttribute.IsBiometric)
                 {
                     var trainigSet = dataAccessSingleton.GetTraingSet(faceAttribute.AttributeId);
-                    switch (faceAttribute.ClassificationTechnique)
+                    switch (faceAttribute.ClassificationTechnique.Trim())
                     {
                         case "PCA":
                             new PCAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);

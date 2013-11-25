@@ -10,6 +10,13 @@ namespace Thahavuru.Resources.ViewModels
     [DataContract]
     public class PersonVM
     {
+        public PersonVM()
+        {
+            FaceofP = new Face();
+            SearchTrakKeeper = new List<List<List<int>>>();
+            MatchedFaceIdSet = new Dictionary<int, List<int>>();
+
+        }
         [DataMember]
         public IFace FaceofP; //{ get; set; }
 

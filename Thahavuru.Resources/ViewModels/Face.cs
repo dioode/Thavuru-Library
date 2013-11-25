@@ -11,6 +11,10 @@ namespace Thahavuru.Resources.ViewModels
 {
     public class Face : IFace
     {
+        public Face()
+        {
+            FaceAttributes = new List<FaceAttribute>();
+        }
         public Image<Gray, byte> FaceImage { get; set; }
         public List<FaceAttribute> FaceAttributes { get; set; }
         public Image GetImage { get { return FaceImage.ToBitmap(); } }

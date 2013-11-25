@@ -10,6 +10,10 @@ namespace Thahavuru.Resources.ViewModels
     [DataContract]
     public class UserInterfaceModel
     {
+        public UserInterfaceModel()
+        {
+            SearchingPerson = new PersonVM();
+        }
         [DataMember]
         public PersonVM SearchingPerson;
 

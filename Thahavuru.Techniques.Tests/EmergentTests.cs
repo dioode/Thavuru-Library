@@ -16,8 +16,8 @@ namespace Thahavuru.Techniques.Tests
             var userInterfaceModel= new UserInterfaceModel();
             userInterfaceModel.Next = true;
             userInterfaceModel.PageNumber = 1;
-            userInterfaceModel.SearchingPerson = new PersonVM() { FaceofP = new Face() { FaceImage = new Image<Gray, byte>(@"D:\Users\Diyoda Sajjana\Education\My Books\CSE\Uni\Mora\FYP\src\WCF\Thahavuru.Libraries\Thahavuru.Techniques.Tests\bin\Debug\40.jpg") } };
-            //userInterfaceModel.SearchingPerson.FaceofP.FaceImage = new Image<Gray, byte>(@"D:\Users\Diyoda Sajjana\Education\My Books\CSE\Uni\Mora\FYP\src\WCF\Thahavuru.Libraries\Thahavuru.Techniques.Tests\bin\Debug\40.jpg");
+            userInterfaceModel.SearchingPerson.FaceofP.FaceImage = new Image<Gray, byte>(@"D:\Users\Diyoda Sajjana\Education\My Books\CSE\Uni\Mora\FYP\src\WCF\Thahavuru.Libraries\Thahavuru.Techniques.Tests\bin\Debug\40.jpg");
+            
             var test = new FaceMatchAdapter();
             test.FaceMatch(ref userInterfaceModel);
 
