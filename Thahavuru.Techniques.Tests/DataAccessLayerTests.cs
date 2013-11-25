@@ -10,7 +10,7 @@ using Thahavuru.Techniques.Classification;
 namespace Thahavuru.Techniques.Tests
 {
     [TestClass]
-    public class UnitTest3
+    public class DataAccessLayerTests
     {
         private static TrainingSet Data()
         {

@@ -41,37 +41,47 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Emgu.CV">
+    <Reference Include="Emgu.CV, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2012">
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2012, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.DebuggerVisualizers.VS2012.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.GPU">
+    <Reference Include="Emgu.CV.GPU, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.GPU.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.ML">
+    <Reference Include="Emgu.CV.ML, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.ML.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.OCR">
+    <Reference Include="Emgu.CV.OCR, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.OCR.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.Stitching">
+    <Reference Include="Emgu.CV.Stitching, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.Stitching.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.UI">
+    <Reference Include="Emgu.CV.UI, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.VideoStab">
+    <Reference Include="Emgu.CV.VideoStab, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.CV.VideoStab.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.Util">
+    <Reference Include="Emgu.Util, Version=2.4.9.1847, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\Emgu.Util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.XML" />
-    <Reference Include="ZedGraph">
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\EmguCV\emgucv-windows-universal-gpu 2.4.9.1847\bin\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -88,11 +98,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="HaarCascadeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest2.cs" />
-    <Compile Include="UnitTest3.cs" />
-    <Compile Include="UnitTest4.cs" />
+    <Compile Include="BiometricMethodsTests.cs" />
+    <Compile Include="DataAccessLayerTests.cs" />
+    <Compile Include="EmergentTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Thahavuru.Resources\Thahavuru.Resources.csproj">
@@ -103,6 +113,9 @@
       <Project>{e5501b88-8bef-4027-a6c7-f84d474c514a}</Project>
       <Name>Thahavuru.Techniques</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

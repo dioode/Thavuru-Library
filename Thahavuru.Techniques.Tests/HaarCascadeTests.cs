@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace Thahavuru.Techniques.Tests
 {
     [TestClass]
-    public class UnitTest1{
+    public class HaarCascadeTests{
         [TestMethod]
         public void TestMethod1()
         {
