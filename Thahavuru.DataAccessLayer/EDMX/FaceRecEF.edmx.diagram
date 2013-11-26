@@ -4,15 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2b91706abdde425e9813341c5d57b518" Name="Diagram1">
-        <EntityTypeShape EntityType="FaceRecModel.FaceAttributeHierarchy" Width="1.5" PointX="7.6825433874887157" PointY="26.364344847558225" />
-        <EntityTypeShape EntityType="FaceRecModel.SystemConfigVariable" Width="1.5" PointX="0.625" PointY="15.25" />
-        <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="7.2877389841190254" PointY="5.6754362013542261" />
-        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="9.6927895032301485" PointY="15.112557567242792" />
-        <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="5.1616072902277148" PointY="14.103293723474859" />
-        <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="7.4466926583306368" PointY="20.9274785765109" />
-        <EntityTypeShape EntityType="FaceRecModel.Person" Width="1.5" PointX="4.1885458138718015" PointY="28.530801443630271" />
-        <EntityTypeShape EntityType="FaceRecModel.PersonalFeatureSet" Width="1.5" PointX="2.8258368553714064" PointY="25.27967747732982" />
+      <Diagram DiagramId="2b91706abdde425e9813341c5d57b518" Name="Diagram1" ZoomLevel="48">
+        <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="10.220577578163043" PointY="5.2568478012722206" />
+        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="5.3428008078331128" PointY="25.320932295788513" />
+        <EntityTypeShape EntityType="FaceRecModel.FaceAttributeHierarchy" Width="1.5" PointX="4.5872205051533976" PointY="24.02567052469853" />
+        <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="9.7395066440755063" PointY="21.907485793301596" />
+        <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="9.8144295764222882" PointY="24.410480674547369" />
+        <EntityTypeShape EntityType="FaceRecModel.Person" Width="1.5" PointX="7.1577491719078967" PointY="14.470406837049129" />
+        <EntityTypeShape EntityType="FaceRecModel.PersonalFeatureSet" Width="1.5" PointX="3.9772843308641033" PointY="2.36925929895102" />
+        <EntityTypeShape EntityType="FaceRecModel.sysdiagram" Width="1.5" PointX="8.4666259048816865" PointY="3.07718716705087" />
+        <EntityTypeShape EntityType="FaceRecModel.SystemConfigVariable" Width="1.5" PointX="10.834341208839017" PointY="28.992097853213593" />
         <AssociationConnector Association="FaceRecModel.FK_Class_Attribute_Id" />
         <AssociationConnector Association="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy" />
         <AssociationConnector Association="FaceRecModel.FK_Class_Id" />

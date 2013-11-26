@@ -13,6 +13,7 @@
           <EntitySet Name="IndClass" EntityType="FaceRecModel.Store.IndClass" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Person" EntityType="FaceRecModel.Store.Person" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PersonalFeatureSet" EntityType="FaceRecModel.Store.PersonalFeatureSet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="FaceRecModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SystemConfigVariables" EntityType="FaceRecModel.Store.SystemConfigVariables" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Class_Attribute_Id" Association="FaceRecModel.Store.FK_Class_Attribute_Id">
             <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
@@ -102,6 +103,16 @@
           <Property Name="Person_Id" Type="int" Nullable="false" />
           <Property Name="IndClass_ClassId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="SystemConfigVariables">
           <Key>
             <PropertyRef Name="Id" />
@@ -187,14 +198,15 @@
     <edmx:ConceptualModels>
       <Schema Namespace="FaceRecModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="FaceRecEFEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="FaceAttributeHierarchies" EntityType="FaceRecModel.FaceAttributeHierarchy" />
-          <EntitySet Name="SystemConfigVariables" EntityType="FaceRecModel.SystemConfigVariable" />
           <EntitySet Name="Class_Attrubute" EntityType="FaceRecModel.Class_Attrubute" />
           <EntitySet Name="ClassElementImages" EntityType="FaceRecModel.ClassElementImage" />
+          <EntitySet Name="FaceAttributeHierarchies" EntityType="FaceRecModel.FaceAttributeHierarchy" />
           <EntitySet Name="Images" EntityType="FaceRecModel.Image" />
           <EntitySet Name="IndClasses" EntityType="FaceRecModel.IndClass" />
           <EntitySet Name="People" EntityType="FaceRecModel.Person" />
           <EntitySet Name="PersonalFeatureSets" EntityType="FaceRecModel.PersonalFeatureSet" />
+          <EntitySet Name="sysdiagrams" EntityType="FaceRecModel.sysdiagram" />
+          <EntitySet Name="SystemConfigVariables" EntityType="FaceRecModel.SystemConfigVariable" />
           <AssociationSet Name="FK_Class_Attribute_Id" Association="FaceRecModel.FK_Class_Attribute_Id">
             <End Role="Class_Attrubute" EntitySet="Class_Attrubute" />
             <End Role="IndClass" EntitySet="IndClasses" />
@@ -220,23 +232,6 @@
             <End Role="PersonalFeatureSet" EntitySet="PersonalFeatureSets" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="FaceAttributeHierarchy">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="ClassAttribute_AttId" Nullable="false" />
-          <Property Type="Int32" Name="LevelNo" Nullable="false" />
-          <NavigationProperty Name="Class_Attrubute" Relationship="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy" FromRole="FaceAttributeHierarchy" ToRole="Class_Attrubute" />
-        </EntityType>
-        <EntityType Name="SystemConfigVariable">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="VariableName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="VariableValue" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Class_Attrubute">
           <Key>
             <PropertyRef Name="CAttributeId" />
@@ -257,6 +252,15 @@
           <Property Type="Int32" Name="Class_ClassId" Nullable="false" />
           <Property Type="String" Name="Feature_img_uri" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="IndClass" Relationship="FaceRecModel.FK_Class_Id" FromRole="ClassElementImage" ToRole="IndClass" />
+        </EntityType>
+        <EntityType Name="FaceAttributeHierarchy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ClassAttribute_AttId" Nullable="false" />
+          <Property Type="Int32" Name="LevelNo" Nullable="false" />
+          <NavigationProperty Name="Class_Attrubute" Relationship="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy" FromRole="FaceAttributeHierarchy" ToRole="Class_Attrubute" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -302,6 +306,24 @@
           <Property Type="Int32" Name="IndClass_ClassId" Nullable="false" />
           <NavigationProperty Name="IndClass" Relationship="FaceRecModel.FK_PersonalFeatureSet_IndClass" FromRole="PersonalFeatureSet" ToRole="IndClass" />
           <NavigationProperty Name="Person" Relationship="FaceRecModel.FK_PersonalFeatureSet_Person" FromRole="PersonalFeatureSet" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SystemConfigVariable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="VariableName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VariableValue" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Class_Attribute_Id">
           <End Type="FaceRecModel.Class_Attrubute" Role="Class_Attrubute" Multiplicity="1" />
@@ -381,24 +403,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FaceRecModelStoreContainer" CdmEntityContainer="FaceRecEFEntities">
-          <EntitySetMapping Name="FaceAttributeHierarchies">
-            <EntityTypeMapping TypeName="FaceRecModel.FaceAttributeHierarchy">
-              <MappingFragment StoreEntitySet="FaceAttributeHierarchy">
-                <ScalarProperty Name="LevelNo" ColumnName="LevelNo" />
-                <ScalarProperty Name="ClassAttribute_AttId" ColumnName="ClassAttribute_AttId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SystemConfigVariables">
-            <EntityTypeMapping TypeName="FaceRecModel.SystemConfigVariable">
-              <MappingFragment StoreEntitySet="SystemConfigVariables">
-                <ScalarProperty Name="VariableValue" ColumnName="VariableValue" />
-                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Class_Attrubute">
             <EntityTypeMapping TypeName="FaceRecModel.Class_Attrubute">
               <MappingFragment StoreEntitySet="Class_Attrubute">
@@ -416,6 +420,15 @@
                 <ScalarProperty Name="Feature_img_uri" ColumnName="Feature_img_uri" />
                 <ScalarProperty Name="Class_ClassId" ColumnName="Class_ClassId" />
                 <ScalarProperty Name="ClassElementId" ColumnName="ClassElementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaceAttributeHierarchies">
+            <EntityTypeMapping TypeName="FaceRecModel.FaceAttributeHierarchy">
+              <MappingFragment StoreEntitySet="FaceAttributeHierarchy">
+                <ScalarProperty Name="LevelNo" ColumnName="LevelNo" />
+                <ScalarProperty Name="ClassAttribute_AttId" ColumnName="ClassAttribute_AttId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -457,6 +470,26 @@
                 <ScalarProperty Name="IndClass_ClassId" ColumnName="IndClass_ClassId" />
                 <ScalarProperty Name="Person_Id" ColumnName="Person_Id" />
                 <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FaceRecModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemConfigVariables">
+            <EntityTypeMapping TypeName="FaceRecModel.SystemConfigVariable">
+              <MappingFragment StoreEntitySet="SystemConfigVariables">
+                <ScalarProperty Name="VariableValue" ColumnName="VariableValue" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
