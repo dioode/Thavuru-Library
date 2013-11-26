@@ -20,8 +20,17 @@ namespace Thahavuru.Resources.ViewModels
         [DataMember]
         public int PageNumber{ get; set; }
 
+        private int maxLeaves;
         [DataMember]
-        public int MaxLeaves { get; set; }
+        public int MaxLeaves { get {
+                int x = 1;
+                foreach (var item in SearchingPerson.FaceofP.FaceAttributes)
+	            {
+                    x *= item.NumberOfClasses; 
+	            }
+                return (int)x;
+            }
+        }
 
         [DataMember]
         public bool Next{ get; set; }

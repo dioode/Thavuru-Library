@@ -28,7 +28,7 @@ namespace Thahavuru.Techniques.WebServiceMethods
             {
                 var attributeSet = GetCurrentConfigAttrubuteSet();
 
-                if (userInterfacemodel.MaxLeaves <= userInterfacemodel.PageNumber)
+                if (userInterfacemodel.MaxLeaves >= userInterfacemodel.PageNumber)
                 {
                     if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes.Count == 0)
                     {
