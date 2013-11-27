@@ -60,7 +60,7 @@ namespace Thahavuru.DataAccessLayer.Tests
             int lable = 1;
 
             DataAccessSingleton DAS = new DataAccessSingleton();
-            TrainingSet tset = DAS.GetTraingSet(2);
+            TrainingSet tset = DAS.GetTraingSet(3);
 
             Assert.AreEqual(lable.ToString(), tset.labelList[1].ToString(), true);
         }
