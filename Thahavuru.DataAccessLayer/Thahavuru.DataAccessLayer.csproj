@@ -124,6 +124,9 @@
     <Compile Include="EDMX\PersonalFeatureSet.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="EDMX\sysdiagram.cs">
+      <DependentUpon>FaceRecEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="EDMX\SystemConfigVariable.cs">
       <DependentUpon>FaceRecEF.tt</DependentUpon>
     </Compile>
