@@ -27,8 +27,13 @@ namespace Thahavuru.Techniques.WebServiceMethods
             if (userInterfacemodel != null)
             {
                 var attributeSet = GetCurrentConfigAttrubuteSet();
+                int x = 1;
+                foreach (var item in attributeSet.OrderedFaceAttributeSet)
+                {
+                    x *= item.NumberOfClasses;
+                }
 
-                if (userInterfacemodel.MaxLeaves >= userInterfacemodel.PageNumber)
+                if (x >= userInterfacemodel.PageNumber)
                 {
                     if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes.Count == 0)
                     {
