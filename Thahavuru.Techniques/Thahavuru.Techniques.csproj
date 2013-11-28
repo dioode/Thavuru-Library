@@ -98,7 +98,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classification\EyesEyeBrowsRatioClassifier.cs" />
     <Compile Include="Classification\EyesMouthRatioClassifier.cs" />
+    <Compile Include="Classification\EyesNoseRatioClassifier.cs" />
     <Compile Include="Classification\IBiometricClassifier.cs" />
     <Compile Include="Classification\IClassifier.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
