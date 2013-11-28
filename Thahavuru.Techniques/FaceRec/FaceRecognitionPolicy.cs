@@ -16,6 +16,6 @@ namespace Thahavuru.Techniques.FaceRec
 
             GeometricFace face = new GeometricFace();
             return face;
-        } 
+        }  
     }
 }

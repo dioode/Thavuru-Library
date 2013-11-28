@@ -22,15 +22,7 @@ namespace Thahavuru.Resources.ViewModels
 
         private int maxLeaves;
         [DataMember]
-        public int MaxLeaves { get {
-                int x = 1;
-                foreach (var item in SearchingPerson.FaceofP.FaceAttributes)
-	            {
-                    x *= item.NumberOfClasses; 
-	            }
-                return (int)x;
-            }
-        }
+        public int MaxLeaves { get; set; }
 
         [DataMember]
         public bool Next{ get; set; }

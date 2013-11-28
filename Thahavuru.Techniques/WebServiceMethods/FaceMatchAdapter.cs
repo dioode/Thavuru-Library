@@ -27,6 +27,17 @@ namespace Thahavuru.Techniques.WebServiceMethods
             if (userInterfacemodel != null)
             {
                 var attributeSet = GetCurrentConfigAttrubuteSet();
+                if (userInterfacemodel.MaxLeaves == 0)
+                {
+                    int x = 1;
+                    foreach (var item in attributeSet.OrderedFaceAttributeSet)
+                    {
+                        x *= item.NumberOfClasses;
+                    }
+
+                    userInterfacemodel.MaxLeaves = x;
+                }
+
 
                 if (userInterfacemodel.MaxLeaves >= userInterfacemodel.PageNumber)
                 {
@@ -144,8 +155,16 @@ namespace Thahavuru.Techniques.WebServiceMethods
 
                                     var currentAttrubute = inputPerson.FaceofP.FaceAttributes[currentLevel - 1];
                                     var CurrentTrainingSet = dataAccessSingleton.GetTraingSet(currentAttrubute.AttributeId);
-                                    new LDAClassifier_GC().ClassifyGC_LDA(ref inputPerson, CurrentTrainingSet, currentAttrubute);
 
+                                    switch (currentAttrubute.ClassificationTechnique)
+                                    {
+                                        case "LDA":
+                                            new LDAClassifier_GC().ClassifyGC_LDA(ref inputPerson, CurrentTrainingSet, currentAttrubute);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    
                                     //inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses.Add(nextInt);
                                     temp[d][1] = inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses[indexOfCurrentClassLable + 1];//This is a dummy assigning
                                     temp[d][2] += 1;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Thahavuru.DataAccessLayer;
 using Thahavuru.Resources.ViewModels;
+using Thahavuru.Techniques.Classification;
 using Thahavuru.Techniques.ClassificationT;
 
 
@@ -38,6 +39,7 @@ namespace Thahavuru.Techniques.FaceRec
         private void MatchFacesUsingPCA(ref PersonVM person, int pageNumber) 
         {
             var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person, pageNumber);
+            
             PCA pca = new PCA();
             var matchingOrderedSet = pca.PCAT(person.FaceofP, faceImageListafterPruning);
 
@@ -47,8 +49,8 @@ namespace Thahavuru.Techniques.FaceRec
         private void MatchFacesLDA(ref PersonVM person, int pageNumber)
         {
             var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person, pageNumber);
-            LDA lda = new LDA();
-            var matchingOrderedSet = lda.FLDT(person.FaceofP, faceImageListafterPruning);
+            LDAClassifier_GC lda_gc = new LDAClassifier_GC();
+            lda_gc.RecognizeGC_LDA(ref person, faceImageListafterPruning, 10, pageNumber);
         }
 
         private void MatchFacesSVM(ref PersonVM person, int pageNumber)

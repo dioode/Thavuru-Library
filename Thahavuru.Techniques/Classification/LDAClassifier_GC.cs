@@ -25,8 +25,9 @@ namespace Thahavuru.Techniques.Classification
                 if (result.Distance != 0.0)
                 {
                     matchedFaces.Add(result.Label);
-                    list.labelList.RemoveAt(Convert.ToInt32(result.Label));
-                    list.trainingList.RemoveAt(Convert.ToInt32(result.Label));
+                    var index = list.labelList.IndexOf(result.Label);
+                    list.labelList.RemoveAt(index);
+                    list.trainingList.RemoveAt(index);
                 }
             }
             person.MatchedFaceIdSet.Add(PageNumber, matchedFaces);
