@@ -156,16 +156,18 @@ namespace Thahavuru.DataAccessLayer
 
             using (var ctx = new FaceRecEFEntities())
             {
-                var faceImageSet = ctx.Images.AsQueryable();
+                var faceImageSet = ctx.Images.ToList();
                 foreach (var attrubuteLocation in wantedSearchingTrack)
                 {
+                    int currentAttrubuteID = searchingPerson.FaceofP.FaceAttributes[attrubuteLocation[0] - 1].AttributeId;
+                    int classNumberForCurrentAttribute = attrubuteLocation[1];
                     var personIdSetForCurrentAttrubute = ctx.People.Join(
-                                ctx.PersonalFeatureSets,x =>x.Id,
+                                ctx.PersonalFeatureSets, x => x.Id,
                                 y => y.Person_Id,
-                                (x,y) => new { personId =x.Id, attributeId = y.IndClass.Class_Attrubute_Id, classNumber = y.IndClass.ClassNumber})
-                                .Where(s => s.attributeId == searchingPerson.FaceofP.FaceAttributes[attrubuteLocation[0]-1].AttributeId && s.classNumber == attrubuteLocation[1]);
+                                (x, y) => new { personId = x.Id, attributeId = y.IndClass.Class_Attrubute_Id, classNumber = y.IndClass.ClassNumber }).ToList()
+                                .Where(s => s.attributeId == currentAttrubuteID && s.classNumber == classNumberForCurrentAttribute).ToList();
 
-                    faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t => t.personId).Contains((int)x.Person_Id)) ;
+                    faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t =>t.personId).Contains((int)x.Person_Id)).ToList();
                 }
 
                 var trainingSet = new TrainingSet();
@@ -173,11 +175,15 @@ namespace Thahavuru.DataAccessLayer
                 foreach (var item in faceImageSet)
 	            {
 		            trainingSet.trainingImageURIList.Add(item.Image_uri);
-                    trainingSet.trainingList.Add(new Image<Gray, byte>(@"C:\ImageDB\" +item.Image_uri));
-                    trainingSet.labelList.Add(item.Image_Id);
+                    trainingSet.trainingList.Add(new Image<Gray, byte>(@"C:\ImageDB\PersonImages\" + item.Image_uri));
+                    trainingSet.labelList.Add((int)item.Person_Id);
 	            }
 
                 return trainingSet;
+
+
+
+
             }
 
         }
