@@ -27,13 +27,19 @@ namespace Thahavuru.Techniques.WebServiceMethods
             if (userInterfacemodel != null)
             {
                 var attributeSet = GetCurrentConfigAttrubuteSet();
-                int x = 1;
-                foreach (var item in attributeSet.OrderedFaceAttributeSet)
+                if (userInterfacemodel.MaxLeaves == 0)
                 {
-                    x *= item.NumberOfClasses;
+                    int x = 1;
+                    foreach (var item in attributeSet.OrderedFaceAttributeSet)
+                    {
+                        x *= item.NumberOfClasses;
+                    }
+
+                    userInterfacemodel.MaxLeaves = x;
                 }
 
-                if (x >= userInterfacemodel.PageNumber)
+
+                if (userInterfacemodel.MaxLeaves >= userInterfacemodel.PageNumber)
                 {
                     if (userInterfacemodel.SearchingPerson.FaceofP.FaceAttributes.Count == 0)
                     {
@@ -149,8 +155,16 @@ namespace Thahavuru.Techniques.WebServiceMethods
 
                                     var currentAttrubute = inputPerson.FaceofP.FaceAttributes[currentLevel - 1];
                                     var CurrentTrainingSet = dataAccessSingleton.GetTraingSet(currentAttrubute.AttributeId);
-                                    new LDAClassifier_GC().ClassifyGC_LDA(ref inputPerson, CurrentTrainingSet, currentAttrubute);
 
+                                    switch (currentAttrubute.ClassificationTechnique)
+                                    {
+                                        case "LDA":
+                                            new LDAClassifier_GC().ClassifyGC_LDA(ref inputPerson, CurrentTrainingSet, currentAttrubute);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    
                                     //inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses.Add(nextInt);
                                     temp[d][1] = inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses[indexOfCurrentClassLable + 1];//This is a dummy assigning
                                     temp[d][2] += 1;

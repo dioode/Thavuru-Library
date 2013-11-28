@@ -4,6 +4,7 @@ using Thahavuru.Techniques.WebServiceMethods;
 using Thahavuru.Resources.ViewModels;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using System.Diagnostics;
 
 namespace Thahavuru.Techniques.Tests
 {
@@ -21,14 +22,14 @@ namespace Thahavuru.Techniques.Tests
             var test = new FaceMatchAdapter();
             test.FaceMatch(ref userInterfaceModel);
 
-            foreach (var item in userInterfaceModel.SearchingPerson.SearchTrakKeeper)
-	        {
-		        Console.WriteLine(item[0]);
-                Console.WriteLine(item[1]);
-                Console.WriteLine(item[2]);
-                Console.WriteLine("-----");
-	        }
-            Console.Read();
+            foreach (var itemSet in userInterfaceModel.SearchingPerson.MatchedFaceIdSet)
+            {
+                foreach (var item in itemSet.Value)
+	            {
+                    Debug.Write(item + " ,");
+	            }
+                Debug.WriteLine("----------");
+            }
         }
     }
 }
