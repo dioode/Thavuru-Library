@@ -132,7 +132,7 @@ namespace Thahavuru.DataAccessLayer
                                      LevelNo = ah.LevelNo
                                  }).ToList().OrderBy(x => x.LevelNo);
 
-                var technique = (from tech in ctx.SystemConfigVariables where tech.VariableName == "MATCHING_TECHNIQUE" select tech.VariableValue);
+                var technique = (from tech in ctx.SystemConfigVariables where tech.VariableName == "MATCHING_TECHNIQUE" select tech.VariableValue).FirstOrDefault<string>();
                 
                 foreach (var fah in hierarchy) 
                 {
@@ -162,9 +162,10 @@ namespace Thahavuru.DataAccessLayer
                     var personIdSetForCurrentAttrubute = ctx.People.Join(
                                 ctx.PersonalFeatureSets,x =>x.Id,
                                 y => y.Person_Id,
-                                (x,y) => new { personId =x.Id, attributeId = y.FeatureId, classNumber = y.IndClass.ClassNumber}).Where(s => s.attributeId == searchingPerson.FaceofP.FaceAttributes[attrubuteLocation[0]-1].AttributeId && s.classNumber == attrubuteLocation[1]);
+                                (x,y) => new { personId =x.Id, attributeId = y.IndClass.Class_Attrubute_Id, classNumber = y.IndClass.ClassNumber})
+                                .Where(s => s.attributeId == searchingPerson.FaceofP.FaceAttributes[attrubuteLocation[0]-1].AttributeId && s.classNumber == attrubuteLocation[1]);
 
-                    faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t =>t.personId).Contains((int)x.Person_Id));
+                    faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t => t.personId).Contains((int)x.Person_Id)) ;
                 }
 
                 var trainingSet = new TrainingSet();

@@ -56,7 +56,7 @@
           </Key>
           <Property Name="ClassElementId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Class_ClassId" Type="int" Nullable="false" />
-          <Property Name="Feature_img_uri" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="Feature_img_uri" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="FaceAttributeHierarchy">
           <Key>
@@ -71,7 +71,7 @@
             <PropertyRef Name="Image_Id" />
           </Key>
           <Property Name="Image_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Person_Id" Type="int" />
+          <Property Name="Person_Id" Type="int" Nullable="false" />
           <Property Name="Image_uri" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="IndClass">
@@ -158,7 +158,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Person_Id">
-          <End Role="Person" Type="FaceRecModel.Store.Person" Multiplicity="0..1" />
+          <End Role="Person" Type="FaceRecModel.Store.Person" Multiplicity="1" />
           <End Role="Image" Type="FaceRecModel.Store.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">
@@ -250,7 +250,7 @@
           </Key>
           <Property Type="Int32" Name="ClassElementId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="Class_ClassId" Nullable="false" />
-          <Property Type="String" Name="Feature_img_uri" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Feature_img_uri" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="IndClass" Relationship="FaceRecModel.FK_Class_Id" FromRole="ClassElementImage" ToRole="IndClass" />
         </EntityType>
         <EntityType Name="FaceAttributeHierarchy">
@@ -267,7 +267,7 @@
             <PropertyRef Name="Image_Id" />
           </Key>
           <Property Type="Int32" Name="Image_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="Person_Id" />
+          <Property Type="Int32" Name="Person_Id" Nullable="false" />
           <Property Type="String" Name="Image_uri" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Person" Relationship="FaceRecModel.FK_Person_Id" FromRole="Image" ToRole="Person" />
         </EntityType>
@@ -362,7 +362,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Person_Id">
-          <End Type="FaceRecModel.Person" Role="Person" Multiplicity="0..1" />
+          <End Type="FaceRecModel.Person" Role="Person" Multiplicity="1" />
           <End Type="FaceRecModel.Image" Role="Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Person">

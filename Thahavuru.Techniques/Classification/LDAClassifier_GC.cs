@@ -13,23 +13,26 @@ namespace Thahavuru.Techniques.Classification
     {
         public void RecognizeGC_LDA(ref PersonVM person, TrainingSet list, int NumberOfResults, int PageNumber)
         {
-            List<int> matchedFaces = new List<int>();
-            
-            LDA lda = new LDA();
-            int[] condition = { NumberOfResults, list.trainingList.Count };
-
-            for (int i = 0; i < condition.Min(); i++) 
+            if (person.MatchedFaceIdSet[PageNumber] == null)
             {
-                var result = lda.FLDT(person.FaceofP, list);
+                List<int> matchedFaces = new List<int>();
 
-                if (result.Distance != 0.0)
+                LDA lda = new LDA();
+                int[] condition = { NumberOfResults, list.trainingList.Count };
+
+                for (int i = 0; i < condition.Min(); i++)
                 {
-                    matchedFaces.Add(result.Label);
-                    list.labelList.RemoveAt(Convert.ToInt32(result.Label));
-                    list.trainingList.RemoveAt(Convert.ToInt32(result.Label));
+                    var result = lda.FLDT(person.FaceofP, list);
+
+                    if (result.Distance != 0.0)
+                    {
+                        matchedFaces.Add(result.Label);
+                        list.labelList.RemoveAt(Convert.ToInt32(result.Label));
+                        list.trainingList.RemoveAt(Convert.ToInt32(result.Label));
+                    }
                 }
+                person.MatchedFaceIdSet.Add(PageNumber, matchedFaces);
             }
-            person.MatchedFaceIdSet.Add(PageNumber, matchedFaces);
         }
 
         public void ClassifyGC_LDA(ref PersonVM person, TrainingSet list, FaceAttribute Attribute) 

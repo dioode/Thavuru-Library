@@ -72,5 +72,23 @@ namespace Thahavuru.DataAccessLayer.Tests
             FaceAttributeHiearachy tset = DAS.GetFaceAttributeHierarchy();
         }
 
+        [TestMethod]
+        public void GetAllNarrowdownFaceImageSetTest() 
+        {
+            DataAccessSingleton DAS = new DataAccessSingleton();
+
+            PersonVM person = new PersonVM();
+            //person.SearchTrakKeeper = new List<List<List<int>>>();
+            
+            List<List<int>> list = new List<List<int>>();
+            list.Add(new List<int>() { 1, 2, 1 });
+            list.Add(new List<int>() { 2, 2, 1 });
+            list.Add(new List<int>() { 3, 2, 1 });
+
+            person.SearchTrakKeeper.Add(list);
+
+            TrainingSet tset = DAS.GetAllNarrowdownFaceImageSet(person, 1);
+        }
+
     }
 }
