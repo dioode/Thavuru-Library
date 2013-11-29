@@ -20,10 +20,15 @@ namespace Thahavuru.Techniques.Classification
 
             for (int i = 0; i < condition.Min(); i++) 
             {
-                var result = lda.FLDT(person.FaceofP, list);
+                
 
-                if (result.Distance != 0.0)
+                if (list.labelList.Count ==1)
                 {
+                    matchedFaces.Add(list.labelList[0]);
+                }
+                else
+                {
+                    var result = lda.FLDT(person.FaceofP, list);
                     matchedFaces.Add(result.Label);
                     var index = list.labelList.IndexOf(result.Label);
                     list.labelList.RemoveAt(index);

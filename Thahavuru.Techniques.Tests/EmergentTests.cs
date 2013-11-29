@@ -18,18 +18,24 @@ namespace Thahavuru.Techniques.Tests
             userInterfaceModel.Next = true;
             userInterfaceModel.PageNumber = 1;
             userInterfaceModel.SearchingPerson.FaceofP.FaceImage = new Image<Gray, byte>(@"D:\Users\Diyoda Sajjana\Education\My Books\CSE\Uni\Mora\FYP\src\WCF\Thahavuru.Libraries\Thahavuru.Techniques.Tests\bin\Debug\40.jpg");
-            
             var test = new FaceMatchAdapter();
             test.FaceMatch(ref userInterfaceModel);
-
-            foreach (var itemSet in userInterfaceModel.SearchingPerson.MatchedFaceIdSet)
+            for (int i = 2; i < 3; i++)
             {
-                foreach (var item in itemSet.Value)
-	            {
-                    Debug.Write(item + " ,");
-	            }
-                Debug.WriteLine("----------");
+                userInterfaceModel.PageNumber = i;
+                test.FaceMatch(ref userInterfaceModel);
+
+                foreach (var itemSet in userInterfaceModel.SearchingPerson.MatchedFaceIdSet)
+                {
+                    foreach (var item in itemSet.Value)
+                    {
+                        Debug.Write(item + " ,");
+                    }
+                    Debug.WriteLine("----------");
+                }
             }
+            
+            
         }
     }
 }

@@ -140,7 +140,7 @@ namespace Thahavuru.DataAccessLayer
                     fa.AttributeId = fah.AttributeId;
                     fa.ClassificationTechnique = fah.ClassificationTechnique;
                     fa.IsBiometric = (bool)(fah.IsBiometric == null ? false:fah.IsBiometric)  ;
-                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null? 0:fah.LevelNo);
+                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null? 0:fah.NoOfClasses);
                     fa.Name = fah.Name;
                     faceAttributeHiearachy.OrderedFaceAttributeSet.Add(fa);
                 }
