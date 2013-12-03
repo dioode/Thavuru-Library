@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="1e31a9a7-7690-4506-b1ca-bd7cf9a7acbf"
+  name="Utils"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="5b74f3e6-ea29-40a1-8b04-a0166e45fdb0"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DThahavuru.Resources.Utils"
+      tag="ViewCode" />
+  </referencesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="c66abfca-e243-47b5-bc7c-ee876841d67d">
+      <profileInstance
+        Id="8d9105e8-d1bc-4875-b51c-0b6a4609a930"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="c37a159b-8bba-4866-958a-d97d3febf341"
+        name="DataAccessUtil"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="27a3e1bc-b8c4-494d-84c3-a03dbb556410"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.Utils Type%3DDataAccessUtil"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="e69a2004-6244-4791-8a58-d2e3c7ae92ad"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7ef2c3ae-5a18-4ef8-9929-5c959965c041">
+                <propertyInstance
+                  Id="629e8747-e278-4f46-9aec-8933b25cefaa"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="997feff6-7357-43e1-8645-babd7063a8a4">
+                <propertyInstance
+                  Id="ef6101e6-d2db-4d3e-8932-7484493c1933"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="235bc47e-ff43-4563-89bb-5483b02c96d1">
+                <propertyInstance
+                  Id="d32a8a90-40ef-4eb5-80ad-34f7fac4eaaf"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="701db690-2840-45fe-963e-38caca096f62">
+                <propertyInstance
+                  Id="265e1f7a-1531-43f8-80fb-bff88e5ca8bd"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fadf6ec7-bb7c-46a0-9589-d9ebecbebb51">
+                <propertyInstance
+                  Id="37703db6-35ac-4a5d-b6bf-9c9d738c2c84"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="9245b2bb-6052-4fb1-9227-2ed6bd45c504"
+            name="GetImageData"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="eb59ecdc-5dbd-42a9-bec1-e535f6465c66"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.Utils Type%3DDataAccessUtil Member%3D(Name%3DGetImageData OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV Type%3D(Name%3DImage GenericParameterCount%3D2 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV.Structure Type%3DGray)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DByte)]))]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="787c644f-830f-4096-a909-4d8c6047d78e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6d538b31-6e45-4cb0-afa5-55d1560273f5">
+                    <propertyInstance
+                      Id="821bafcf-49e1-4099-ab12-98da6e67ef82"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e7edc32-a23c-4f77-a23e-8361519dab15">
+                    <propertyInstance
+                      Id="921d80ee-7c18-4875-8117-32372c89532f"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="334e7d3d-6d4d-4e73-b8b1-353778596ec0">
+                    <propertyInstance
+                      Id="d5e9dfc2-9d37-406f-9663-f3880b113838"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12158446-ef14-4828-8475-de59afa03977">
+                    <propertyInstance
+                      Id="ad9f46d3-aa62-4f34-adc6-c9c83b6440a7"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5ba0bd60-a135-4c0b-87f7-9eb05dfd0c44">
+                    <propertyInstance
+                      Id="ceafe021-9e69-4bdc-a267-975f63d37844"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8ae610f4-dd4f-4a26-930f-3158c712134d">
+                    <propertyInstance
+                      Id="ea4f8313-30fb-4f2f-8871-2b9b8e48627b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0a40cb8c-9b0b-4d30-8313-e9ded68f4470"
+                  name="trainName"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="51cca3a3-8003-4280-bccc-1470fc1708c0"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.Utils Type%3DDataAccessUtil Member%3D(Name%3DGetImageData OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV Type%3D(Name%3DImage GenericParameterCount%3D2 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV.Structure Type%3DGray)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DByte)]))]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]))]) ParameterIdentifier%3DtrainName"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="142786d2-a90a-44f3-a4df-8ac7f4c24256"
+                      LastKnownName="List&lt;String‎&gt;"
+                      LastKnownLocation="Package6_2345.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ad8c18db-7032-4b49-b895-579b21902e92"
+                  name="imageList"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d5cf1673-dc45-4e91-bda3-f195566d4d13"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.Utils Type%3DDataAccessUtil Member%3D(Name%3DGetImageData OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV Type%3D(Name%3DImage GenericParameterCount%3D2 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV.Structure Type%3DGray)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DByte)]))]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]))]) ParameterIdentifier%3DimageList"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="c8c38883-ca0a-4f2d-a4fe-31d9205d990c"
+                      LastKnownName="List&lt;Image‎&lt;Gray‎, Byte‎&gt;‎&gt;"
+                      LastKnownLocation="Package6_2345.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3e9f63f2-a750-4a16-9447-1aadcbe763e0"
+                  name="labelList"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="77056426-13a2-40cf-a0b0-71587bc5b70d"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.Utils Type%3DDataAccessUtil Member%3D(Name%3DGetImageData OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV Type%3D(Name%3DImage GenericParameterCount%3D2 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV.Structure Type%3DGray)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DByte)]))]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem.Collections.Generic Type%3D(Name%3DList GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]))]) ParameterIdentifier%3DlabelList"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="62abe2e9-d856-4cdf-b885-db474f1af926"
+                      LastKnownName="List&lt;Int32‎&gt;"
+                      LastKnownLocation="Package6_2345.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="5e69402c-2e6a-49c5-9530-5d664efa4c34"
+            name="DataAccessUtil"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="fb9d2767-3dad-4cab-bced-a2533d705eaa"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.Utils Type%3DDataAccessUtil Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e2b21e67-72b3-4cd8-a53b-64467edc29d7"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10220ebf-1e60-4b4c-b1ab-890c6d92fbb0">
+                    <propertyInstance
+                      Id="e13a87df-6235-4d39-9bd5-789686dc2e2b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="575032b6-7e9d-4a31-97de-a07bd2d0f1b9">
+                    <propertyInstance
+                      Id="3152929e-30aa-4360-81d3-2abbb264455b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="60e49703-3be8-400d-9743-40dea2e0aa5c">
+                    <propertyInstance
+                      Id="d172131c-817b-4976-8367-08e503953a56"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a5c5fb3e-00ee-4d51-b460-3d80f6fc1fa3">
+                    <propertyInstance
+                      Id="04d2fb1f-e4f0-457b-a775-d79c8575a6ed"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8dcc2a12-5853-46dd-a620-cf63593679fd">
+                    <propertyInstance
+                      Id="1e072fa4-1430-4c2c-8641-dd33f08c07ca"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ee096fc-2ca8-4d68-b450-a430b2e89ad6">
+                    <propertyInstance
+                      Id="bc072de2-1b62-481f-a0e0-5e6837d8d5b9"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="c61ecb44-438e-4220-97ba-d2b0ae23e8c4" name="UMLClassDiagram1" linkedPackageId="b6df717b-7446-41e1-898e-ea4284657581" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="94633368-9fb6-4f34-a161-b58ccf6d7b3f">
+      <profileInstance Id="d2893e74-5b11-41c9-b15a-0605e6285e38" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="dc8005c4-5438-4360-bd5b-bbf22c2cd627">
+      <profileInstance Id="5d7ab26f-fb26-4c07-a278-6b5cd79da647" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="bf0ed51b-db93-4ae4-b95f-702e7f2cf675">
+      <profileInstance Id="6f18d79b-b524-4e27-a30c-b614ec3f4e0c" name="CSharpProfile">
+        <elementDefinition Id="157d42e8-5359-4f71-90ed-f1f3fd3cf1dc" />
+      </profileInstance>
+      <elementDefinition Id="e00464ab-1ca3-48e3-963e-2e5e00111262" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="713949f4-1c01-4969-880e-90e5d54f72a2" name="EyesEyeBrowsRatioClassifier" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <referencesInternal>
+          <reference Id="af40f84d-065d-4ec9-8df9-abec0a5bafda" handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier" tag="ViewCode">
+            <elementDefinition Id="454f2f46-8efd-428e-8590-3801153ef3fd" />
+          </reference>
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance Id="46726c32-e4b8-4286-a9a1-4fab4aed0874" name="class" profile="CSharpProfile">
+            <elementDefinition Id="c6827e2e-15a6-4b0c-befd-09e8fceb72b9" />
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="0ebc9555-4c90-4fcb-8aac-bf1bdce7f846">
+                <propertyInstance Id="3c223f68-7392-4d17-ba8e-18f5499b46e9" name="ClrAttributes">
+                  <elementDefinition Id="35fcc4cb-de0f-40f8-952c-8b5d34aef94a" />
+                </propertyInstance>
+                <elementDefinition Id="79b72728-3621-4ee5-82b2-e4047b068c9a" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="de2e4b19-b010-4e1a-b948-7f66bb49b6d9">
+                <propertyInstance Id="04822c03-8116-4360-89c8-eb62a8eeb181" name="IsPartial" value="false">
+                  <elementDefinition Id="611356fd-6a9a-429e-a029-8bbe810b39a1" />
+                </propertyInstance>
+                <elementDefinition Id="0d54b4a6-291b-4679-ab2e-eb6769243a1e" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="54d97f60-2f4b-4cb3-b216-4d624364530f">
+                <propertyInstance Id="1b826848-02a5-4ab4-ba73-1574907d508f" name="IsStatic" value="False">
+                  <elementDefinition Id="8e28f5f3-d14e-4a72-b822-4f396b765c87" />
+                </propertyInstance>
+                <elementDefinition Id="e2bcb192-0fa6-4dd6-8f89-1f24a8c9f914" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="24cb1d32-00cc-452e-9ce6-d98c65b161d5">
+                <propertyInstance Id="4d904276-b815-4acf-8a2a-2cb98a763c7d" name="IsUnsafe" value="false">
+                  <elementDefinition Id="a765e1e8-cbd7-4e43-934c-95d4cdb2f3c1" />
+                </propertyInstance>
+                <elementDefinition Id="248456d6-f260-43fe-b9c3-b601732cd5c2" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances Id="b1c1af4e-c4ee-400e-831c-a9e9f5a156c5">
+                <propertyInstance Id="8f110b4f-bfa3-4940-a114-1f922276c1be" name="PackageVisibility" value="internal">
+                  <elementDefinition Id="c3864654-94f3-4aa4-9a9f-535ceb4dcfde" />
+                </propertyInstance>
+                <elementDefinition Id="ad59555c-3e06-45b3-9526-b9c820428904" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <elementDefinition Id="36f57d1b-9fbc-41ca-8216-1573f4ddd21c" />
+        <ownedOperationsInternal>
+          <operation Id="d0dcdab3-5f87-4583-a160-74909637fb12" name="Classify" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <referencesInternal>
+              <reference Id="f2718747-6693-464a-b6e7-aa39d00791f2" handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier Member%3D(Name%3DClassify OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.ViewModels Type%3DPersonVM ParamKind%3DRef)])" tag="ViewCode">
+                <elementDefinition Id="bf4388c1-6a3e-498e-b3e2-81c8038e421c" />
+              </reference>
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance Id="bbf2a197-7208-4099-9947-f0f16a751ef3" name="method" profile="CSharpProfile">
+                <elementDefinition Id="b04ba264-41f4-46c5-bcd9-463f7fefc03e" />
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="b3fda832-6287-4c36-9da9-0d1387a79c4e">
+                    <propertyInstance Id="7b312b3f-e298-4f24-88e9-96c1c70a8e4b" name="ClrAttributes">
+                      <elementDefinition Id="82f7817b-bd9c-4755-af7e-42f2f19a2a2f" />
+                    </propertyInstance>
+                    <elementDefinition Id="aca3994b-d540-4d68-ada5-b75ca2b54962" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="45cbc202-1164-4a8e-a7f3-a3098a21a6df">
+                    <propertyInstance Id="4e4823d8-3a44-4426-94b4-cc06663062aa" name="IsPartial" value="false">
+                      <elementDefinition Id="d6402a92-a0be-40ca-9f82-4610d2f77135" />
+                    </propertyInstance>
+                    <elementDefinition Id="546a6966-ea29-4548-a3b6-d0813fbcf198" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="7bbdeb00-0bfc-4387-82aa-5d91cfb1cf55">
+                    <propertyInstance Id="890eef4b-c356-484a-8313-2769651a767a" name="IsUnsafe" value="false">
+                      <elementDefinition Id="e3b61ae9-97fa-49fa-b0b8-e4c192b6c990" />
+                    </propertyInstance>
+                    <elementDefinition Id="9856de40-fb4f-41d8-bbb7-64f9c5e03329" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="628a2aea-f569-4842-9bb9-b666c5ccd032">
+                    <propertyInstance Id="add02dc0-2f55-4b6b-a00f-4aa98362d53c" name="Inheritance" value="none">
+                      <elementDefinition Id="277cdae6-0163-43fc-b137-4b2389c723aa" />
+                    </propertyInstance>
+                    <elementDefinition Id="54fe1997-6bad-4c34-80c5-6d7168bb532a" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="5915a4ea-d69c-4d89-8aeb-52dc1d756558">
+                    <propertyInstance Id="bb9c5e21-39e1-4cf2-a477-747f17f4de77" name="PackageVisibility" value="internal">
+                      <elementDefinition Id="87092879-a6f3-49ec-b8a1-136551539668" />
+                    </propertyInstance>
+                    <elementDefinition Id="a9d6f64e-efa2-4455-b026-1773ac008350" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="e30f0293-c6df-4af9-9d1c-533ef9140aee">
+                    <propertyInstance Id="8c38ea79-4a5a-4bc4-9718-e9337aaf2b56" name="params" value="false">
+                      <elementDefinition Id="710bb70c-9a80-4fbf-b20f-9de9bd71ea71" />
+                    </propertyInstance>
+                    <elementDefinition Id="624cb718-1cf9-4938-a839-ca9f936ea1b4" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <elementDefinition Id="da949b6b-7d91-4511-8418-ee6622360fcf" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="65614744-0633-467a-b570-9a166dde663f" name="probeImage" direction="InOut">
+                  <referencesInternal>
+                    <reference Id="35659633-5625-4269-9926-40edd8ce6326" handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier Member%3D(Name%3DClassify OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.ViewModels Type%3DPersonVM ParamKind%3DRef)]) ParameterIdentifier%3DprobeImage" tag="ViewCode">
+                      <elementDefinition Id="dc0f0a98-acbf-4748-82b1-c5a975a62122" />
+                    </reference>
+                  </referencesInternal>
+                  <elementDefinition Id="7c8344c1-3934-432e-b1f2-af16a60b02b1" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="3456660e-a340-427c-aebb-401fbc05e371" LastKnownName="PersonVM" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="4d98bf1b-5e86-4233-ac77-9a54b1641d63" name="EyesEyeBrowsRatioClassifier" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <referencesInternal>
+              <reference Id="cff116bb-4290-445b-b2ec-e0141ae140d7" handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier Member%3D.ctor" tag="ViewCode">
+                <elementDefinition Id="3c0fa7f2-3200-4c09-9d90-af2253c56991" />
+              </reference>
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance Id="4445f8dd-f48e-47a9-ad9f-5b77d4773a8b" name="method" profile="CSharpProfile">
+                <elementDefinition Id="07d574d0-5901-464a-9c11-1ea29ae8ef06" />
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="8211e960-e711-4e9e-914d-95cbae0f2103">
+                    <propertyInstance Id="ec5d21e5-17fe-4bb2-8894-426b8751d5d6" name="ClrAttributes">
+                      <elementDefinition Id="93c156ce-8193-4a49-99e5-74ee9094770d" />
+                    </propertyInstance>
+                    <elementDefinition Id="29680eb6-0f13-41b4-b25f-0199d7b2b497" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="fee4141c-1520-43a5-b2e3-dcb94dc7382f">
+                    <propertyInstance Id="823d31bc-119d-4664-b54d-36d317760780" name="IsPartial" value="false">
+                      <elementDefinition Id="63e562d6-3d2c-495f-97a8-4f38c2d7697e" />
+                    </propertyInstance>
+                    <elementDefinition Id="620750c3-9592-40af-815a-642b07231515" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="fa794f14-00e0-4c4e-82fe-24596ca630c5">
+                    <propertyInstance Id="8f1f65ad-a6ea-49cb-aafe-54d454b03df9" name="IsUnsafe" value="false">
+                      <elementDefinition Id="a20cc003-2d69-43dd-ad6d-4f6d882826c1" />
+                    </propertyInstance>
+                    <elementDefinition Id="73571ea3-cb2b-4964-8472-40586757cf78" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="a3b98a74-8f1c-4dfa-9a25-f9d0d5456d77">
+                    <propertyInstance Id="54359cc9-6e3c-49eb-a070-534cb952c337" name="Inheritance" value="none">
+                      <elementDefinition Id="98edc2e6-4ca1-41fd-9666-a48565a5d9a8" />
+                    </propertyInstance>
+                    <elementDefinition Id="9666dd00-5537-4107-ac4c-39d12928b00a" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="fd402368-0f62-47fa-a1a1-13730f48d1ac">
+                    <propertyInstance Id="9bafb704-2504-453f-a5fb-3d458826306d" name="PackageVisibility" value="internal">
+                      <elementDefinition Id="57e211c4-2230-43cf-92b5-58ef785b93eb" />
+                    </propertyInstance>
+                    <elementDefinition Id="961242ed-7e2e-4110-b570-df778213e96a" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances Id="729c8964-c48d-44dd-824d-42e1e71c1458">
+                    <propertyInstance Id="94b5edc5-1629-4e06-9160-e190b566a49b" name="params" value="false">
+                      <elementDefinition Id="3026a1e3-9849-4b8a-96db-4a8dd19041a6" />
+                    </propertyInstance>
+                    <elementDefinition Id="96acffb1-4e37-4001-bae9-52ec12504785" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <elementDefinition Id="74a27cac-4e71-47b8-bbeb-9895f3811971" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="3456660e-a340-427c-aebb-401fbc05e371" name="PersonVM" isAbstract="false" isLeaf="false" cachedFullName="Thahavuru.ModelingProject::Thahavuru::Resources::ViewModels::PersonVM">
+        <elementDefinition Id="33d3a750-46ec-4bfb-a6a3-49f9f69bb981" />
+      </referencedType>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="b6df717b-7446-41e1-898e-ea4284657581" name="Thahavuru.ModelingProject">
+    <elementDefinition Id="3e056ddf-03a7-40e0-83b2-59005f2f5a58" />
+  </package>
+</logicalClassDesignerModel>

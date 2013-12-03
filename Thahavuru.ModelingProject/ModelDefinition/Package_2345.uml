@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="0b73e951-bb95-4658-b972-f16c3490232c"
+  name="Thahavuru"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="44487594-7247-46a5-886f-2eb8ddd2c702"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DThahavuru"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="3e81f97b-f0da-4c8d-a892-ff00436b766f"
+        LastKnownName="DataAccessLayer"
+        LastKnownLocation="Package1_2345.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="881c3e75-d89a-4da2-ae96-195dba52d730"
+        LastKnownName="Techniques"
+        LastKnownLocation="Package_2349.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="9ec7fbd9-3ce2-450b-a06b-f27e91de4f50"
+        LastKnownName="Resources"
+        LastKnownLocation="Package1_2352.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
