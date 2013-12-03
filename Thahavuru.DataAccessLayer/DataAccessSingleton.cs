@@ -140,8 +140,20 @@ namespace Thahavuru.DataAccessLayer
                     fa.AttributeId = fah.AttributeId;
                     fa.ClassificationTechnique = fah.ClassificationTechnique;
                     fa.IsBiometric = (bool)(fah.IsBiometric == null ? false:fah.IsBiometric)  ;
-                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null? 0:fah.LevelNo);
+                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null? 0:fah.NoOfClasses);
                     fa.Name = fah.Name;
+
+                    var indClasses = (from i in ctx.IndClasses
+                                    where i.Class_Attrubute_Id == fa.AttributeId
+                                    select new { name = i.Name, classNumber = i.ClassNumber }).ToList();
+                    if (indClasses != null) 
+                    {
+                        foreach (var indClass in indClasses)
+                        {
+                            fa.ClassesInOrder.Add(new IndividualClass() { ClassNumber = (int)indClass.classNumber, Name = indClass.name });
+                        }
+                    }
+
                     faceAttributeHiearachy.OrderedFaceAttributeSet.Add(fa);
                 }
                 faceAttributeHiearachy.FaceMatchingTechnique = technique.ToString();

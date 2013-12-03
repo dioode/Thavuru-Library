@@ -18,13 +18,16 @@ namespace Thahavuru.Techniques.Classification
             faceAttribute.AttributeId = currentAttrubute.AttributeId;
 
             LDA lda = new LDA();
-            var result = lda.FLDT(person.FaceofP, list);
+            var result = lda.FLDT(person.FaceofP, list, currentAttrubute.Name.Trim());
             faceAttribute.SortedClasses.Add(result.Label);
-            if (faceAttribute.IsBinary)
+            faceAttribute.ClassesInOrder.Add(currentAttrubute.ClassesInOrder.Where(x => x.ClassNumber == Convert.ToInt32( result.Label)).First());
+            if (currentAttrubute.IsBinary)
             {
-                faceAttribute.SortedClasses.Add(result.Label==1?2:1);
+                int nextClassNumber = result.Label==1?2:1;
+                faceAttribute.SortedClasses.Add(nextClassNumber);
+                faceAttribute.ClassesInOrder.Add(currentAttrubute.ClassesInOrder.Where(x => x.ClassNumber == nextClassNumber).First());
             }
-
+            faceAttribute.Name = currentAttrubute.Name;
             person.FaceofP.FaceAttributes.Add(faceAttribute);
             //return probeImage;
         }

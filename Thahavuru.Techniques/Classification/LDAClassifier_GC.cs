@@ -13,8 +13,8 @@ namespace Thahavuru.Techniques.Classification
     {
         public void RecognizeGC_LDA(ref PersonVM person, TrainingSet list, int NumberOfResults, int PageNumber)
         {
-            if (person.MatchedFaceIdSet[PageNumber] == null)
-            {
+            //if (person.MatchedFaceIdSet[PageNumber] == null)
+            //{
                 List<int> matchedFaces = new List<int>();
 
                 LDA lda = new LDA();
@@ -22,30 +22,34 @@ namespace Thahavuru.Techniques.Classification
 
                 for (int i = 0; i < condition.Min(); i++)
                 {
-                    var result = lda.FLDT(person.FaceofP, list);
-
-                    if (result.Distance != 0.0)
+                    if (list.labelList.Count == 1)
                     {
+                        matchedFaces.Add(list.labelList.First());
+                    }
+                    else
+                    {
+                        var result = lda.FLDT(person.FaceofP, list);
                         matchedFaces.Add(result.Label);
-                        list.labelList.RemoveAt(Convert.ToInt32(result.Label));
-                        list.trainingList.RemoveAt(Convert.ToInt32(result.Label));
+                        int index = list.labelList.IndexOf(result.Label);
+                        list.labelList.RemoveAt(index);
+                        list.trainingList.RemoveAt(index);
                     }
                 }
                 person.MatchedFaceIdSet.Add(PageNumber, matchedFaces);
-            }
+            //}
         }
 
-        public void ClassifyGC_LDA(ref PersonVM person, TrainingSet list, FaceAttribute Attribute) 
+        public void ClassifyGC_LDA(ref PersonVM person, TrainingSet list, FaceAttribute attribute) 
         {
-            if (Attribute.NumberOfClasses <= Attribute.SortedClasses.Count) return;
+            if (attribute.NumberOfClasses <= attribute.SortedClasses.Count) return;
             LDA lda = new LDA();
             
             #region Remove Images which alrady added to Attribute.sortedList
-            for (int j = 0; j < Attribute.SortedClasses.Count; j++)
+            for (int j = 0; j < attribute.SortedClasses.Count; j++)
             {
                 for (int i = list.trainingList.Count - 1; i > -1; i--)
                 {
-                    if (list.labelList[i] == Attribute.SortedClasses[j])
+                    if (list.labelList[i] == attribute.SortedClasses[j])
                     {
                         list.labelList.RemoveAt(i);
                         list.trainingList.RemoveAt(i);
@@ -57,12 +61,12 @@ namespace Thahavuru.Techniques.Classification
             // calculate next attribute
             try
             {
-                FaceRecognizer.PredictionResult result = lda.FLDT(person.FaceofP, list);
-                Attribute.SortedClasses.Add(result.Label);
+                FaceRecognizer.PredictionResult result = lda.FLDT(person.FaceofP, list, attribute.Name);
+                attribute.SortedClasses.Add(result.Label);
             }
             catch { }
 
-            person.FaceofP.FaceAttributes.Add(Attribute); ;
+            person.FaceofP.FaceAttributes.Add(attribute); ;
         }
     }
 }

@@ -32,7 +32,6 @@ namespace Thahavuru.DataAccessLayer.EDMX
         public DbSet<IndClass> IndClasses { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<PersonalFeatureSet> PersonalFeatureSets { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<SystemConfigVariable> SystemConfigVariables { get; set; }
     }
 }
