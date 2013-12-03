@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="545e18ed-1a04-4fd2-8cb1-37256c27d36d" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="80f14040-18ae-49cc-9a7f-f02154abe001" name="Thahavuru.DataAccessLayer">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="037b54be-4e9d-439b-9c34-54b3bf96cdb3" direction="Forward">
+          <layerMoniker Id="909797fc-0dcb-4426-86f0-7c567d505660" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="b166cd40-7b4a-41f2-9f10-dcdadbab58aa" name="Thahavuru.DataAccessLayer">
+          <ArtifactNode Label="Thahavuru.DataAccessLayer" Category="CodeSchema_Project" Id="(Assembly=../Thahavuru.DataAccessLayer/Thahavuru.DataAccessLayer.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Thahavuru.DataAccessLayer)" Label="Thahavuru.DataAccessLayer.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="909797fc-0dcb-4426-86f0-7c567d505660" name="Thahavuru.Resources">
+      <references>
+        <reference Id="cb2e56c6-2cac-4578-b779-b95089c8ca80" name="Thahavuru.Resources">
+          <ArtifactNode Label="Thahavuru.Resources" Category="CodeSchema_Project" Id="(Assembly=../Thahavuru.Resources/Thahavuru.Resources.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Thahavuru.Resources)" Label="Thahavuru.Resources.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="264fae6e-b761-40e3-aaa1-8e6059ce175c" name="Thahavuru.Techniques">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="5455cbd6-3b5f-4aa2-a084-f0913bfae83c" direction="Forward">
+          <layerMoniker Id="909797fc-0dcb-4426-86f0-7c567d505660" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="6f356ceb-a8aa-480c-bac2-7eb016a8fc13" direction="Forward">
+          <layerMoniker Id="80f14040-18ae-49cc-9a7f-f02154abe001" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="3b405b99-0cdf-4697-8011-d61db8b522b8" name="Thahavuru.Techniques">
+          <ArtifactNode Label="Thahavuru.Techniques" Category="CodeSchema_Project" Id="(Assembly=../Thahavuru.Techniques/Thahavuru.Techniques.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Thahavuru.Techniques)" Label="Thahavuru.Techniques.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

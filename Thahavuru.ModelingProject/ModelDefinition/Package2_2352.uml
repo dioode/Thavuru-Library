@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="070d86a2-b186-4a70-acbc-a8348f650ce6"
+  name="ViewModels"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="296dba92-6ba5-46de-bb9c-ebab40d5bb3c"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DThahavuru.Resources.ViewModels"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="33d3a750-46ec-4bfb-a6a3-49f9f69bb981"
+        name="PersonVM"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="1f6e6d4a-0a92-4e8f-8342-de3a5ac7789b"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.ViewModels Type%3DPersonVM"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="8f02c919-0494-4e40-90a4-bae5bbb8ebf8"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8b2266c3-e67f-4eb2-a226-402d04efdabb">
+                <propertyInstance
+                  Id="3ec78012-742e-4aa4-acb7-5a194f55e066"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1e4e22dc-57d2-4a50-a8c8-ac6d859f1ec2">
+                <propertyInstance
+                  Id="faecc2fd-d737-49ee-9567-482019fe6a7f"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="531b12ac-7175-46f3-8089-67132d74604f">
+                <propertyInstance
+                  Id="7fc8ab71-0941-4eb8-8682-015df09d4bf0"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3e2a65c3-a97f-4675-ace6-5cc6409e3310">
+                <propertyInstance
+                  Id="b133b89c-4d06-4b75-a9c2-68b56954cee2"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="99035967-359d-4a1f-b9f8-a407a34a1685">
+                <propertyInstance
+                  Id="381ae3e4-b0bf-4175-893f-e0c21ab8dab2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

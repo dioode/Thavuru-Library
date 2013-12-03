@@ -15,27 +15,29 @@ namespace Thahavuru.Techniques.Classification
         {
             //if (person.MatchedFaceIdSet[PageNumber] == null)
             //{
-                List<int> matchedFaces = new List<int>();
+            List<int> matchedFaces = new List<int>();
+            
+            LDA lda = new LDA();
+            int[] condition = { NumberOfResults, list.trainingList.Count };
 
-                LDA lda = new LDA();
-                int[] condition = { NumberOfResults, list.trainingList.Count };
+            for (int i = 0; i < condition.Min(); i++) 
+            {
+                
 
-                for (int i = 0; i < condition.Min(); i++)
+                if (list.labelList.Count ==1)
                 {
-                    if (list.labelList.Count == 1)
-                    {
-                        matchedFaces.Add(list.labelList.First());
-                    }
-                    else
-                    {
-                        var result = lda.FLDT(person.FaceofP, list);
-                        matchedFaces.Add(result.Label);
-                        int index = list.labelList.IndexOf(result.Label);
-                        list.labelList.RemoveAt(index);
-                        list.trainingList.RemoveAt(index);
-                    }
+                    matchedFaces.Add(list.labelList[0]);
                 }
-                person.MatchedFaceIdSet.Add(PageNumber, matchedFaces);
+                else
+                {
+                    var result = lda.FLDT(person.FaceofP, list);
+                    matchedFaces.Add(result.Label);
+                        int index = list.labelList.IndexOf(result.Label);
+                    list.labelList.RemoveAt(index);
+                    list.trainingList.RemoveAt(index);
+                }
+            }
+            person.MatchedFaceIdSet.Add(PageNumber, matchedFaces);
             //}
         }
 

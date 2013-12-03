@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="bedace8f-e099-4525-bdd3-16b410b4acec"
+  name="Structure"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="18cab13e-a5e2-44d4-9cf1-4a0907744010"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DEmgu.CV.Structure"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="d96a01fc-c427-4141-ab1b-6f6b8e6919ab"
+        name="Gray"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a6c47326-c0c3-4e8b-9583-06225d8ccb08"
+            handle="viewcode://./CodeSchema_Struct?Assembly%3D&quot;file:%2F%2F%2FC:%2FEmgu%2Femgucv-windows-universal-gpu 2.4.9.1847%2Fbin%2FEmgu.CV.dll&quot; Namespace%3DEmgu.CV.Structure Type%3DGray"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9baa7fb0-780e-4fb8-b9be-90ed089c5e47"
+            name="struct"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="439392c4-3d4b-49b4-a2f1-f30741d33f68">
+                <propertyInstance
+                  Id="96448336-5a2e-420a-9085-f4f0bc8c40ff"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="619ac502-11d8-41f1-b85e-5bc288e5e62f">
+                <propertyInstance
+                  Id="4b9d0657-bc91-41d1-9341-5bb42b906caa"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f87b1e77-8c25-4fde-bcee-b0934b67375e">
+                <propertyInstance
+                  Id="0e0882cf-56eb-493e-91a5-367c3013d885"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5eb58829-37be-4305-b6de-c012d0bc3d70">
+                <propertyInstance
+                  Id="f37baefb-8bd4-42ef-b252-727e481cc067"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

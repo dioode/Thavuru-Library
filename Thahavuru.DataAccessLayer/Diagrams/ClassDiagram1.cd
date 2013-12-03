@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="Thahavuru.DataAccessLayer.DataAccessSingleton">
+    <Position X="5.5" Y="0.5" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AEBAAAACAAUAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>DataAccessSingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.FaceRecEFEntities" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAcAAIAAAAAAAAAAAAAEEAAAgBgAAAAAAAAAAAA=</HashCode>
+      <FileName>EDMX\FaceRecEF.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.Class_Attrubute">
+    <Position X="0.5" Y="0.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAIAAACAAAAAAAAAAAQAAAAAAAiAAAAAAAAAAAA=</HashCode>
+      <FileName>EDMX\Class_Attrubute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.ClassElementImage">
+    <Position X="2.25" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAABAQAAACAAAAAA=</HashCode>
+      <FileName>EDMX\ClassElementImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.FaceAttributeHierarchy">
+    <Position X="8" Y="3.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQAAAAAAAAAAIAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EDMX\FaceAttributeHierarchy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.Image">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>EDMX\Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.IndClass">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAUggAAEAAAAAAAAAAQEAAAAgAAAAAAAAEAAAAA=</HashCode>
+      <FileName>EDMX\IndClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.Person">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAAAAAAAAAAAAAAwAAAAAABACAAAAAAAAAAA=</HashCode>
+      <FileName>EDMX\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.PersonalFeatureSet">
+    <Position X="0.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AICAgAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EDMX\PersonalFeatureSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Thahavuru.DataAccessLayer.EDMX.SystemConfigVariable">
+    <Position X="2.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EDMX\SystemConfigVariable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

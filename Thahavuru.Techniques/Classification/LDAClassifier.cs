@@ -16,6 +16,10 @@ namespace Thahavuru.Techniques.Classification
            
             var faceAttribute = new FaceAttribute();
             faceAttribute.AttributeId = currentAttrubute.AttributeId;
+            faceAttribute.NumberOfClasses = currentAttrubute.NumberOfClasses;
+            faceAttribute.IsBiometric = currentAttrubute.IsBiometric;
+            faceAttribute.Name = currentAttrubute.Name;
+            faceAttribute.ClassificationTechnique = currentAttrubute.ClassificationTechnique;
 
             LDA lda = new LDA();
             var result = lda.FLDT(person.FaceofP, list, currentAttrubute.Name.Trim());

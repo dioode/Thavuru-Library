@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="6c589371-3cbf-4a24-9f69-2df20f2b8fec"
+  name="Classification"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="9298c12c-88f6-4bf4-9d3c-761ad501ffd0"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DThahavuru.Techniques.Classification"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="36f57d1b-9fbc-41ca-8216-1573f4ddd21c"
+        name="EyesEyeBrowsRatioClassifier"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="454f2f46-8efd-428e-8590-3801153ef3fd"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c6827e2e-15a6-4b0c-befd-09e8fceb72b9"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="79b72728-3621-4ee5-82b2-e4047b068c9a">
+                <propertyInstance
+                  Id="35fcc4cb-de0f-40f8-952c-8b5d34aef94a"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0d54b4a6-291b-4679-ab2e-eb6769243a1e">
+                <propertyInstance
+                  Id="611356fd-6a9a-429e-a029-8bbe810b39a1"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e2bcb192-0fa6-4dd6-8f89-1f24a8c9f914">
+                <propertyInstance
+                  Id="8e28f5f3-d14e-4a72-b822-4f396b765c87"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="248456d6-f260-43fe-b9c3-b601732cd5c2">
+                <propertyInstance
+                  Id="a765e1e8-cbd7-4e43-934c-95d4cdb2f3c1"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ad59555c-3e06-45b3-9526-b9c820428904">
+                <propertyInstance
+                  Id="c3864654-94f3-4aa4-9a9f-535ceb4dcfde"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="f52b2f74-19a0-414a-8802-b30e3a3044df">
+            <interfaceMoniker
+              Id="0512e101-17b8-4936-b8bd-a260f101f987"
+              LastKnownName="IBiometricClassifier"
+              LastKnownLocation="Package_2352.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="da949b6b-7d91-4511-8418-ee6622360fcf"
+            name="Classify"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="bf4388c1-6a3e-498e-b3e2-81c8038e421c"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier Member%3D(Name%3DClassify OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.ViewModels Type%3DPersonVM ParamKind%3DRef)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b04ba264-41f4-46c5-bcd9-463f7fefc03e"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aca3994b-d540-4d68-ada5-b75ca2b54962">
+                    <propertyInstance
+                      Id="82f7817b-bd9c-4755-af7e-42f2f19a2a2f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="546a6966-ea29-4548-a3b6-d0813fbcf198">
+                    <propertyInstance
+                      Id="d6402a92-a0be-40ca-9f82-4610d2f77135"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9856de40-fb4f-41d8-bbb7-64f9c5e03329">
+                    <propertyInstance
+                      Id="e3b61ae9-97fa-49fa-b0b8-e4c192b6c990"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="54fe1997-6bad-4c34-80c5-6d7168bb532a">
+                    <propertyInstance
+                      Id="277cdae6-0163-43fc-b137-4b2389c723aa"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9d6f64e-efa2-4455-b026-1773ac008350">
+                    <propertyInstance
+                      Id="87092879-a6f3-49ec-b8a1-136551539668"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="624cb718-1cf9-4938-a839-ca9f936ea1b4">
+                    <propertyInstance
+                      Id="710bb70c-9a80-4fbf-b20f-9de9bd71ea71"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7c8344c1-3934-432e-b1f2-af16a60b02b1"
+                  name="probeImage"
+                  direction="InOut">
+                  <referencesInternal>
+                    <reference
+                      Id="dc0f0a98-acbf-4748-82b1-c5a975a62122"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier Member%3D(Name%3DClassify OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Resources%2Fbin%2FDebug%2FThahavuru.Resources.dll&quot; Namespace%3DThahavuru.Resources.ViewModels Type%3DPersonVM ParamKind%3DRef)]) ParameterIdentifier%3DprobeImage"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="33d3a750-46ec-4bfb-a6a3-49f9f69bb981"
+                      LastKnownName="PersonVM"
+                      LastKnownLocation="Package2_2352.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="74a27cac-4e71-47b8-bbeb-9895f3811971"
+            name="EyesEyeBrowsRatioClassifier"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="3c0fa7f2-3200-4c09-9d90-af2253c56991"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DEyesEyeBrowsRatioClassifier Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="07d574d0-5901-464a-9c11-1ea29ae8ef06"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="29680eb6-0f13-41b4-b25f-0199d7b2b497">
+                    <propertyInstance
+                      Id="93c156ce-8193-4a49-99e5-74ee9094770d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="620750c3-9592-40af-815a-642b07231515">
+                    <propertyInstance
+                      Id="63e562d6-3d2c-495f-97a8-4f38c2d7697e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="73571ea3-cb2b-4964-8472-40586757cf78">
+                    <propertyInstance
+                      Id="a20cc003-2d69-43dd-ad6d-4f6d882826c1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9666dd00-5537-4107-ac4c-39d12928b00a">
+                    <propertyInstance
+                      Id="98edc2e6-4ca1-41fd-9666-a48565a5d9a8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="961242ed-7e2e-4110-b570-df778213e96a">
+                    <propertyInstance
+                      Id="57e211c4-2230-43cf-92b5-58ef785b93eb"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96acffb1-4e37-4001-bae9-52ec12504785">
+                    <propertyInstance
+                      Id="3026a1e3-9849-4b8a-96db-4a8dd19041a6"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="0512e101-17b8-4936-b8bd-a260f101f987"
+        name="IBiometricClassifier"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="f83bb813-bb99-41c6-9c81-2c5be1602b68"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3D&quot;file:%2F%2F%2FD:%2FUsers%2FDiyoda Sajjana%2FEducation%2FMy Books%2FCSE%2FUni%2FMora%2FFYP%2Fsrc%2FWCF%2FThahavuru.Libraries%2FThahavuru.Techniques%2Fbin%2FDebug%2FThahavuru.Techniques.dll&quot; Namespace%3DThahavuru.Techniques.Classification Type%3DIBiometricClassifier"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="364f90e8-e937-4fed-9687-1b6908101184"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="90b52125-4201-46db-aa32-de77efbb6756">
+                <propertyInstance
+                  Id="37d45adb-9400-4bed-b4af-0b1e89829e5a"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b0c7401b-ead4-45f5-bddf-91c661341e68">
+                <propertyInstance
+                  Id="a59dd1d7-43e7-4145-8783-5fe100c4db6f"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="36c31db5-f3a8-4bc5-932c-32e1001c1d7c">
+                <propertyInstance
+                  Id="f3c5e471-3c2c-4c59-b23f-46a5837e123b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a28ce5b2-5446-402c-8004-9e433402adc6">
+                <propertyInstance
+                  Id="4117417d-a2e3-4e51-b361-9e4fb8cd8b1f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
