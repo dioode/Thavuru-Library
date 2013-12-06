@@ -11,9 +11,14 @@ namespace Thahavuru.Techniques.Classification
 {
     public class LDAClassifier : IClassifier
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="person"></param>
+        /// <param name="list"></param>
+        /// <param name="currentAttrubute"></param>
         public void Classify(ref PersonVM person, TrainingSet list, FaceAttribute currentAttrubute)
         {
-           
             var faceAttribute = new FaceAttribute();
             faceAttribute.AttributeId = currentAttrubute.AttributeId;
             faceAttribute.NumberOfClasses = currentAttrubute.NumberOfClasses;
@@ -33,7 +38,6 @@ namespace Thahavuru.Techniques.Classification
             }
             faceAttribute.Name = currentAttrubute.Name;
             person.FaceofP.FaceAttributes.Add(faceAttribute);
-            //return probeImage;
         }
     }
 }

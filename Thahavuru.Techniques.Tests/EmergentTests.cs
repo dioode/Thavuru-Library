@@ -17,10 +17,16 @@ namespace Thahavuru.Techniques.Tests
             var userInterfaceModel= new UserInterfaceModel();
             userInterfaceModel.Next = true;
             userInterfaceModel.PageNumber = 1;
-            userInterfaceModel.SearchingPerson.FaceofP.FaceImage = new Image<Gray, byte>(@"C:\ImageDB\PersonImages\User (10).jpg");
+            userInterfaceModel.SearchingPerson.FaceofP.FaceImage = new Image<Gray, byte>(@"D:\1.jpg");
             
             var test = new FaceMatchAdapter();
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             test.FaceMatch(ref userInterfaceModel);
+            sw.Stop();
+            Debug.WriteLine("Elapsed={0}", sw.ElapsedMilliseconds);
+            
 
             foreach (var itemSet in userInterfaceModel.SearchingPerson.MatchedFaceIdSet)
             {

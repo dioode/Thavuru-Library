@@ -193,12 +193,161 @@ namespace Thahavuru.DataAccessLayer
 
                 return trainingSet;
 
-
-
-
             }
 
         }
 
+        public List<FaceAttribute> GetAllAttributes() 
+        {
+            List<FaceAttribute> attributes = null;
+            using (var ctx = new FaceRecEFEntities())
+            {
+                var attList = (from a in ctx.Class_Attrubute
+                               select new
+                               {
+                                   attributeId = a.CAttributeId,
+                                   name = a.Name,
+                                   isBiometric = a.IsBiometric,
+                                   noOfClasses = a.NumberOfClasses,
+                                   classificationTechnique = a.ClassificationTechnique,
+                                   
+                               }).ToList();
+                if (attList != null) 
+                {
+                    attributes = new List<FaceAttribute>();
+                    foreach (var item in attList)
+                    {
+                        FaceAttribute att = new FaceAttribute();
+                        att.AttributeId = item.attributeId;
+                        att.Name = item.name;
+                        att.IsBiometric = (bool) item.isBiometric;
+                        att.NumberOfClasses = Convert.ToInt32(item.noOfClasses);
+                        att.ClassificationTechnique = item.classificationTechnique;
+                        var iClasses = (from i in ctx.IndClasses where i.Class_Attrubute_Id == item.attributeId select new
+                                        {
+                                            id = i.ClassId,
+                                            name = i.Name,
+                                            classNumber = i.ClassNumber
+                                        }).ToList();
+                        foreach (var c in iClasses)
+                        {
+                            IndividualClass iC = new IndividualClass();
+                            iC.Name = c.name;
+                            iC.ClassNumber = Convert.ToInt32(c.classNumber);
+                            iC.Id = c.id;
+                            att.ClassesInOrder.Add(iC);
+                        }
+                        attributes.Add(att);
+                    }
+                }
+            }
+
+            return attributes;
+        }
+
+        public bool AddNewAttributeToHierarchy(int attId) 
+        {
+            using (var ctx = new FaceRecEFEntities())
+            {
+                var hierarchy = (from ah in ctx.FaceAttributeHierarchies
+                                 join a in ctx.Class_Attrubute
+                                     on ah.ClassAttribute_AttId equals a.CAttributeId
+                                 select new
+                                 {
+                                     LevelNo = ah.LevelNo
+                                 }).ToList().OrderBy(x => x.LevelNo);
+
+                int lastLevel = (int)hierarchy.Last().LevelNo;
+
+                FaceAttributeHierarchy fHierarchy = new FaceAttributeHierarchy();
+                fHierarchy.ClassAttribute_AttId = attId;
+                fHierarchy.LevelNo = lastLevel + 1;
+
+                ctx.FaceAttributeHierarchies.Add(fHierarchy);
+                try
+                {
+                    ctx.SaveChanges();
+                    return(true);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
+
+            return false;
+        }
+
+        public bool RemoveAttributeFromHierarchy(int attId) 
+        {
+            using (var ctx = new FaceRecEFEntities())
+            {
+                FaceAttributeHierarchy hierarchy = ctx.FaceAttributeHierarchies.Where(a => a.ClassAttribute_AttId == attId).FirstOrDefault();
+                ctx.FaceAttributeHierarchies.Remove(hierarchy);
+                try
+                {
+                    ctx.SaveChanges();
+                    var newHierarchy = ctx.FaceAttributeHierarchies.Where(a => a.ClassAttribute_AttId == a.ClassAttribute_AttId).OrderBy(x => x.LevelNo).ToList(); 
+                    
+                    for (int i = 0; i < newHierarchy.Count; i++)
+                    {
+                        if (newHierarchy[i].LevelNo != (i + 1))
+                        {
+                            newHierarchy[i].LevelNo = i + 1;
+                        }
+                    }
+                    ctx.SaveChanges();
+                    return true;
+                }
+                catch (Exception e) { Console.WriteLine(e.ToString()); }
+            }
+            return false;
+        }
+
+        public bool MoveUpHierarchy(int attId) 
+        {
+            using (var ctx = new FaceRecEFEntities())
+            {
+                int currentLevel = ctx.FaceAttributeHierarchies.Where(a => a.ClassAttribute_AttId == attId).FirstOrDefault().LevelNo;
+                int newLevel = currentLevel - 1;
+
+                try
+                {
+                    FaceAttributeHierarchy currentLevelAttr = ctx.FaceAttributeHierarchies.FirstOrDefault(a=>a.ClassAttribute_AttId == attId);
+                    FaceAttributeHierarchy previouslyAboveAttr = ctx.FaceAttributeHierarchies.FirstOrDefault(a=> a.LevelNo == newLevel);
+                    currentLevelAttr.LevelNo = newLevel;
+                    previouslyAboveAttr.LevelNo = currentLevel;
+
+                    ctx.SaveChanges();
+                    return true;
+                }
+                catch { }
+            }
+
+            return false;
+        }
+
+        public bool MoveDownHierarchy(int attId) 
+        {
+            using (var ctx = new FaceRecEFEntities())
+            {
+                int currentLevel = ctx.FaceAttributeHierarchies.Where(a => a.ClassAttribute_AttId == attId).FirstOrDefault().LevelNo;
+                int newLevel = currentLevel + 1;
+
+                try
+                {
+                    FaceAttributeHierarchy currentLevelAttr = ctx.FaceAttributeHierarchies.FirstOrDefault(a => a.ClassAttribute_AttId == attId);
+                    FaceAttributeHierarchy previouslyBelowAttr = ctx.FaceAttributeHierarchies.FirstOrDefault(a => a.LevelNo == newLevel);
+                    currentLevelAttr.LevelNo = newLevel;
+                    previouslyBelowAttr.LevelNo = currentLevel;
+
+                    ctx.SaveChanges();
+                    return true;
+                }
+                catch { }
+
+            }
+            return false;
+        }
     }
 }

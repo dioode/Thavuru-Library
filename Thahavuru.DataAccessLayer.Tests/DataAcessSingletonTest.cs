@@ -81,14 +81,50 @@ namespace Thahavuru.DataAccessLayer.Tests
             //person.SearchTrakKeeper = new List<List<List<int>>>();
             
             List<List<int>> list = new List<List<int>>();
-            list.Add(new List<int>() { 1, 2, 1 });
-            list.Add(new List<int>() { 2, 2, 1 });
-            list.Add(new List<int>() { 3, 2, 1 });
+            list.Add(new List<int>() { 1, 2 });
+            list.Add(new List<int>() { 2, 2 });
+            list.Add(new List<int>() { 3, 2 });
 
             person.SearchTrakKeeper.Add(list);
 
             TrainingSet tset = DAS.GetAllNarrowdownFaceImageSet(person, 1);
         }
 
+        [TestMethod]
+        public void GetAllAttributesTest() 
+        {
+            DataAccessSingleton dAS = new DataAccessSingleton();
+            dAS.GetAllAttributes();
+        }
+
+        [TestMethod]
+        public void AddNewAttributeToHierarchyTest() 
+        {
+            DataAccessSingleton das = new DataAccessSingleton();
+
+            das.AddNewAttributeToHierarchy(3);
+
+        }
+
+        [TestMethod]
+        public void RemoveAttributeFromHierarchyTest() 
+        {
+            DataAccessSingleton das = new DataAccessSingleton();
+            das.RemoveAttributeFromHierarchy(3);
+        }
+
+        [TestMethod]
+        public void MoveUpHierarchyTest() 
+        {
+            DataAccessSingleton das = new DataAccessSingleton();
+            das.MoveUpHierarchy(2);
+        }
+
+        [TestMethod]
+        public void MoveDownHierarchyTest() 
+        {
+            DataAccessSingleton das = new DataAccessSingleton();
+            das.MoveDownHierarchy(2);
+        }
     }
 }

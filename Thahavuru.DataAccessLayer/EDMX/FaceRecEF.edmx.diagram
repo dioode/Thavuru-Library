@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2b91706abdde425e9813341c5d57b518" Name="Diagram1" ZoomLevel="33">
-        <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="8.4555083105599067" PointY="24.057926844832455" />
-        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="0.20630514072547906" PointY="11.976401722047665" />
-        <EntityTypeShape EntityType="FaceRecModel.FaceAttributeHierarchy" Width="1.5" PointX="4.7638176273386073" PointY="17.207965545918775" />
-        <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="0.25373774406208555" PointY="13.857808238760478" />
-        <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="10.104922407355588" PointY="23.229854937284188" />
+      <Diagram DiagramId="2b91706abdde425e9813341c5d57b518" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="FaceRecModel.Class_Attrubute" Width="1.5" PointX="6.5" PointY="14.25" />
+        <EntityTypeShape EntityType="FaceRecModel.ClassElementImage" Width="1.5" PointX="12.125" PointY="11.375" />
+        <EntityTypeShape EntityType="FaceRecModel.FaceAttributeHierarchy" Width="1.5" PointX="4.25" PointY="12" />
+        <EntityTypeShape EntityType="FaceRecModel.Image" Width="1.5" PointX="4" PointY="9.25" />
+        <EntityTypeShape EntityType="FaceRecModel.IndClass" Width="1.5" PointX="9.375" PointY="13.625" />
         <EntityTypeShape EntityType="FaceRecModel.Person" Width="1.5" PointX="6.3120696071125888" PointY="9.2197863651531691" />
-        <EntityTypeShape EntityType="FaceRecModel.PersonalFeatureSet" Width="1.5" PointX="9.2680334473345578" PointY="9.502596233739796" />
+        <EntityTypeShape EntityType="FaceRecModel.PersonalFeatureSet" Width="1.5" PointX="8.5" PointY="9.125" />
         <EntityTypeShape EntityType="FaceRecModel.SystemConfigVariable" Width="1.5" PointX="5.0301098809717733" PointY="30.013665347366437" />
         <AssociationConnector Association="FaceRecModel.FK_Class_Attribute_Id" />
         <AssociationConnector Association="FaceRecModel.FK_ClassAttribute_FaceAttributeHierarchy" />
