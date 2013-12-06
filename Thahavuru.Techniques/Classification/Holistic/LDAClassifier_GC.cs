@@ -16,15 +16,15 @@ namespace Thahavuru.Techniques.Classification
             //if (person.MatchedFaceIdSet[PageNumber] == null)
             //{
             List<int> matchedFaces = new List<int>();
-            
+
             LDA lda = new LDA();
             int[] condition = { NumberOfResults, list.trainingList.Count };
 
-            for (int i = 0; i < condition.Min(); i++) 
+            for (int i = 0; i < condition.Min(); i++)
             {
-                
 
-                if (list.labelList.Count ==1)
+
+                if (list.labelList.Count == 1)
                 {
                     matchedFaces.Add(list.labelList[0]);
                 }
@@ -32,7 +32,7 @@ namespace Thahavuru.Techniques.Classification
                 {
                     var result = lda.FLDT(person.FaceofP, list);
                     matchedFaces.Add(result.Label);
-                        int index = list.labelList.IndexOf(result.Label);
+                    int index = list.labelList.IndexOf(result.Label);
                     list.labelList.RemoveAt(index);
                     list.trainingList.RemoveAt(index);
                 }
@@ -41,11 +41,11 @@ namespace Thahavuru.Techniques.Classification
             //}
         }
 
-        public void ClassifyGC_LDA(ref PersonVM person, TrainingSet list, FaceAttribute attribute) 
+        public void ClassifyGC_LDA(ref PersonVM person, TrainingSet list, FaceAttribute attribute)
         {
             if (attribute.NumberOfClasses <= attribute.SortedClasses.Count) return;
             LDA lda = new LDA();
-            
+
             #region Remove Images which alrady added to Attribute.sortedList
             for (int j = 0; j < attribute.SortedClasses.Count; j++)
             {

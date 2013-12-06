@@ -19,7 +19,7 @@ namespace Thahavuru.Techniques.Classification
             var result = pca.PCAT(person.FaceofP, list);
             foreach (var item in result)
             {
-                
+
                 faceAttribute.SortedClasses.Add(item);
             }
 

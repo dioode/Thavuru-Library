@@ -13,27 +13,44 @@ namespace Thahavuru.DataAccessLayer
 {
     public class DataAccessSingleton
     {
-        public TrainingSet GetTraingSet(int classAttributeId) 
+        private static DataAccessSingleton instance = new DataAccessSingleton();
+        private DataAccessSingleton() { }
+
+        public static DataAccessSingleton Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// Get training set set for classification attribute
+        /// </summary>
+        /// <param name="classAttributeId"></param>
+        /// <returns></returns>
+        public TrainingSet GetTraingSet(int classAttributeId)
         {
             TrainingSet TSet = new TrainingSet();
-            TSet.trainingList = new List<Image<Gray,byte>>();
+            TSet.trainingList = new List<Image<Gray, byte>>();
             TSet.labelList = new List<int>();
-            
+
             using (var ctx = new FaceRecEFEntities())
             {
                 var TrainSet =
-                    (from c in ctx.IndClasses join i in ctx.ClassElementImages
-                    on c.ClassId equals i.Class_ClassId
-                    where c.Class_Attrubute_Id == classAttributeId
-                    select new
-                    {
-                        ClassNumber = c.ClassNumber,
-                        image = i.Feature_img_uri
-                    }).ToList();
+                    (from c in ctx.IndClasses
+                     join i in ctx.ClassElementImages
+                         on c.ClassId equals i.Class_ClassId
+                     where c.Class_Attrubute_Id == classAttributeId
+                     select new
+                     {
+                         ClassNumber = c.ClassNumber,
+                         image = i.Feature_img_uri
+                     }).ToList();
 
-                if (TrainSet.Count != 0) 
+                if (TrainSet.Count != 0)
                 {
-                    foreach (var t in TrainSet) 
+                    foreach (var t in TrainSet)
                     {
                         TSet.labelList.Add((int)t.ClassNumber);
                         string imgUri = @"C:\ImageDB\" + (string)t.image;
@@ -45,6 +62,11 @@ namespace Thahavuru.DataAccessLayer
             return TSet;
         }
 
+        /// <summary>
+        /// Get person information (Name, Address etc.)
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <returns></returns>
         public PersonVM GetPersonByID(int personId)
         {
             PersonVM PersonM = new PersonVM();
@@ -60,7 +82,6 @@ namespace Thahavuru.DataAccessLayer
                 {
                     PersonM.Id = (int)person.Id;
                     PersonM.Name = (string)person.Name;
-                    //PersonM.N
                     PersonM.Address = (string)person.Address;
                 }
             }
@@ -68,6 +89,12 @@ namespace Thahavuru.DataAccessLayer
             return PersonM;
         }
 
+
+        /// <summary>
+        /// Get person information using NIC number
+        /// </summary>
+        /// <param name="nicString"></param>
+        /// <returns></returns>
         public PersonVM GetPersonByNIC(string nicString)
         {
             PersonVM PersonM = new PersonVM();
@@ -89,6 +116,11 @@ namespace Thahavuru.DataAccessLayer
             return PersonM;
         }
 
+        /// <summary>
+        /// Get person by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public List<PersonVM> GetPersonByName(string name)
         {
             List<PersonVM> PersonM = new List<PersonVM>();
@@ -101,7 +133,8 @@ namespace Thahavuru.DataAccessLayer
 
                 if (persons != null)
                 {
-                    foreach(var p in persons){
+                    foreach (var p in persons)
+                    {
                         PersonVM pM = new PersonVM();
                         pM.Id = (int)p.Id;
                         pM.Name = (string)p.Name;
@@ -113,11 +146,16 @@ namespace Thahavuru.DataAccessLayer
             return PersonM;
         }
 
+
+        /// <summary>
+        /// Get classification attribute hierarchy for decision tree
+        /// </summary>
+        /// <returns></returns>
         public FaceAttributeHiearachy GetFaceAttributeHierarchy()
         {
             FaceAttributeHiearachy faceAttributeHiearachy = new FaceAttributeHiearachy();
             faceAttributeHiearachy.OrderedFaceAttributeSet = new List<FaceAttribute>();
-            using (var ctx = new FaceRecEFEntities()) 
+            using (var ctx = new FaceRecEFEntities())
             {
                 var hierarchy = (from ah in ctx.FaceAttributeHierarchies
                                  join a in ctx.Class_Attrubute
@@ -133,24 +171,24 @@ namespace Thahavuru.DataAccessLayer
                                  }).ToList().OrderBy(x => x.LevelNo);
 
                 var technique = (from tech in ctx.SystemConfigVariables where tech.VariableName == "MATCHING_TECHNIQUE" select tech.VariableValue).FirstOrDefault<string>();
-                
-                foreach (var fah in hierarchy) 
+
+                foreach (var fah in hierarchy)
                 {
                     FaceAttribute fa = new FaceAttribute();
                     fa.AttributeId = fah.AttributeId;
                     fa.ClassificationTechnique = fah.ClassificationTechnique;
-                    fa.IsBiometric = (bool)(fah.IsBiometric == null ? false:fah.IsBiometric)  ;
-                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null? 0:fah.NoOfClasses);
+                    fa.IsBiometric = (bool)(fah.IsBiometric == null ? false : fah.IsBiometric);
+                    fa.NumberOfClasses = (int)(fah.NoOfClasses == null ? 0 : fah.NoOfClasses);
                     fa.Name = fah.Name;
 
                     var indClasses = (from i in ctx.IndClasses
-                                    where i.Class_Attrubute_Id == fa.AttributeId
-                                    select new { name = i.Name, classNumber = i.ClassNumber }).ToList();
-                    if (indClasses != null) 
+                                      where i.Class_Attrubute_Id == fa.AttributeId
+                                      select new { name = i.Name, classNumber = i.ClassNumber, minValue = i.ValueRangeLowerBound, maxValue = i.ValueRangeUpperBound }).ToList();
+                    if (indClasses != null)
                     {
                         foreach (var indClass in indClasses)
                         {
-                            fa.ClassesInOrder.Add(new IndividualClass() { ClassNumber = (int)indClass.classNumber, Name = indClass.name });
+                            fa.ClassesInOrder.Add(new IndividualClass() { ClassNumber = (int)indClass.classNumber, Name = indClass.name, MinValue = Convert.ToDouble(indClass.minValue), MaxValue = Convert.ToDouble(indClass.maxValue) });
                         }
                     }
 
@@ -158,13 +196,19 @@ namespace Thahavuru.DataAccessLayer
                 }
                 faceAttributeHiearachy.FaceMatchingTechnique = technique.ToString();
             }
-            
+
             return faceAttributeHiearachy;
         }
 
-        public TrainingSet GetAllNarrowdownFaceImageSet(PersonVM searchingPerson, int pageNumber) 
+        /// <summary>
+        /// Reduce face search space for classes matched for all attiributes in the hierarchy 
+        /// </summary>
+        /// <param name="searchingPerson"></param>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
+        public TrainingSet GetAllNarrowdownFaceImageSet(PersonVM searchingPerson, int pageNumber)
         {
-            var wantedSearchingTrack = searchingPerson.SearchTrakKeeper[pageNumber-1];
+            var wantedSearchingTrack = searchingPerson.SearchTrakKeeper[pageNumber - 1];
 
             using (var ctx = new FaceRecEFEntities())
             {
@@ -179,21 +223,20 @@ namespace Thahavuru.DataAccessLayer
                                 (x, y) => new { personId = x.Id, attributeId = y.IndClass.Class_Attrubute_Id, classNumber = y.IndClass.ClassNumber }).ToList()
                                 .Where(s => s.attributeId == currentAttrubuteID && s.classNumber == classNumberForCurrentAttribute).ToList();
 
-                    faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t =>t.personId).Contains((int)x.Person_Id)).ToList();
+                    faceImageSet = faceImageSet.Where(x => personIdSetForCurrentAttrubute.Select(t => t.personId).Contains((int)x.Person_Id)).ToList();
                 }
 
                 var trainingSet = new TrainingSet();
-                
+                string imgUri = ctx.SystemConfigVariables.Where(x => x.VariableName.Trim() == "VAR_PATH").First().VariableValue;
+
                 foreach (var item in faceImageSet)
-	            {
-		            trainingSet.trainingImageURIList.Add(item.Image_uri);
-                    trainingSet.trainingList.Add(new Image<Gray, byte>(@"C:\ImageDB\PersonImages\" + item.Image_uri));
+                {
+                    trainingSet.trainingImageURIList.Add(item.Image_uri);
+                    trainingSet.trainingList.Add(new Image<Gray, byte>(@imgUri + item.Image_uri));
                     trainingSet.labelList.Add((int)item.Person_Id);
-	            }
+                }
 
                 return trainingSet;
-
-
 
 
             }

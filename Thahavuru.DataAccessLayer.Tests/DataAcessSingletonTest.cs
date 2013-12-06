@@ -11,71 +11,71 @@ namespace Thahavuru.DataAccessLayer.Tests
     public class DataAcessSingletonTest
     {
         [TestMethod]
-        public void GetPersonByIDTest()
+        public void DataAcessSingleton_GetPersonByIDTest()
         {
             int PersonId = 2;
             string Name = "User (2)";
             //string Address = "ADDRESS (2)";
 
-            DataAccessSingleton DAS = new DataAccessSingleton();
+            var dAccess = DataAccessSingleton.Instance;
 
-            PersonVM person = DAS.GetPersonByID(PersonId);
+            PersonVM person = dAccess.GetPersonByID(PersonId);
 
             Assert.AreEqual(Name, person.Name,true);
 
         }
 
         [TestMethod]
-        public void GetPersonByNICTest()
+        public void DataAcessSingleton_GetPersonByNICTest()
         {
-            int PersonId = 3;
-            string NIC = "NIC (3)";
+            
+            string nic = "NIC (3)";
 
             string Address = "ADDRESS (3)";
 
-            DataAccessSingleton DAS = new DataAccessSingleton();
+            DataAccessSingleton dAccess = DataAccessSingleton.Instance;
 
-            PersonVM person = DAS.GetPersonByNIC(NIC);
+            PersonVM person = dAccess.GetPersonByNIC(nic);
             //asdsdfsdfsf
             Assert.AreEqual(Address, person.Address, true);
         }
 
         [TestMethod]
-        public void GetPersonByNameTest()
+        public void DataAcessSingleton_GetPersonByNameTest()
         {
-            int PersonId = 3;
+            
             string Name = "User (4)";
-            string Address = "ADDRESS (4)";
+            string address = "ADDRESS (4)";
 
-            DataAccessSingleton DAS = new DataAccessSingleton();
+            DataAccessSingleton dAccess = DataAccessSingleton.Instance;
 
-            List<PersonVM> persons = DAS.GetPersonByName(Name);//GetPersonByName
+            List<PersonVM> persons = dAccess.GetPersonByName(Name);//GetPersonByName
 
-            Assert.AreEqual(Address, persons[0].Address, true);
+            Assert.AreEqual(address, persons[0].Address, true);
         }
 
         [TestMethod]
-        public void GetTraingSetTest() 
+        public void DataAcessSingleton_GetTraingSetTest() 
         {
             int lable = 1;
 
-            DataAccessSingleton DAS = new DataAccessSingleton();
-            TrainingSet tset = DAS.GetTraingSet(4);
+            DataAccessSingleton dAccess = DataAccessSingleton.Instance;
+            TrainingSet tset = dAccess.GetTraingSet(4);
 
             Assert.AreEqual(lable.ToString(), tset.labelList[1].ToString(), true);
         }
 
         [TestMethod]
-        public void GetFaceAttributeHierarchyTest() 
+        public void DataAcessSingleton_GetFaceAttributeHierarchyTest() 
         {
-            DataAccessSingleton DAS = new DataAccessSingleton();
-            FaceAttributeHiearachy tset = DAS.GetFaceAttributeHierarchy();
+            DataAccessSingleton dAccess = DataAccessSingleton.Instance;
+            FaceAttributeHiearachy tset = dAccess.GetFaceAttributeHierarchy();
         }
 
         [TestMethod]
-        public void GetAllNarrowdownFaceImageSetTest() 
+        public void DataAcessSingleton_GetAllNarrowdownFaceImageSetTest() 
         {
-            DataAccessSingleton DAS = new DataAccessSingleton();
+            DataAccessSingleton dAccess = DataAccessSingleton.Instance;
 
             PersonVM person = new PersonVM();
             //person.SearchTrakKeeper = new List<List<List<int>>>();
@@ -87,7 +87,7 @@ namespace Thahavuru.DataAccessLayer.Tests
 
             person.SearchTrakKeeper.Add(list);
 
-            TrainingSet tset = DAS.GetAllNarrowdownFaceImageSet(person, 1);
+            TrainingSet tset = dAccess.GetAllNarrowdownFaceImageSet(person, 1);
         }
 
     }

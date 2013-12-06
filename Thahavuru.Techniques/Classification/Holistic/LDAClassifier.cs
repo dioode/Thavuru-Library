@@ -33,7 +33,6 @@ namespace Thahavuru.Techniques.Classification
             }
             faceAttribute.Name = currentAttrubute.Name;
             person.FaceofP.FaceAttributes.Add(faceAttribute);
-            //return probeImage;
         }
     }
 }

@@ -10,6 +10,9 @@ namespace Thahavuru.Resources.ViewModels
     {
         public int ClassNumber { get; set; }
         public string Name { get; set; }
+        public double MaxValue { get; set; }
+        public double MinValue { get; set; }
+
 
     }
 }

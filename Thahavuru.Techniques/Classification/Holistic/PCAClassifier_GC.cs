@@ -56,12 +56,12 @@ namespace Thahavuru.Techniques.Classification
             person.FaceofP.FaceAttributes.Add(Attribute);
         }
 
-        private List<int> distinctClasses(List<int> allClasses) 
+        private List<int> distinctClasses(List<int> allClasses)
         {
             List<int> distinct = new List<int>();
-            foreach (int value in allClasses) 
+            foreach (int value in allClasses)
             {
-                if (!distinct.Contains(value)) 
+                if (!distinct.Contains(value))
                 {
                     distinct.Add(value);
                 }
