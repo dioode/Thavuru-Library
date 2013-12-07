@@ -101,7 +101,7 @@
     <Compile Include="HaarCascadeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BiometricMethodsTests.cs" />
-    <Compile Include="DataAccessLayerTests.cs" />
+    <Compile Include="TechniquesTests.cs" />
     <Compile Include="EmergentTests.cs" />
   </ItemGroup>
   <ItemGroup>

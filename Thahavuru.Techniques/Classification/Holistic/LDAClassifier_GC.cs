@@ -37,7 +37,7 @@ namespace Thahavuru.Techniques.Classification
                 {
                     var result = lda.FLDT(person.FaceofP, list);
                     matchedFaces.Add(result.Label);
-                    int index = list.labelList.IndexOf(result.Label);
+                        int index = list.labelList.IndexOf(result.Label);
                     list.labelList.RemoveAt(index);// remove current best matching image to get next best maching image
                     list.trainingList.RemoveAt(index);
                 }

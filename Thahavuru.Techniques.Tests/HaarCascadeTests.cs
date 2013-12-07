@@ -14,7 +14,7 @@ namespace Thahavuru.Techniques.Tests
     [TestClass]
     public class HaarCascadeTests{
         [TestMethod]
-        public void TestMethod1()
+        public void HaarCascade_FrontalFaceDetection()
         {
             
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
@@ -70,13 +70,13 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void HaarCascade_LeftEye()
         {
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
                 FaceFeatureIdentification x = new FaceFeatureIdentification(img);
 
-                List<Rectangle> imageSet = x.IndentifyRightEye();
+                List<Rectangle> imageSet = x.IndentifyLeftEye();
 
                 Debug.WriteLine("Number if Left Eyes: " + imageSet.Count);
 
@@ -101,13 +101,13 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void TestMethod3()
+        public void HaarCascade_RightEye()
         {
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
                 FaceFeatureIdentification x = new FaceFeatureIdentification(img);
 
-                List<Rectangle> imageSet = x.IndentifyLeftEye();
+                List<Rectangle> imageSet = x.IndentifyRightEye();
 
                 Debug.WriteLine("Number if Left Eyes: " + imageSet.Count);
 
@@ -133,7 +133,7 @@ namespace Thahavuru.Techniques.Tests
 
 
         [TestMethod]
-        public void TestMethod4()
+        public void HaarCascade_Nose()
         {
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
@@ -165,7 +165,7 @@ namespace Thahavuru.Techniques.Tests
 
 
         [TestMethod]
-        public void TestMethod5()
+        public void HaarCascade_Mouth()
         {
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
@@ -193,7 +193,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void TestMethod6()
+        public void HaarCascade_Nose2()
         {
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
@@ -224,7 +224,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void TestMethod7()
+        public void HaarCascade_LeftEar()
         {
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {
@@ -255,7 +255,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void TestMethod8()
+        public void HaarCascade_RightEar()
         {
             using (Image img = System.Drawing.Image.FromFile("40.jpg"))
             {

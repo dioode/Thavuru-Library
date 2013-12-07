@@ -98,27 +98,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classification\EyesEyeBrowsRatioClassifier.cs" />
-    <Compile Include="Classification\EyesMouthRatioClassifier.cs" />
-    <Compile Include="Classification\EyesNoseRatioClassifier.cs" />
-    <Compile Include="Classification\IBiometricClassifier.cs" />
+    <Compile Include="Classification\Biometric\BiometricAttributeFiller.cs" />
+    <Compile Include="Classification\Biometric\BiometricClassifierCommon.cs" />
+    <Compile Include="Classification\Biometric\EyesEyeBrowsRatioClassifier.cs" />
+    <Compile Include="Classification\Biometric\EyesMouthRatioClassifier.cs" />
+    <Compile Include="Classification\Biometric\EyesNoseRatioClassifier.cs" />
+    <Compile Include="Classification\Holistic\HolisticAttributeFiller.cs" />
     <Compile Include="Classification\IClassifier.cs" />
     <Compile Include="ClassificationT\LDA.cs" />
     <Compile Include="ClassificationT\PCA.cs" />
     <Compile Include="ClassificationT\SVMT.cs" />
-    <Compile Include="Classification\LDAClassifier.cs" />
-    <Compile Include="Classification\LDAClassifier_GC.cs" />
-    <Compile Include="Classification\NoseMouthRatioClassifier.cs" />
-    <Compile Include="Classification\PCAClassifier.cs" />
-    <Compile Include="Classification\PCAClassifier_GC.cs" />
-    <Compile Include="Classification\SVMClassifier.cs" />
-    <Compile Include="FaceRecT\CascadeConfig.cs" />
-    <Compile Include="FaceRecT\FeatureTracker.cs" />
-    <Compile Include="FaceRecT\HaarCascade_.cs" />
-    <Compile Include="FaceRecT\ICascade.cs" />
-    <Compile Include="FaceRec\FaceFeatureIdentification.cs" />
+    <Compile Include="Classification\Holistic\LDAClassifier.cs" />
+    <Compile Include="Classification\Holistic\LDAClassifier_GC.cs" />
+    <Compile Include="Classification\Biometric\NoseMouthRatioClassifier.cs" />
+    <Compile Include="Classification\Holistic\PCAClassifier.cs" />
+    <Compile Include="Classification\Holistic\PCAClassifier_GC.cs" />
+    <Compile Include="Classification\Holistic\SVMClassifier.cs" />
+    <Compile Include="FaceFeatureRecT\CascadeConfig.cs" />
+    <Compile Include="FaceFeatureRecT\FeatureTracker.cs" />
+    <Compile Include="FaceFeatureRecT\HaarCascade_.cs" />
+    <Compile Include="FaceFeatureRecT\ICascade.cs" />
+    <Compile Include="FaceRec\FeatureIdentification\FaceFeatureIdentification.cs" />
     <Compile Include="FaceRec\FaceRecognition.cs" />
-    <Compile Include="FaceRec\FaceRecognitionPolicy.cs" />
+    <Compile Include="FaceRec\FeatureIdentification\FaceRecognitionPolicy.cs" />
     <Compile Include="ImageProcessingT\ImageProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

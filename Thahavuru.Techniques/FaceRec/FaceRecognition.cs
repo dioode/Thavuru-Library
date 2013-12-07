@@ -16,10 +16,16 @@ namespace Thahavuru.Techniques.FaceRec
         private DataAccessSingleton dataAccessContext;
         public FaceRecognition()
         {
-            dataAccessContext = new DataAccessSingleton();
+            dataAccessContext = DataAccessSingleton.Instance;
         }
 
-        public void MatchFaces(ref PersonVM person, string technique, int pageNumber) 
+        /// <summary>
+        /// Final Face matching for images in the leave
+        /// </summary>
+        /// <param name="person"></param>
+        /// <param name="technique"></param>
+        /// <param name="pageNumber"></param>
+        public void MatchFaces(ref PersonVM person, string technique, int pageNumber)
         {
             switch (technique)
             {
@@ -36,14 +42,15 @@ namespace Thahavuru.Techniques.FaceRec
                     break;
             }
         }
-        private void MatchFacesUsingPCA(ref PersonVM person, int pageNumber) 
+
+        #region Facematching techniques implimentations (PCA, LDA)
+
+        private void MatchFacesUsingPCA(ref PersonVM person, int pageNumber)
         {
             var faceImageListafterPruning = GetAllPeopleUnderNarrowdown(person, pageNumber);
-            
             PCA pca = new PCA();
             var matchingOrderedSet = pca.PCAT(person.FaceofP, faceImageListafterPruning);
 
-            //Somehow 
         }
 
         private void MatchFacesLDA(ref PersonVM person, int pageNumber)
@@ -60,7 +67,15 @@ namespace Thahavuru.Techniques.FaceRec
             var matchingOrderedSet = svm.SVMTT(person.FaceofP, faceImageListafterPruning);
         }
 
-        private TrainingSet GetAllPeopleUnderNarrowdown(PersonVM person, int pageNumber) 
+        #endregion
+
+        /// <summary>
+        /// Data access caller for GetAllNarrowdownFaceImageSet
+        /// </summary>
+        /// <param name="person"></param>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
+        private TrainingSet GetAllPeopleUnderNarrowdown(PersonVM person, int pageNumber)
         {
             return dataAccessContext.GetAllNarrowdownFaceImageSet(person, pageNumber);
         }

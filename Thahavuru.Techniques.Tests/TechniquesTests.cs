@@ -10,7 +10,7 @@ using Thahavuru.Techniques.Classification;
 namespace Thahavuru.Techniques.Tests
 {
     [TestClass]
-    public class DataAccessLayerTests
+    public class TechniquesTests
     {
         private static TrainingSet Data()
         {
@@ -46,7 +46,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void LDATest() 
+        public void Techniques_LDATest() 
         {
             TrainingSet tset = Data();
 
@@ -58,7 +58,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void PCATest() 
+        public void Techniques_PCATest() 
         {
             TrainingSet tset = Data();
 
@@ -70,7 +70,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void SVMTest()
+        public void Techniques_SVMTest()
         {
             TrainingSet tset = Data();
 
@@ -82,7 +82,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void LDAForMultipleResults() 
+        public void Techniques_LDAForMultipleResults() 
         {
             TrainingSet tset = Data();
 
@@ -99,7 +99,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void LDAForMultipleClassify()
+        public void Techniques_LDAForMultipleClassify()
         {
             TrainingSet tset = Data();
 
@@ -121,7 +121,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void PCAForMultipleResults()
+        public void Techniques_PCAForMultipleResults()
         {
             TrainingSet tset = Data();
 
@@ -138,7 +138,7 @@ namespace Thahavuru.Techniques.Tests
         }
 
         [TestMethod]
-        public void PCAForMultipleClassify()
+        public void Techniques_PCAForMultipleClassify()
         {
             TrainingSet tset = Data();
 

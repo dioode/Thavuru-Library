@@ -81,10 +81,10 @@
     <Compile Include="ViewModels\Face.cs" />
     <Compile Include="ViewModels\FaceAttribute.cs" />
     <Compile Include="ViewModels\FaceAttributeHiearachy.cs" />
-    <Compile Include="ViewModels\FaceUnresolved.cs" />
-    <Compile Include="ViewModels\GeometricFace.cs" />
+    <Compile Include="ViewModels\HCascade\FaceUnresolved.cs" />
+    <Compile Include="ViewModels\HCascade\GeometricFace.cs" />
     <Compile Include="ViewModels\IFace.cs" />
-    <Compile Include="ViewModels\ImagePoint.cs" />
+    <Compile Include="ViewModels\HCascade\ImagePoint.cs" />
     <Compile Include="ViewModels\IndividualClass.cs" />
     <Compile Include="ViewModels\PersonVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

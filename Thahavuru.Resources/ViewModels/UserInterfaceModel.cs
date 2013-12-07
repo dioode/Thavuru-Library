@@ -20,7 +20,6 @@ namespace Thahavuru.Resources.ViewModels
         [DataMember]
         public int PageNumber{ get; set; }
 
-        private int maxLeaves;
         [DataMember]
         public int MaxLeaves { get; set; }
 

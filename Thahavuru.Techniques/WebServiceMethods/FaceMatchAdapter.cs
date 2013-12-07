@@ -18,15 +18,19 @@ namespace Thahavuru.Techniques.WebServiceMethods
         public FaceMatchAdapter()
         {
             faceRecContext = new FaceRecognition();
-            dataAccessSingleton = new DataAccessSingleton();
-            //var attributeSet = GetCurrentConfigAttrubuteSet();
+            dataAccessSingleton = DataAccessSingleton.Instance;
+
         }
 
-        public void FaceMatch(ref UserInterfaceModel userInterfacemodel) 
+        public void FaceMatch(ref UserInterfaceModel userInterfacemodel)
         {
             if (userInterfacemodel != null)
             {
-                var attributeSet = GetCurrentConfigAttrubuteSet();
+                if (userInterfacemodel.SearchingPerson.MatchedFaceIdSet.ContainsKey(userInterfacemodel.PageNumber))
+                {
+                    return;
+                }
+                var attributeSet = LoadHieararchy();
                 if (userInterfacemodel.MaxLeaves == 0)
                 {
                     int x = 1;
@@ -49,54 +53,50 @@ namespace Thahavuru.Techniques.WebServiceMethods
                     FillSearchTrackForNumber(ref userInterfacemodel.SearchingPerson, userInterfacemodel.PageNumber, userInterfacemodel.MaxLeaves);
 
                     faceRecContext.MatchFaces(ref userInterfacemodel.SearchingPerson, attributeSet.FaceMatchingTechnique, userInterfacemodel.PageNumber); //This is hard-coded, have to change this
-                } 
+                }
             }
         }
 
-        private FaceAttributeHiearachy GetCurrentConfigAttrubuteSet() 
+        private FaceAttributeHiearachy LoadHieararchy()
         {
             return dataAccessSingleton.GetFaceAttributeHierarchy();
-            //return new FaceAttributeHiearachy();
-            //Get from database.
         }
-        
-        private void FillAttributeValues(ref PersonVM inputPerson, FaceAttributeHiearachy providedHiearachy) 
+
+        private void FillAttributeValues(ref PersonVM inputPerson, FaceAttributeHiearachy providedHiearachy)
         {
             foreach (var faceAttribute in providedHiearachy.OrderedFaceAttributeSet)
             {
                 if (!faceAttribute.IsBiometric)
                 {
                     var trainigSet = dataAccessSingleton.GetTraingSet(faceAttribute.AttributeId);
-                    switch (faceAttribute.ClassificationTechnique.Trim())
-                    {
-                        case "PCA":
-                            new PCAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
-                            break;
-                        case "LDA":
-                            new LDAClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
-                            break;
-                        case "SVM":
-                            new SVMClassifier().Classify(ref inputPerson, trainigSet, faceAttribute);
-                            break;
-                    }    
+                    FillHolisticAttributes(ref inputPerson, trainigSet, faceAttribute);
                 }
                 else
                 {
-                    switch (faceAttribute.Name)
-                    {
-                        case "Eyes/Mouth":
-                            new EyesMouthRatioClassifier().Classify(ref inputPerson);
-                            break;
-                        case "Mouth/Nose":
-                            new NoseMouthRatioClassifier().Classify(ref inputPerson);
-                            break;
-                    }
-                }             
+                    FillBiometricAttributes(ref inputPerson, faceAttribute);
+                }
             }
         }
 
+        private void FillHolisticAttributes(ref PersonVM inputPerson, TrainingSet trainigSet, FaceAttribute faceAttribute)
+        {
+            new HolisticAttributeFiller().Classify(ref inputPerson, trainigSet, faceAttribute);
 
-        private void FillSearchTrackForNumber(ref PersonVM inputPerson, int pageNumber, int maxLeaves) 
+        }
+
+        private void FillBiometricAttributes(ref PersonVM inputPerson, FaceAttribute faceAttribute)
+        {
+            new BiometricAttributeFiller().FillBiometricAttributes(inputPerson, faceAttribute);
+
+        }
+
+        /// <summary>
+        /// Loads SearchTrackKeeper which contains the paths to the leaves in decision tree
+        /// </summary>
+        /// <param name="inputPerson"></param>
+        /// <param name="pageNumber"></param>
+        /// <param name="maxLeaves"></param>
+        private void FillSearchTrackForNumber(ref PersonVM inputPerson, int pageNumber, int maxLeaves)
         {
             if (inputPerson.SearchTrakKeeper.Count == 0)
             {
@@ -109,12 +109,12 @@ namespace Thahavuru.Techniques.WebServiceMethods
                 }
 
                 inputPerson.SearchTrakKeeper.Add(listNumbers);
-            }  
+            }
 
-            //If given number is larger than the total paths it can take then there is a issue
+            // If given number is larger than the total paths it can take then there is a issue
             if (pageNumber <= maxLeaves && pageNumber > 0)
             {
-                        
+
                 //If the attribute list is less than y that menas you have to calculate rest of the paths before giving the y th search path attrubutes.
                 if (inputPerson.SearchTrakKeeper.Count < pageNumber)
                 {
@@ -137,7 +137,6 @@ namespace Thahavuru.Techniques.WebServiceMethods
                             {
                                 int indexOfCurrentClassLable = inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses.IndexOf(currentClassLable);
                                 List<List<int>> temp = new List<List<int>>();
-                                //temp = TreePathTracker[h].Take(d + 1).ToList();
 
                                 foreach (var item in inputPerson.SearchTrakKeeper[h].GetRange(0, d + 1).ToList())
                                 {
@@ -149,37 +148,40 @@ namespace Thahavuru.Techniques.WebServiceMethods
                                     temp[d][1] = inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses[indexOfCurrentClassLable + 1];
                                     temp[d][2] += 1;
                                 }
-                                else
+
+                                else if (inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses.Count < inputPerson.FaceofP.FaceAttributes[currentLevel - 1].NumberOfClasses)
                                 {
                                     //Find the missing attribute classes in the attrbuteList and then assing the
 
                                     var currentAttrubute = inputPerson.FaceofP.FaceAttributes[currentLevel - 1];
                                     var CurrentTrainingSet = dataAccessSingleton.GetTraingSet(currentAttrubute.AttributeId);
 
-                                    switch (currentAttrubute.ClassificationTechnique)
+                                    switch (currentAttrubute.ClassificationTechnique.Trim())
                                     {
                                         case "LDA":
                                             new LDAClassifier_GC().ClassifyGC_LDA(ref inputPerson, CurrentTrainingSet, currentAttrubute);
                                             break;
+                                        case "PCA":
+                                            new PCAClassifier_GC().ClassifyGC_PCA(ref inputPerson, CurrentTrainingSet, currentAttrubute);
+                                            break;
                                         default:
                                             break;
                                     }
-                                    
-                                    //inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses.Add(nextInt);
-                                    temp[d][1] = inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses[indexOfCurrentClassLable + 1];//This is a dummy assigning
+
+                                    temp[d][1] = inputPerson.FaceofP.FaceAttributes[currentLevel - 1].SortedClasses[indexOfCurrentClassLable + 1];
                                     temp[d][2] += 1;
                                 }
                                 inputPerson.SearchTrakKeeper.Add(temp);
 
-                                for (int l = currentLevel; l < inputPerson.FaceofP.FaceAttributes.Count; l++)
+                                for (int l = temp.Count; l < inputPerson.FaceofP.FaceAttributes.Count; l++)
                                 {
-                                    inputPerson.SearchTrakKeeper[h + 1].Add(new List<int>() { l, inputPerson.FaceofP.FaceAttributes[currentLevel].SortedClasses[1], 1 });
+                                    inputPerson.SearchTrakKeeper[h + 1].Add(new List<int>() { l+1, inputPerson.FaceofP.FaceAttributes[l].SortedClasses[0], 1 });
                                 }
 
                                 bol = false;
                             }
                             d -= 1;
-                            if (d == 0)
+                            if (d == -1)
                             {
                                 bol = false;
                             }
@@ -189,15 +191,15 @@ namespace Thahavuru.Techniques.WebServiceMethods
 
                 }
                 // Else You can send the existing attribute path.
-                else
-                {
-                    //Already contains the list in the model up to the page number
-                }
+                //else
+                //{
+                //    //Already contains the list in the model up to the page number
+                //}
             }
-            else
-            {
-                //This has exceeded the limits
-            }
+            //else
+            //{
+            //    //This has exceeded the limits
+            //}
         }
     }
 }

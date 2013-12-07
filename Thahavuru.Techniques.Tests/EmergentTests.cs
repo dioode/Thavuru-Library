@@ -12,13 +12,12 @@ namespace Thahavuru.Techniques.Tests
     public class EmergentTests
     {  
         [TestMethod]
-        public void FaceRecogntion()
+        public void EmergentTesting_FaceRecogntion()
         {
             var userInterfaceModel= new UserInterfaceModel();
             userInterfaceModel.Next = true;
             userInterfaceModel.PageNumber = 1;
-            userInterfaceModel.SearchingPerson.FaceofP.FaceImage = new Image<Gray, byte>(@"D:\1.jpg");
-            
+            userInterfaceModel.SearchingPerson.FaceofP.FaceImage = new Image<Gray, byte>(@"C:\ImageDB\PersonImages\User (10).jpg");
             var test = new FaceMatchAdapter();
 
             Stopwatch sw = new Stopwatch();
@@ -36,6 +35,39 @@ namespace Thahavuru.Techniques.Tests
 	            }
                 Debug.WriteLine("----------");
             }
+
+            for (int i = 2; i < 5; i++)
+            {
+                userInterfaceModel.Next = true;
+                userInterfaceModel.PageNumber = i;
+                test.FaceMatch(ref userInterfaceModel);
+
+                var x = userInterfaceModel.SearchingPerson.MatchedFaceIdSet[i];
+                
+                foreach (var item in x)
+                {
+                    Debug.Write(item + " ,");
+                }
+                Debug.WriteLine("----------");
+                
+            }
+
+            for (int i = 4; i >0 ; i--)
+            {
+                userInterfaceModel.Back = true;
+                userInterfaceModel.PageNumber = i;
+                test.FaceMatch(ref userInterfaceModel);
+
+                var x = userInterfaceModel.SearchingPerson.MatchedFaceIdSet[i];
+
+                foreach (var item in x)
+                {
+                    Debug.Write(item + " ,");
+                }
+                Debug.WriteLine("----------");
+
+            }
+            
         }
     }
 }
