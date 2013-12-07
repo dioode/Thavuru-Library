@@ -93,14 +93,14 @@ namespace Thahavuru.DataAccessLayer.Tests
         [TestMethod]
         public void GetAllAttributesTest() 
         {
-            DataAccessSingleton dAS = new DataAccessSingleton();
+            DataAccessSingleton dAS = DataAccessSingleton.Instance;
             dAS.GetAllAttributes();
         }
 
         [TestMethod]
         public void AddNewAttributeToHierarchyTest() 
         {
-            DataAccessSingleton das = new DataAccessSingleton();
+            DataAccessSingleton das = DataAccessSingleton.Instance;
 
             das.AddNewAttributeToHierarchy(3);
 
@@ -109,21 +109,21 @@ namespace Thahavuru.DataAccessLayer.Tests
         [TestMethod]
         public void RemoveAttributeFromHierarchyTest() 
         {
-            DataAccessSingleton das = new DataAccessSingleton();
+            DataAccessSingleton das = DataAccessSingleton.Instance;
             das.RemoveAttributeFromHierarchy(3);
         }
 
         [TestMethod]
         public void MoveUpHierarchyTest() 
         {
-            DataAccessSingleton das = new DataAccessSingleton();
+            DataAccessSingleton das = DataAccessSingleton.Instance;
             das.MoveUpHierarchy(2);
         }
 
         [TestMethod]
         public void MoveDownHierarchyTest() 
         {
-            DataAccessSingleton das = new DataAccessSingleton();
+            DataAccessSingleton das = DataAccessSingleton.Instance;
             das.MoveDownHierarchy(2);
         }
     }
